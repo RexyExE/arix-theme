@@ -595,3 +595,914 @@ td:last-child {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(139, 92, 246, 0.5);
 }
+
+/* ==============================================================================
+ *  ADMIN PANEL (AdminLTE Override) — Silk Veil Deep Glass
+ * ============================================================================== */
+
+/* Main wrapper reset */
+.hold-transition.skin-blue .wrapper {
+    background: var(--sv-bg) !important;
+    min-height: 100vh !important;
+}
+
+/* ---- Admin Header / Navbar ---- */
+.skin-blue .main-header .logo {
+    background: var(--sv-glass-nav) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-family: var(--fontFamily) !important;
+    letter-spacing: -0.02em !important;
+}
+
+.skin-blue .main-header .navbar {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+}
+
+.skin-blue .main-header .navbar .nav > li > a {
+    color: #cbd5e1 !important;
+    transition: color 0.2s ease !important;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #ffffff !important;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: #94a3b8 !important;
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #ffffff !important;
+}
+
+/* ---- Admin Sidebar ---- */
+.skin-blue .main-sidebar,
+.skin-blue .left-side {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border-right: 1px solid var(--sv-border) !important;
+    padding-top: 0.5rem !important;
+}
+
+.skin-blue .sidebar-menu > li.header {
+    background: transparent !important;
+    color: var(--sv-purple-secondary) !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    padding: 1.35rem 1.25rem 0.5rem !important;
+    border-bottom: none !important;
+}
+
+.skin-blue .sidebar-menu > li > a {
+    color: #cbd5e1 !important;
+    background: transparent !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    margin: 3px 10px !important;
+    padding: 10px 14px !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border-left: none !important;
+}
+
+.skin-blue .sidebar-menu > li > a > i,
+.skin-blue .sidebar-menu > li > a > svg {
+    width: 18px !important;
+    height: 18px !important;
+    color: #94a3b8 !important;
+    transition: color 0.2s ease !important;
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+    background: var(--sv-bubble-gradient) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: var(--sv-purple-glow) !important;
+    border-left: none !important;
+}
+
+.skin-blue .sidebar-menu > li.active > a > i,
+.skin-blue .sidebar-menu > li.active > a > svg {
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Arix Theme sidebar item (the gradient animated one) */
+.skin-blue .sidebar-menu > li.arix > a {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.skin-blue .sidebar-menu > li:not(.active):not(.header) > a:hover {
+    background: rgba(139, 92, 246, 0.1) !important;
+    color: #f1f5f9 !important;
+    transform: translateX(3px);
+}
+
+.skin-blue .sidebar-menu > li:not(.active):not(.header) > a:hover > i,
+.skin-blue .sidebar-menu > li:not(.active):not(.header) > a:hover > svg {
+    color: var(--sv-purple-secondary) !important;
+}
+
+/* ---- Admin Content Wrapper ---- */
+.skin-blue .content-wrapper {
+    background: var(--sv-bg) !important;
+    min-height: calc(100vh - 50px) !important;
+}
+
+.content-header {
+    background: transparent !important;
+    border-bottom: none !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.content-header > h1 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.02em !important;
+}
+
+.content-header > .breadcrumb {
+    background: transparent !important;
+}
+.content-header > .breadcrumb > li > a {
+    color: var(--sv-purple-secondary) !important;
+}
+.content-header > .breadcrumb > li.active {
+    color: #94a3b8 !important;
+}
+
+/* ---- Admin Boxes / Panels ---- */
+.box {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+    border-top: none !important;
+    margin-bottom: 1.5rem !important;
+    overflow: hidden !important;
+}
+
+.box-header {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: var(--sv-radius-card) var(--sv-radius-card) 0 0 !important;
+}
+
+.box-header .box-title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.01em !important;
+}
+
+.box-body {
+    padding: 1.25rem 1.5rem !important;
+    background: transparent !important;
+}
+
+.box-footer {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-top: 1px solid var(--sv-border) !important;
+    padding: 0.85rem 1.5rem !important;
+    border-radius: 0 0 var(--sv-radius-card) var(--sv-radius-card) !important;
+}
+
+.box.box-primary {
+    border-top: none !important;
+}
+
+.box.box-primary > .box-header {
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Remove legacy AdminLTE colored box borders */
+.box.box-success, .box.box-warning, .box.box-danger, .box.box-info {
+    border-top: none !important;
+}
+
+/* ---- Admin Tables (Inside boxes) ---- */
+.box .table {
+    background: transparent !important;
+}
+
+.box .table > thead > tr > th {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    color: #94a3b8 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    padding: 0.85rem 1rem !important;
+}
+
+.box .table > tbody > tr {
+    background: transparent !important;
+}
+
+.box .table > tbody > tr > td {
+    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+    color: #cbd5e1 !important;
+    padding: 0.85rem 1rem !important;
+    vertical-align: middle !important;
+}
+
+.box .table > tbody > tr:hover {
+    background: rgba(139, 92, 246, 0.06) !important;
+}
+
+.box .table > tbody > tr:hover > td {
+    color: #ffffff !important;
+}
+
+/* ---- Admin Alerts ---- */
+.alert {
+    border-radius: var(--sv-radius-bubble) !important;
+    backdrop-filter: var(--sv-blur-subtle) !important;
+    border: 1px solid !important;
+    font-weight: 500 !important;
+}
+
+.alert-success {
+    background: rgba(16, 185, 129, 0.12) !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+    color: #6ee7b7 !important;
+}
+
+.alert-danger {
+    background: rgba(244, 63, 94, 0.12) !important;
+    border-color: rgba(244, 63, 94, 0.3) !important;
+    color: #fca5a5 !important;
+}
+
+.alert-warning {
+    background: rgba(245, 158, 11, 0.12) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    color: #fcd34d !important;
+}
+
+.alert-info {
+    background: rgba(139, 92, 246, 0.12) !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+    color: #c4b5fd !important;
+}
+
+/* ---- Admin Footer ---- */
+.main-footer {
+    background: var(--sv-glass-nav) !important;
+    border-top: 1px solid var(--sv-border) !important;
+    color: #64748b !important;
+    font-size: 0.82rem !important;
+}
+
+.main-footer a {
+    color: var(--sv-purple-secondary) !important;
+}
+
+/* ---- Admin Form Labels & Descriptions ---- */
+.form-group label,
+.control-label {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+.form-group .help-block,
+.form-group small {
+    color: #64748b !important;
+    font-size: 0.78rem !important;
+    margin-top: 0.3rem !important;
+}
+
+.form-control {
+    background: rgba(14, 12, 26, 0.65) !important;
+    backdrop-filter: var(--sv-blur-subtle) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #ffffff !important;
+    height: auto !important;
+    padding: 0.65rem 0.95rem !important;
+    font-size: 0.88rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-control:focus {
+    border-color: var(--sv-purple-secondary) !important;
+    background: rgba(22, 19, 42, 0.85) !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.22) !important;
+    outline: none !important;
+}
+
+/* Select2 Override */
+.select2-container--default .select2-selection--single {
+    background: rgba(14, 12, 26, 0.65) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    height: 40px !important;
+    color: #ffffff !important;
+}
+
+.select2-dropdown {
+    background: var(--sv-glass-elevated) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    backdrop-filter: var(--sv-blur) !important;
+}
+
+.select2-results__option--highlighted {
+    background: rgba(139, 92, 246, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* ---- Pagination ---- */
+.pagination > li > a,
+.pagination > li > span {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    color: #cbd5e1 !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    margin: 0 2px !important;
+    transition: all 0.15s ease !important;
+}
+
+.pagination > li.active > a,
+.pagination > li.active > span {
+    background: var(--sv-bubble-gradient) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: var(--sv-purple-glow) !important;
+}
+
+.pagination > li > a:hover {
+    background: rgba(139, 92, 246, 0.15) !important;
+    border-color: var(--sv-border-bright) !important;
+    color: #ffffff !important;
+}
+
+/* ---- Info Boxes (Small stat cards in admin) ---- */
+.info-box {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+    min-height: auto !important;
+    transition: border-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.info-box:hover {
+    border-color: var(--sv-border-bright) !important;
+    transform: translateY(-2px);
+}
+
+.info-box .info-box-icon {
+    border-radius: var(--sv-radius-card) 0 0 var(--sv-radius-card) !important;
+    background: rgba(139, 92, 246, 0.15) !important;
+    color: var(--sv-purple-secondary) !important;
+}
+
+.info-box .info-box-content .info-box-text {
+    color: #94a3b8 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+.info-box .info-box-content .info-box-number {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.4rem !important;
+}
+
+/* ---- Callout (Tips and Warnings) ---- */
+.callout {
+    background: var(--sv-glass-card) !important;
+    border-left: 4px solid var(--sv-purple-primary) !important;
+    border-radius: 0 var(--sv-radius-bubble) var(--sv-radius-bubble) 0 !important;
+    color: #cbd5e1 !important;
+    backdrop-filter: var(--sv-blur-subtle) !important;
+}
+
+.callout.callout-danger {
+    border-left-color: var(--sv-rose) !important;
+}
+.callout.callout-warning {
+    border-left-color: var(--sv-amber) !important;
+}
+.callout.callout-success {
+    border-left-color: var(--sv-emerald) !important;
+}
+
+/* ---- Nav Tabs (Admin detail pages) ---- */
+.nav-tabs-custom {
+    background: transparent !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+.nav-tabs-custom > .nav-tabs {
+    background: var(--sv-glass-card) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) var(--sv-radius-card) 0 0 !important;
+    padding: 0.5rem 0.75rem 0 !important;
+}
+
+.nav-tabs-custom > .nav-tabs > li > a {
+    color: #94a3b8 !important;
+    border: none !important;
+    border-radius: var(--sv-radius-bubble) var(--sv-radius-bubble) 0 0 !important;
+    padding: 0.65rem 1.15rem !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.15s ease !important;
+    margin-right: 4px !important;
+}
+
+.nav-tabs-custom > .nav-tabs > li > a:hover {
+    background: rgba(139, 92, 246, 0.08) !important;
+    color: #e2e8f0 !important;
+}
+
+.nav-tabs-custom > .nav-tabs > li.active > a {
+    background: rgba(139, 92, 246, 0.18) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid var(--sv-purple-primary) !important;
+}
+
+.nav-tabs-custom > .tab-content {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-top: none !important;
+    border-radius: 0 0 var(--sv-radius-card) var(--sv-radius-card) !important;
+    padding: 1.5rem !important;
+}
+
+/* ---- Checkbox & Toggles ---- */
+.icheckbox_square-blue,
+.iradio_square-blue {
+    border-radius: 6px !important;
+}
+
+/* ---- Progress Bars ---- */
+.progress {
+    background: rgba(14, 12, 26, 0.5) !important;
+    border-radius: var(--sv-radius-pill) !important;
+    height: 8px !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.progress-bar {
+    background: var(--sv-bubble-gradient) !important;
+    box-shadow: var(--sv-purple-glow) !important;
+    border-radius: var(--sv-radius-pill) !important;
+}
+
+/* ---- Labels & Badges ---- */
+.label {
+    border-radius: var(--sv-radius-pill) !important;
+    font-weight: 600 !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.05em !important;
+    padding: 0.3rem 0.7rem !important;
+}
+
+.label-primary {
+    background: rgba(139, 92, 246, 0.2) !important;
+    color: #c4b5fd !important;
+    border: 1px solid rgba(139, 92, 246, 0.35) !important;
+}
+
+.label-success {
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #6ee7b7 !important;
+    border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+.label-danger {
+    background: rgba(244, 63, 94, 0.2) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(244, 63, 94, 0.35) !important;
+}
+
+.label-warning {
+    background: rgba(245, 158, 11, 0.2) !important;
+    color: #fcd34d !important;
+    border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+.label-default {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ---- Well (legacy bootstrap wells) ---- */
+.well {
+    background: rgba(14, 12, 26, 0.45) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    box-shadow: none !important;
+    color: #cbd5e1 !important;
+}
+
+/* ==============================================================================
+ *  ARIX EDITOR LAYOUT — Silk Veil Chrome
+ * ============================================================================== */
+
+/* Editor Top Nav */
+body > nav {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    padding: 0 1.5rem !important;
+}
+
+body > nav .logo img {
+    filter: brightness(1.1) drop-shadow(0 0 6px rgba(139, 92, 246, 0.3));
+}
+
+body > nav .nav-end a {
+    color: #cbd5e1 !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    padding: 0.45rem 0.85rem !important;
+    transition: all 0.2s ease !important;
+}
+
+body > nav .nav-end a:hover {
+    background: rgba(139, 92, 246, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Editor Sidebar */
+.wrapper > .sidebar {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border-right: 1px solid var(--sv-border) !important;
+}
+
+.wrapper > .sidebar ul li a {
+    border-radius: var(--sv-radius-bubble) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    color: #94a3b8 !important;
+}
+
+.wrapper > .sidebar ul li.active a {
+    background: var(--sv-bubble-gradient) !important;
+    color: #ffffff !important;
+    box-shadow: var(--sv-purple-glow) !important;
+}
+
+.wrapper > .sidebar ul li:not(.active) a:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #ffffff !important;
+}
+
+.wrapper > .sidebar .link-tooltip {
+    background: var(--sv-glass-elevated) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Editor Content Container */
+.content-container {
+    background: var(--sv-bg) !important;
+}
+
+/* Side Editor Panel */
+.sideEditor-container .sideEditor {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border-right: 1px solid var(--sv-border) !important;
+    overflow-y: auto !important;
+}
+
+.sideEditor .header p {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.15rem !important;
+}
+
+.sideEditor .header .description-text {
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+}
+
+.sideEditor .header a {
+    color: var(--sv-purple-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+}
+
+/* Editor Form Sections */
+.sideEditor .subtitle,
+.content-box .subtitle,
+.container .subtitle {
+    color: var(--sv-purple-secondary) !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Form Wrapper Sections */
+.form-wrapper,
+x-arix\.form-wrapper,
+.content-box > form > div[style*="margin"],
+.content-box {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Input Fields in Arix Editor */
+.input-field {
+    margin-bottom: 1rem !important;
+}
+
+.input-field label {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 0.4rem !important;
+    display: block !important;
+}
+
+.input-field select {
+    width: 100% !important;
+    appearance: none !important;
+}
+
+.input-field small {
+    color: #64748b !important;
+    font-size: 0.78rem !important;
+}
+
+/* Floating Save Button */
+.floating-button {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border-top: 1px solid var(--sv-border) !important;
+    padding: 1rem 1.5rem !important;
+}
+
+.floating-button .button-primary {
+    background: var(--sv-bubble-gradient) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: var(--sv-purple-glow) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    padding: 0.6rem 1.5rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.floating-button .button-primary:hover {
+    background: var(--sv-bubble-gradient-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5) !important;
+}
+
+/* Color Options Grid */
+.color-options {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+}
+
+/* Color Presets */
+.apply-preset {
+    border-radius: var(--sv-radius-card) !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid var(--sv-border) !important;
+    cursor: pointer !important;
+}
+
+.apply-preset:hover {
+    border-color: var(--sv-border-bright) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Layout Grid Options */
+.layout-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+}
+
+.layout-grid label {
+    border-radius: var(--sv-radius-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    background: var(--sv-glass-card) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+}
+
+.layout-grid label:hover {
+    border-color: var(--sv-border-bright) !important;
+}
+
+.layout-grid input:checked + label,
+.layout-grid label.active {
+    border-color: var(--sv-purple-primary) !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3), var(--sv-purple-glow) !important;
+}
+
+/* Option Picture Cards */
+.option-picture {
+    border-radius: var(--sv-radius-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    background: var(--sv-glass-card) !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.option-picture:hover {
+    border-color: var(--sv-border-bright) !important;
+}
+
+.option-picture.active,
+.option-picture.selected {
+    border-color: var(--sv-purple-primary) !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* Switch/Toggle Component */
+.switch-container input[type="checkbox"] + label,
+.arix-switch {
+    background: rgba(14, 12, 26, 0.5) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-pill) !important;
+}
+
+.switch-container input[type="checkbox"]:checked + label,
+.arix-switch.active {
+    background: var(--sv-bubble-gradient) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    box-shadow: var(--sv-purple-glow) !important;
+}
+
+/* Callout Messages */
+.arix-callout,
+x-arix\.callout {
+    background: rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid rgba(139, 92, 246, 0.2) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #c4b5fd !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.82rem !important;
+}
+
+/* Slider Component */
+.arix-slider {
+    accent-color: var(--sv-purple-primary) !important;
+}
+
+input[type="range"] {
+    accent-color: var(--sv-purple-primary) !important;
+    background: rgba(14, 12, 26, 0.4) !important;
+    border-radius: var(--sv-radius-pill) !important;
+}
+
+/* Languages Checkbox Grid */
+.languages-options {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+}
+
+.languages-options label {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.82rem !important;
+    color: #cbd5e1 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+}
+
+.languages-options label:hover {
+    border-color: var(--sv-border-bright) !important;
+    background: rgba(139, 92, 246, 0.08) !important;
+}
+
+.languages-options input:checked + span + .label-text,
+.languages-options input:checked ~ * {
+    color: #ffffff !important;
+}
+
+/* Iframe Container (Live Preview) */
+.iframe-container {
+    background: var(--sv-bg-deep) !important;
+    border-left: 1px solid var(--sv-border) !important;
+}
+
+.iframe-container iframe {
+    border-radius: var(--sv-radius-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    margin: 1rem !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Unsaved Changes Modal */
+.modal-wrapper {
+    backdrop-filter: blur(8px) !important;
+    background: rgba(6, 5, 12, 0.7) !important;
+}
+
+.unsaved-modal {
+    background: var(--sv-glass-elevated) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(139, 92, 246, 0.15) !important;
+    padding: 2rem !important;
+}
+
+.unsaved-modal h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.unsaved-modal p {
+    color: #94a3b8 !important;
+}
+
+/* ---- HR (Dividers) ---- */
+hr {
+    border-top: 1px solid var(--sv-border) !important;
+    margin: 1.25rem 0 !important;
+}
+
+/* ---- Text Utilities ---- */
+.text-muted {
+    color: #64748b !important;
+}
+
+.text-gray, .small.text-gray {
+    color: #64748b !important;
+}
+
+/* ---- Dropzone (Dashboard widget manager) ---- */
+#dropzone {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+}
+
+#dropzone .draggable-item .draggable-area {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+}
+
+#dropzone .draggable-item:hover .draggable-area,
+#components .draggable-item:hover .draggable-area {
+    border-color: var(--sv-purple-primary) !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* ---- Responsive Fixes ---- */
+@media (max-width: 768px) {
+    .mori-hero-banner {
+        padding: 1.25rem 1rem !important;
+    }
+    
+    .mori-hero-title {
+        font-size: 1.25rem !important;
+    }
+
+    .stat-card {
+        margin-bottom: 1rem !important;
+    }
+}
