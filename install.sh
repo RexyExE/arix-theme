@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-#   ARIX THEME v3.0 - CYBERPUNK / NEON-DARK HUD THEME MANAGER
+#   ARIX THEME v3.0 - SILK VEIL / BUBBLE GLASSMORPHISM THEME MANAGER
 #   Pterodactyl Panel One-Liner Direct GitHub Installer & Repair Tool
 # ==============================================================================
 
@@ -182,7 +182,7 @@ install_theme() {
     echo -e "${GRAY}Web Server User :${RESET} ${CYAN}$WEB_USER${RESET}"
 
     # Step 1: Copy Theme Files
-    step 1 5 "Injecting theme files & Cyberpunk HUD assets to panel..."
+    step 1 5 "Injecting Silk Veil theme files & Bubble Glassmorphic assets to panel..."
     if command -v rsync >/dev/null 2>&1; then
         rsync -a "$THEME_SRC/" "$PANEL_DIR/" >> "$LOG_FILE" 2>&1
     else
@@ -209,7 +209,7 @@ install_theme() {
 
     # Step 4: Build Assets Option
     step 4 5 "Configuring frontend assets..."
-    echo -e "${GRAY}Note: Arix Theme v3 HUD runs instantly via injected CSS/JS overrides.${RESET}"
+    echo -e "${GRAY}Note: Arix Theme v3 Silk Veil runs instantly via injected CSS/JS overrides.${RESET}"
     safe_read "Do you want to recompile the full React client bundle as well? [y/N] (default: n): " do_build
     if [[ "$do_build" =~ ^[Yy]$ ]]; then
         echo -e "${CYAN}[*]${RESET} Compiling React production bundle (please wait 1-2 mins)..."
@@ -221,7 +221,7 @@ install_theme() {
         fi
         success "Frontend bundle compiled."
     else
-        success "Fast installation mode: CSS/JS Cyberpunk HUD active."
+        success "Fast installation mode: Silk Veil Glassmorphism active."
     fi
 
     # Step 5: Cache & Permissions

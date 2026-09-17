@@ -25,10 +25,11 @@ class AssetComposer
         $defaults = config('arix', []);
 
         $getSetting = function (string $key, mixed $default = null) use ($defaults) {
+            $fallback = $defaults[$key] ?? $default;
             try {
-                return $this->settings->get("settings::arix:{$key}", $default ?? ($defaults[$key] ?? null));
+                return $this->settings->get("settings::arix:{$key}", $fallback);
             } catch (\Throwable $e) {
-                return $default ?? ($defaults[$key] ?? null);
+                return $fallback;
             }
         };
 
@@ -78,16 +79,16 @@ class AssetComposer
             'loginGradient' => $getSetting('loginGradient', false),
             'backgroundFaded' => $getSetting('backgroundFaded', 'default'),
 
-            'backdrop' => $getSetting('backdrop', false),
-            'backdropPercentage' => $getSetting('backdropPercentage', 100),
+            'backdrop' => $getSetting('backdrop', true),
+            'backdropPercentage' => $getSetting('backdropPercentage', 75),
             
-            'radiusInput' => $getSetting('radiusInput', 7),
-            'radiusBox' => $getSetting('radiusBox', 10),
+            'radiusInput' => $getSetting('radiusInput', 12),
+            'radiusBox' => $getSetting('radiusBox', 16),
             'borderInput' => $getSetting('borderInput', true),
 
             'flashMessage' => $getSetting('flashMessage', 1),
 
-            'font' => $getSetting('font', 'default'),
+            'font' => $getSetting('font', 'plus_jakarta_sans'),
             'icon' => $getSetting('icon', 'heroicons'),
 
             /* LAYOUTS */
@@ -132,31 +133,31 @@ class AssetComposer
             'slot6' => $getSetting('slot6', 'disabled'),
             'slot7' => $getSetting('slot7', 'disabled'),
 
-            /* COLORS DARKMODE */
-            'primary' => $getSetting('primary', '#4A35CF'),
+            /* COLORS DARKMODE — SILK VEIL PALETTE */
+            'primary' => $getSetting('primary', '#8B5CF6'),
             
-            'successText' => $getSetting('successText', '#E1FFD8'),
-            'successBorder' => $getSetting('successBorder', '#56AA2B'),
-            'successBackground' => $getSetting('successBackground', '#3D8F1F'),
+            'successText' => $getSetting('successText', '#10B981'),
+            'successBorder' => $getSetting('successBorder', '#10B981'),
+            'successBackground' => $getSetting('successBackground', '#064E3B'),
 
             'dangerText' => $getSetting('dangerText', '#FFD8D8'),
             'dangerBorder' => $getSetting('dangerBorder', '#AA2A2A'),
             'dangerBackground' => $getSetting('dangerBackground', '#8F1F20'),
 
-            'secondaryText' => $getSetting('secondaryText', '#B2B2C1'),
-            'secondaryBorder' => $getSetting('secondaryBorder', '#42425B'),
-            'secondaryBackground' => $getSetting('secondaryBackground', '#2B2B40'),
+            'secondaryText' => $getSetting('secondaryText', '#D8B4FE'),
+            'secondaryBorder' => $getSetting('secondaryBorder', '#A855F7'),
+            'secondaryBackground' => $getSetting('secondaryBackground', '#1E1B38'),
 
-            'gray50' => $getSetting('gray50', '#F4F4F4'),
-            'gray100' => $getSetting('gray100', '#D5D5DB'),
-            'gray200' => $getSetting('gray200', '#B2B2C1'),
-            'gray300' => $getSetting('gray300', '#8282A4'),
-            'gray400' => $getSetting('gray400', '#5E5E7F'),
-            'gray500' => $getSetting('gray500', '#42425B'),
-            'gray600' => $getSetting('gray600', '#2B2B40'),
-            'gray700' => $getSetting('gray700', '#1D1D37'),
-            'gray800' => $getSetting('gray800', '#0B0D2A'),
-            'gray900' => $getSetting('gray900', '#040519'),
+            'gray50' => $getSetting('gray50', '#FFFFFF'),
+            'gray100' => $getSetting('gray100', '#F3E8FF'),
+            'gray200' => $getSetting('gray200', '#D8B4FE'),
+            'gray300' => $getSetting('gray300', '#A5B4FC'),
+            'gray400' => $getSetting('gray400', '#7E749C'),
+            'gray500' => $getSetting('gray500', '#4C4465'),
+            'gray600' => $getSetting('gray600', '#2A2542'),
+            'gray700' => $getSetting('gray700', '#16132A'),
+            'gray800' => $getSetting('gray800', '#0F0D1E'),
+            'gray900' => $getSetting('gray900', '#090812'),
 
             /* COLORS LIGHTMODE */
             'lightmode_primary' => $getSetting('lightmode_primary', '#4A35CF'),

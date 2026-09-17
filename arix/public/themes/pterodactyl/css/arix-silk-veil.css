@@ -1841,3 +1841,618 @@ nav .account .user-image {
     align-items: center !important;
     gap: 0.4rem !important;
 }
+
+/* ==============================================================================
+ *  PTERODACTYL CLIENT SPA — COMPREHENSIVE SILK VEIL PAGE SUITE
+ *  (Dashboard, Console, Files, Databases, Backups, Schedules, Network, Users,
+ *   Startup, Settings, Account & Modals)
+ * ============================================================================== */
+
+/* ---- Universal Neutral & Gray Mappings for React Tailwind ---- */
+.bg-neutral-900 { background-color: var(--sv-bg-deep) !important; }
+.bg-neutral-800 { background-color: rgba(14, 12, 26, 0.75) !important; }
+.bg-neutral-700 { background-color: var(--sv-glass-card) !important; }
+.bg-neutral-600 { background-color: var(--sv-glass-elevated) !important; }
+.bg-neutral-500 { background-color: rgba(45, 38, 78, 0.7) !important; }
+
+.border-neutral-800 { border-color: rgba(255, 255, 255, 0.05) !important; }
+.border-neutral-700 { border-color: var(--sv-border) !important; }
+.border-neutral-600 { border-color: rgba(255, 255, 255, 0.12) !important; }
+.border-neutral-500 { border-color: var(--sv-border-bright) !important; }
+
+.text-neutral-50, .text-gray-50 { color: #ffffff !important; }
+.text-neutral-100, .text-gray-100 { color: #f8fafc !important; }
+.text-neutral-200, .text-gray-200 { color: #e2e8f0 !important; }
+.text-neutral-300, .text-gray-300 { color: #cbd5e1 !important; }
+.text-neutral-400, .text-gray-400 { color: #94a3b8 !important; }
+.text-neutral-500, .text-gray-500 { color: #64748b !important; }
+
+.text-arix { color: var(--sv-purple-primary) !important; }
+.bg-arix { 
+    background: var(--sv-bubble-gradient) !important;
+    box-shadow: var(--sv-purple-glow) !important;
+}
+
+/* Rounded corners mapped to Silk Veil bubble radius */
+.rounded-box { border-radius: var(--sv-radius-card) !important; }
+.rounded-component { border-radius: var(--sv-radius-bubble) !important; }
+
+/* ---- 1. DASHBOARD HERO & WELCOME CARD ---- */
+.bg-gray-700.backdrop.rounded-box.px-6.py-5 {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(22, 19, 42, 0.75) 100%) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.bg-gray-700.backdrop.rounded-box.px-6.py-5::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+.bg-gray-700.backdrop.rounded-box.px-6.py-5 p.text-gray-50 {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: #ffffff !important;
+}
+
+.bg-gray-700.backdrop.rounded-box.px-6.py-5 p.font-light {
+    font-size: 0.88rem !important;
+    color: #a5b4fc !important;
+    margin-top: 0.2rem !important;
+}
+
+/* Discord widget card on dashboard */
+a[href*="discord"].rounded-box,
+a.border-\[\#6374AC\] {
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.25) 0%, rgba(30, 27, 56, 0.8) 100%) !important;
+    border: 1px solid rgba(88, 101, 242, 0.4) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+    transition: all 0.25s ease !important;
+}
+
+a[href*="discord"].rounded-box:hover,
+a.border-\[\#6374AC\]:hover {
+    border-color: rgba(88, 101, 242, 0.7) !important;
+    box-shadow: 0 12px 32px rgba(88, 101, 242, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+/* Social link cards on dashboard */
+a.group.w-full.bg-gray-700.backdrop.rounded-box {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    transition: all 0.22s ease !important;
+}
+
+a.group.w-full.bg-gray-700.backdrop.rounded-box:hover {
+    border-color: var(--sv-border-bright) !important;
+    box-shadow: 0 8px 28px rgba(139, 92, 246, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* ---- 2. SERVER CARDS ON DASHBOARD (ServerCard, ServerCardBanner, ServerCardGradient) ---- */
+[class*="CardAnimator"],
+.grid.lg\:grid-cols-2 > div > div {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+[class*="CardAnimator"]:hover,
+.grid.lg\:grid-cols-2 > div > div:hover {
+    border-color: var(--sv-border-bright) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.15) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Top accent line on server card */
+[class*="CardAnimator"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    width: 2.5rem;
+    height: 3px;
+    background: var(--sv-purple-primary);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 0 10px var(--sv-purple-primary);
+    opacity: 0.8;
+}
+
+/* Server Name Header */
+[class*="CardAnimator"] p.text-lg.font-semibold {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+    color: #ffffff !important;
+}
+
+/* Server Status Capsules */
+[class*="CardAnimator"] span[class*="rounded"] {
+    border-radius: var(--sv-radius-pill) !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 0.25rem 0.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+}
+
+/* Running status badge */
+[class*="CardAnimator"] span.text-success-50 {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.35) !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.25) !important;
+}
+
+[class*="CardAnimator"] span.text-success-50::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    display: inline-block;
+}
+
+/* Offline status badge */
+[class*="CardAnimator"] span.text-danger-50 {
+    background: rgba(244, 63, 94, 0.14) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(244, 63, 94, 0.3) !important;
+}
+
+[class*="CardAnimator"] span.text-danger-50::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f43f5e;
+    display: inline-block;
+}
+
+/* Starting status badge */
+[class*="CardAnimator"] span.text-yellow-50 {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+/* Server Metric Rows (CPU, Memory, Disk, IP) */
+[class*="CardAnimator"] .grid.lg\:grid-cols-2 {
+    gap: 0.65rem !important;
+    margin: 1rem 0 !important;
+}
+
+[class*="CardAnimator"] .grid.lg\:grid-cols-2 span.text-gray-300.font-light {
+    color: #94a3b8 !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+[class*="CardAnimator"] .grid.lg\:grid-cols-2 p {
+    font-family: var(--font-mono) !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    font-size: 0.88rem !important;
+}
+
+/* Manage Server Button on Card */
+[class*="CardAnimator"] a[href*="/server/"] {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.22) 0%, rgba(124, 58, 237, 0.15) 100%) !important;
+    border: 1px solid rgba(168, 85, 247, 0.32) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #f1f5f9 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.02em !important;
+    padding: 0.7rem 1.25rem !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[class*="CardAnimator"] a[href*="/server/"]:hover {
+    background: var(--sv-bubble-gradient) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    box-shadow: var(--sv-purple-glow) !important;
+    transform: translateY(-1px);
+}
+
+/* ---- 3. DROPDOWN MENUS & CONTEXT MENUS (Client Profile, Kebab Menus) ---- */
+div.bg-neutral-600.p-2.rounded-lg,
+.dropdown-menu,
+[class*="DropdownMenu"] > div,
+div[style*="width: 12rem"],
+.absolute.bg-neutral-600 {
+    background: rgba(18, 15, 34, 0.95) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.7), 0 0 25px rgba(139, 92, 246, 0.2) !important;
+    padding: 0.6rem !important;
+}
+
+/* Dropdown rows (Links & Buttons) */
+[class*="DropdownButtonRow"],
+[class*="DropdownLinkRow"],
+.dropdown-item,
+div[style*="width: 12rem"] a,
+div[style*="width: 12rem"] button {
+    border-radius: 10px !important;
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.84rem !important;
+    font-weight: 500 !important;
+    color: #cbd5e1 !important;
+    transition: all 0.15s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+}
+
+[class*="DropdownButtonRow"]:hover,
+[class*="DropdownLinkRow"]:hover,
+.dropdown-item:hover,
+div[style*="width: 12rem"] a:hover,
+div[style*="width: 12rem"] button:hover {
+    background: rgba(139, 92, 246, 0.18) !important;
+    color: #ffffff !important;
+    transform: translateX(2px);
+}
+
+/* Dropdown danger action (Logout / Delete) */
+[class*="DropdownButtonRow"][class*="danger"]:hover,
+[class*="DropdownLinkRow"][class*="danger"]:hover {
+    background: rgba(244, 63, 94, 0.2) !important;
+    color: #fda4af !important;
+}
+
+/* ---- 4. SERVER CONSOLE & POWER BUTTONS ---- */
+/* Power button actions (Start, Restart, Stop, Kill) */
+button[class*="Button___styled"][class*="success"],
+button.flex.items-center.gap-x-1.text-success-50,
+button.button.success {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.2) 100%) !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+    color: #6ee7b7 !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.15rem !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.15) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+button[class*="Button___styled"][class*="success"]:hover:not(:disabled),
+button.button.success:hover:not(:disabled) {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.45) !important;
+    transform: translateY(-1px);
+}
+
+/* Restart button */
+button[class*="Button___styled"][class*="text"],
+button.button.text {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.14) 100%) !important;
+    border: 1px solid rgba(245, 158, 11, 0.35) !important;
+    color: #fcd34d !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.15rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+button[class*="Button___styled"][class*="text"]:hover:not(:disabled),
+button.button.text:hover:not(:disabled) {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45) !important;
+    transform: translateY(-1px);
+}
+
+/* Stop / Kill button */
+button[class*="Button___styled"][class*="danger"],
+button.button.danger {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2) 0%, rgba(225, 29, 72, 0.15) 100%) !important;
+    border: 1px solid rgba(244, 63, 94, 0.35) !important;
+    color: #fda4af !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.15rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+button[class*="Button___styled"][class*="danger"]:hover:not(:disabled),
+button.button.danger:hover:not(:disabled) {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(244, 63, 94, 0.45) !important;
+    transform: translateY(-1px);
+}
+
+/* Server Console Terminal Container */
+.terminal,
+[class*="style_terminal"],
+[class*="FullConsoleContainer"] {
+    background: #070611 !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Terminal Input Bar */
+.command_input,
+[class*="command_input"],
+input[class*="command_input"] {
+    background: rgba(14, 12, 26, 0.8) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #ffffff !important;
+    font-family: var(--font-mono) !important;
+    padding: 0.75rem 1rem 0.75rem 2.75rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.command_input:focus,
+[class*="command_input"]:focus {
+    border-color: var(--sv-purple-secondary) !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25), 0 0 20px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Stat Blocks on Console */
+[class*="stat_block"],
+.stat_block {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    padding: 1rem 1.25rem !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="stat_block"]:hover {
+    border-color: var(--sv-border-bright) !important;
+    transform: translateY(-1px);
+}
+
+/* Server Details Block Header (CPU, Memory, Disk gauges) */
+.grid.md\:grid-cols-3.gap-4 > div {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    padding: 1.25rem 1.5rem !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.2s ease !important;
+}
+
+.grid.md\:grid-cols-3.gap-4 > div:hover {
+    border-color: var(--sv-border-bright) !important;
+    transform: translateY(-2px);
+}
+
+.grid.md\:grid-cols-3.gap-4 > div::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    width: 2.25rem;
+    height: 3px;
+    background: var(--sv-purple-primary);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 0 10px var(--sv-purple-primary);
+}
+
+/* ---- 5. FILE MANAGER SUITE ---- */
+/* File row item */
+.file_row,
+[class*="style_file_row"],
+[class*="FileObjectRow"] {
+    background: rgba(22, 19, 42, 0.45) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.15s ease !important;
+    padding: 0.85rem 1.5rem !important;
+}
+
+.file_row:hover,
+[class*="style_file_row"]:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+}
+
+.file_row .details,
+[class*="style_file_row"] .details {
+    color: #f1f5f9 !important;
+    font-weight: 500 !important;
+}
+
+/* File Manager Sticky Controls Bar */
+.sticky.top-0.bg-gray-700.rounded-box {
+    background: rgba(15, 13, 28, 0.85) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+}
+
+/* Breadcrumbs in File Manager */
+[class*="FileManagerBreadcrumbs"] a,
+[class*="FileManagerBreadcrumbs"] span {
+    color: #cbd5e1 !important;
+    font-weight: 500 !important;
+}
+
+[class*="FileManagerBreadcrumbs"] a:hover {
+    color: #ffffff !important;
+    background: rgba(139, 92, 246, 0.15) !important;
+}
+
+/* Mass Actions Bar (Archive, Move, Delete) */
+[class*="MassActionsBar"] {
+    background: var(--sv-glass-pill) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: var(--sv-radius-pill) !important;
+    padding: 0.35rem 0.85rem !important;
+}
+
+/* ---- 6. SERVER DETAIL TABS (Databases, Backups, Schedules, Network, Users, Startup, Settings) ---- */
+/* Universal Box Component: TitledGreyBox */
+.rounded-box.bg-neutral-700.backdrop,
+[class*="TitledGreyBox"] {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+    margin-bottom: 1.5rem !important;
+    overflow: hidden !important;
+}
+
+.rounded-box.bg-neutral-700.backdrop:hover,
+[class*="TitledGreyBox"]:hover {
+    border-color: var(--sv-border-bright) !important;
+}
+
+/* Table styling for Backups, Databases, Schedules, Network, Users */
+table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 4px !important;
+}
+
+table thead th,
+table tr th {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #94a3b8 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    padding: 0.85rem 1.25rem !important;
+    border: none !important;
+}
+
+table tbody tr {
+    background: rgba(22, 19, 42, 0.5) !important;
+    backdrop-filter: var(--sv-blur-subtle) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    transition: all 0.15s ease !important;
+}
+
+table tbody tr:hover {
+    background: rgba(139, 92, 246, 0.1) !important;
+    border-color: var(--sv-border-bright) !important;
+}
+
+table tbody tr td {
+    padding: 0.95rem 1.25rem !important;
+    color: #e2e8f0 !important;
+    border-top: 1px solid var(--sv-border) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    vertical-align: middle !important;
+}
+
+table tbody tr td:first-child {
+    border-left: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) 0 0 var(--sv-radius-bubble) !important;
+}
+
+table tbody tr td:last-child {
+    border-right: 1px solid var(--sv-border) !important;
+    border-radius: 0 var(--sv-radius-bubble) var(--sv-radius-bubble) 0 !important;
+}
+
+/* Startup Variable Boxes */
+[class*="VariableBox"] {
+    background: var(--sv-glass-card) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="VariableBox"]:hover {
+    border-color: var(--sv-border-bright) !important;
+}
+
+/* ---- 7. ACCOUNT OVERVIEW PAGE ---- */
+/* Avatar frame */
+[class*="UserAvatar"] {
+    border-radius: 50% !important;
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Account Sub-tab pills (API Key / SSH Key) */
+button[class*="border-b"] {
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    transition: all 0.2s ease !important;
+}
+
+button[class*="border-arix"] {
+    border-color: var(--sv-purple-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 0 var(--sv-purple-primary) !important;
+}
+
+/* ---- 8. MODALS & DIALOGS (Confirmations, Create Database, Create Backup, Edit User) ---- */
+div[class*="Modal___styled"],
+div[class*="Dialog___styled"],
+.modal-dialog .modal-content {
+    background: rgba(18, 15, 34, 0.96) !important;
+    backdrop-filter: blur(32px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.2) !important;
+    padding: 2rem !important;
+}
+
+/* Modal Title */
+div[class*="Modal___styled"] h2,
+div[class*="Dialog___styled"] h2,
+div[class*="Modal___styled"] h3,
+div[class*="Dialog___styled"] h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Modal form labels & text */
+div[class*="Modal___styled"] label,
+div[class*="Dialog___styled"] label {
+    color: #cbd5e1 !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}

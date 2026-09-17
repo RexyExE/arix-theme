@@ -214,7 +214,7 @@ export default () => {
                 {!files ? (
                     <Spinner size={'large'} centered />
                 ) : (
-                    <div className='overflow-hidden' style={{ borderBottomLeftRadius: 'var(--radiusBox', borderBottomRightRadius: 'var(--radiusBox' }}>
+                    <div className='overflow-hidden' style={{ borderBottomLeftRadius: 'var(--radiusBox)', borderBottomRightRadius: 'var(--radiusBox)' }}>
                         <div className={'hidden sm:flex items-center px-6 py-3 bg-gray-600'}>
                             <FileActionCheckbox
                                 type={'checkbox'}
