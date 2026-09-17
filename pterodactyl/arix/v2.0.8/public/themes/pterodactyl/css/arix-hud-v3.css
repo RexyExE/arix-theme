@@ -1,0 +1,556 @@
+/**
+ * ==============================================================================
+ *  ARIX THEME v3 — CYBERPUNK / NEON-DARK HUD MASTER OVERRIDE
+ *  Designed for Pterodactyl Panel (Drop-in CSS/JS Enhancement Layer)
+ *  Palette: #08090f (Base), #0b0d16 (Surface), #8b5cf6 (Violet), #00e5ff (Cyan)
+ * ==============================================================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+    /* HUD Core Surfaces */
+    --hud-bg: #08090f;
+    --hud-surface: #0b0d16;
+    --hud-surface-elevated: #101322;
+    --hud-surface-glass: rgba(11, 13, 22, 0.82);
+
+    /* 2-Color Strict Neon Hierarchy */
+    --hud-violet: #8b5cf6;
+    --hud-violet-dim: rgba(139, 92, 246, 0.15);
+    --hud-violet-glow: 0 0 20px rgba(139, 92, 246, 0.35), 0 0 40px rgba(139, 92, 246, 0.12);
+
+    --hud-cyan: #00e5ff;
+    --hud-cyan-dim: rgba(0, 229, 255, 0.15);
+    --hud-cyan-glow: 0 0 15px rgba(0, 229, 255, 0.45), 0 0 30px rgba(0, 229, 255, 0.18);
+    --hud-white-cyan: #e0faff;
+
+    /* Status Colors */
+    --hud-green: #10b981;
+    --hud-green-glow: 0 0 14px rgba(16, 185, 129, 0.5);
+    --hud-amber: #f59e0b;
+    --hud-amber-glow: 0 0 14px rgba(245, 158, 11, 0.5);
+    --hud-crimson: #ef4444;
+    --hud-crimson-glow: 0 0 14px rgba(239, 68, 68, 0.5);
+
+    /* Structural & Borders */
+    --hud-border: rgba(139, 92, 246, 0.15);
+    --hud-border-bright: rgba(139, 92, 246, 0.35);
+    --hud-border-cyan: rgba(0, 229, 255, 0.35);
+
+    /* Typography */
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* Overwrite Theme Defaults to HUD Dark */
+    --primary: var(--hud-violet) !important;
+    --gray50: #ffffff !important;
+    --gray100: #e0faff !important;
+    --gray200: #9da3be !important;
+    --gray300: #646b8c !important;
+    --gray400: #3c4263 !important;
+    --gray500: #1a1e33 !important;
+    --gray600: #101322 !important;
+    --gray700: #0b0d16 !important;
+    --gray800: #08090f !important;
+    --gray900: #05060a !important;
+    --gray700-default: #0b0d16 !important;
+    --fallBackGray: #0b0d16 !important;
+}
+
+/* ==============================================================================
+ *  GLOBAL SCANLINE / CRT GRAIN OVERLAY (2.5% Opacity)
+ * ============================================================================== */
+body {
+    background-color: var(--hud-bg) !important;
+    color: #e2e8f0 !important;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: " ";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0.028;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 6px 100%;
+}
+
+body::after {
+    content: " ";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99998;
+    background: radial-gradient(circle at center, transparent 65%, rgba(4, 5, 10, 0.4) 100%);
+}
+
+/* Subtle background telemetry grid on root page canvas */
+#app {
+    background-image: 
+        linear-gradient(to right, rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0;
+}
+
+/* ==============================================================================
+ *  GLOBAL INPUTS & FOCUS STATES (Cyan Glow Override)
+ * ============================================================================== */
+input, select, textarea, [type="text"], [type="password"], [type="email"], [type="number"] {
+    background-color: #0b0d16 !important;
+    border: 1px solid var(--hud-border) !important;
+    color: #f1f5f9 !important;
+    font-family: var(--font-mono);
+    border-radius: 6px !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+input:focus, select:focus, textarea:focus, 
+[type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus {
+    outline: none !important;
+    border-color: var(--hud-cyan) !important;
+    box-shadow: 0 0 0 1px var(--hud-cyan), 0 0 14px rgba(0, 229, 255, 0.35) !important;
+}
+
+/* ==============================================================================
+ *  HUD RETICLE / CORNER-BRACKET CARDS
+ * ============================================================================== */
+.rounded-box,
+.bg-gray-700,
+.backdrop,
+div[class*="rounded-box"] {
+    background-color: var(--hud-surface) !important;
+    border: 1px solid var(--hud-border) !important;
+    border-radius: 6px !important;
+    position: relative;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Targeting Reticle Corners on Interactive Cards */
+.rounded-box:hover,
+div[class*="rounded-box"]:hover {
+    border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Reticle brackets helper */
+.hud-brackets,
+div[class*="ServerCard"],
+div[class*="LoginFormContainer"] > div {
+    position: relative;
+}
+
+.hud-brackets::before,
+div[class*="ServerCard"]::before,
+div[class*="LoginFormContainer"] > div::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--hud-violet);
+    border-left: 2px solid var(--hud-violet);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hud-brackets::after,
+div[class*="ServerCard"]::after,
+div[class*="LoginFormContainer"] > div::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid var(--hud-violet);
+    border-right: 2px solid var(--hud-violet);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ==============================================================================
+ *  BUTTONS & GLITCH CLICK MOTION
+ * ============================================================================== */
+button, .button, .btn {
+    font-family: var(--font-mono) !important;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.15s ease-out !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary Button (Electric Violet Glow) */
+.button-primary,
+button[type="submit"],
+.bg-arix,
+.bg-primary-500 {
+    background-color: var(--hud-violet) !important;
+    border: 1px solid var(--hud-violet) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.35) !important;
+}
+
+.button-primary:hover,
+button[type="submit"]:hover,
+.bg-arix:hover,
+.bg-primary-500:hover {
+    background-color: #9d71fd !important;
+    box-shadow: var(--hud-violet-glow) !important;
+}
+
+/* Glitch Trigger Class on Click */
+.hud-glitch-active {
+    animation: hudGlitch 0.14s linear 1 !important;
+}
+
+@keyframes hudGlitch {
+    0% { transform: translate(0); filter: none; }
+    20% { transform: translate(-2px, 1px); filter: drop-shadow(2px 0 var(--hud-cyan)) drop-shadow(-2px 0 var(--hud-violet)); }
+    40% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--hud-cyan)) drop-shadow(2px 0 var(--hud-violet)); }
+    60% { transform: translate(-1px, 0); }
+    80% { transform: translate(1px, 1px); }
+    100% { transform: translate(0); filter: none; }
+}
+
+/* Secondary Button */
+.button-secondary {
+    background-color: #101322 !important;
+    border: 1px solid var(--hud-border) !important;
+    color: var(--hud-white-cyan) !important;
+}
+
+.button-secondary:hover {
+    border-color: var(--hud-cyan) !important;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* ==============================================================================
+ *  NAVIGATION (HUD Sliding Left-Border & Active Illumination)
+ * ============================================================================== */
+nav, aside, div[class*="NavigationBar"], div[class*="SideBar"] {
+    background-color: var(--hud-surface) !important;
+    border-right: 1px solid var(--hud-border) !important;
+    border-bottom: 1px solid var(--hud-border) !important;
+}
+
+nav a, aside a, 
+div[class*="SideBar"] a,
+div[class*="NavigationBar"] a {
+    font-family: var(--font-mono) !important;
+    font-size: 0.85rem;
+    position: relative;
+    border-left: 2px solid transparent !important;
+    transition: all 0.12s ease-out !important;
+}
+
+nav a:hover, aside a:hover,
+div[class*="SideBar"] a:hover,
+div[class*="NavigationBar"] a:hover {
+    color: var(--hud-cyan) !important;
+    border-left: 2px solid var(--hud-cyan) !important;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.1) 0%, transparent 80%) !important;
+    box-shadow: inset 4px 0 10px rgba(0, 229, 255, 0.12) !important;
+}
+
+/* Active Nav Item */
+nav a.active, aside a.active,
+div[class*="SideBar"] a.active,
+div[class*="NavigationBar"] a.active {
+    color: #ffffff !important;
+    border-left: 2px solid var(--hud-cyan) !important;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.18) 0%, transparent 90%) !important;
+    box-shadow: inset 4px 0 14px rgba(0, 229, 255, 0.2) !important;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6) !important;
+}
+
+/* ==============================================================================
+ *  HEADINGS & HUD TITLE ACCENTS
+ * ============================================================================== */
+h1, h2, h3, h4 {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+}
+
+/* Cyan Glowing Heading Accent */
+.hud-glow-title,
+h1 {
+    color: var(--hud-white-cyan) !important;
+    text-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+    position: relative;
+    display: inline-block;
+}
+
+/* Animated Cyan Underline on Dashboard Welcome */
+.hud-title-underline::after,
+h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--hud-cyan) 0%, transparent 100%);
+    margin-top: 6px;
+    box-shadow: 0 0 8px var(--hud-cyan);
+}
+
+/* ==============================================================================
+ *  STATUS DOTS (Online Soft Pulsing Loop)
+ * ============================================================================== */
+.status-dot-online,
+span[class*="bg-green-"],
+div[class*="bg-green-"],
+span[class*="bg-emerald-"] {
+    background-color: var(--hud-cyan) !important;
+    box-shadow: 0 0 8px var(--hud-cyan), 0 0 16px rgba(0, 229, 255, 0.45) !important;
+    animation: hudStatusPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes hudStatusPulse {
+    0%, 100% {
+        box-shadow: 0 0 6px var(--hud-cyan), 0 0 14px rgba(0, 229, 255, 0.5);
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 0 0 2px var(--hud-cyan), 0 0 6px rgba(0, 229, 255, 0.2);
+        opacity: 0.75;
+    }
+}
+
+.status-dot-offline,
+span[class*="bg-red-"],
+div[class*="bg-red-"] {
+    background-color: var(--hud-crimson) !important;
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* ==============================================================================
+ *  AUTH FLOW (Login, Forgot Password, Reset, 2FA)
+ * ============================================================================== */
+div[class*="LoginFormContainer"] {
+    background-color: transparent !important;
+}
+
+div[class*="LoginFormContainer"] > div {
+    background-color: rgba(11, 13, 22, 0.94) !important;
+    border: 1px solid var(--hud-border-bright) !important;
+    box-shadow: 0 0 30px rgba(8, 9, 15, 0.8), 0 0 1px var(--hud-border) !important;
+}
+
+div[class*="LoginFormContainer"] h2 {
+    color: var(--hud-white-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+/* ==============================================================================
+ *  CONSOLE (Terminal HUD Readout & Glowing Power Buttons)
+ * ============================================================================== */
+div[class*="terminal"] {
+    background-color: #05060a !important;
+    border: 1px solid var(--hud-border) !important;
+    font-family: var(--font-mono) !important;
+    border-radius: 6px !important;
+    position: relative;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8) !important;
+}
+
+div[class*="terminal"]::before {
+    content: "TERMINAL // SYS_CONSOLE_ACTIVE";
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    font-size: 9px;
+    color: var(--hud-cyan);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    pointer-events: none;
+}
+
+/* Terminal Log Lines */
+.xterm, .xterm-screen, .xterm-rows {
+    font-family: var(--font-mono) !important;
+}
+
+/* Action-Specific Glowing Power Buttons */
+/* Start Button: Neon Green */
+button[class*="bg-green-"],
+button[class*="text-green-"]:hover {
+    border-color: var(--hud-green) !important;
+    color: var(--hud-green) !important;
+    box-shadow: var(--hud-green-glow) !important;
+}
+
+/* Restart Button: Amber Glow */
+button[class*="bg-yellow-"],
+button[class*="text-yellow-"]:hover,
+button[class*="bg-amber-"] {
+    border-color: var(--hud-amber) !important;
+    color: var(--hud-amber) !important;
+    box-shadow: var(--hud-amber-glow) !important;
+}
+
+/* Stop / Kill Button: Crimson Glow */
+button[class*="bg-red-"],
+button[class*="text-red-"]:hover {
+    border-color: var(--hud-crimson) !important;
+    color: var(--hud-crimson) !important;
+    box-shadow: var(--hud-crimson-glow) !important;
+}
+
+/* ==============================================================================
+ *  DATA TABLES & READOUT ROWS (Files, DBs, Users, Schedules, Backups)
+ * ============================================================================== */
+table {
+    border-collapse: separate;
+    border-spacing: 0 4px;
+}
+
+table th {
+    font-family: var(--font-mono) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--hud-cyan) !important;
+    opacity: 0.85;
+    border-bottom: 1px solid var(--hud-border) !important;
+    padding: 10px 14px !important;
+}
+
+table td, div[class*="GreyRowBox"], div[class*="ActivityLogEntry"] {
+    font-family: var(--font-mono) !important;
+    font-size: 0.85rem !important;
+    border-top: 1px solid var(--hud-border) !important;
+    border-bottom: 1px solid var(--hud-border) !important;
+    background-color: var(--hud-surface) !important;
+    transition: all 0.15s ease !important;
+}
+
+div[class*="GreyRowBox"]:hover,
+tr:hover td {
+    background-color: var(--hud-surface-elevated) !important;
+    border-color: var(--hud-border-cyan) !important;
+    box-shadow: inset 2px 0 0 var(--hud-cyan) !important;
+}
+
+/* Breadcrumbs with Dim Violet Separators */
+nav[aria-label="breadcrumb"] span,
+div[class*="FileManagerContainer"] span {
+    font-family: var(--font-mono);
+}
+
+/* Monospace Code Badges & Readouts */
+code, pre, .font-mono, 
+div[class*="ServerDetailsBlock"] span,
+span[class*="stat"] {
+    font-family: var(--font-mono) !important;
+    color: var(--hud-white-cyan) !important;
+}
+
+/* Allocation Primary Badge */
+div[class*="NetworkContainer"] span[class*="bg-primary-"] {
+    background-color: transparent !important;
+    border: 1px solid var(--hud-cyan) !important;
+    color: var(--hud-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4) !important;
+}
+
+/* ==============================================================================
+ *  MODALS & SEARCH OVERLAY
+ * ============================================================================== */
+div[class*="Modal"],
+div[id="modal-portal"] > div > div {
+    background-color: var(--hud-surface) !important;
+    border: 1px solid var(--hud-border-bright) !important;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(139, 92, 246, 0.2) !important;
+    border-radius: 8px !important;
+}
+
+/* Active result row in search modal */
+div[class*="SearchModal"] div[class*="active"],
+div[class*="SearchModal"] div[aria-selected="true"] {
+    border-left: 2px solid var(--hud-cyan) !important;
+    background-color: var(--hud-surface-elevated) !important;
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.25) !important;
+}
+
+/* ==============================================================================
+ *  TOASTS & FLASH MESSAGES
+ * ============================================================================== */
+div[class*="FlashMessage"],
+div[class*="alert"],
+.flash-message {
+    font-family: var(--font-mono) !important;
+    border-radius: 6px !important;
+    background-color: var(--hud-surface-elevated) !important;
+    border: 1px solid !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.flash-message-success, div[class*="success"] {
+    border-color: var(--hud-cyan) !important;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.3) !important;
+}
+
+.flash-message-error, div[class*="danger"], div[class*="error"] {
+    border-color: var(--hud-crimson) !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.3) !important;
+}
+
+.flash-message-warning, div[class*="warning"] {
+    border-color: var(--hud-amber) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* ==============================================================================
+ *  DISCORD WIDGET RESTYLING
+ * ============================================================================== */
+a[href*="discord.com"], a[href*="discord.gg"] {
+    background: #0b0d16 !important;
+    border: 1px solid var(--hud-border) !important;
+    border-radius: 6px !important;
+}
+
+a[href*="discord.com"]:hover, a[href*="discord.gg"]:hover {
+    border-color: var(--hud-cyan) !important;
+    box-shadow: var(--hud-cyan-glow) !important;
+}
+
+/* ==============================================================================
+ *  ADMIN AREA & ARIX EDITOR RESKIN
+ * ============================================================================== */
+.content-wrapper, .wrapper, .main-sidebar, .main-header {
+    background-color: var(--hud-bg) !important;
+}
+
+.box, .box-body, .box-header, .content-box {
+    background-color: var(--hud-surface) !important;
+    border: 1px solid var(--hud-border) !important;
+    border-radius: 6px !important;
+    color: #e2e8f0 !important;
+}
+
+.box-header {
+    border-bottom: 1px solid var(--hud-border) !important;
+}
+
+/* Arix Editor HUD Tweaks */
+.side-editor, .option-picture-wrapper {
+    background-color: var(--hud-surface) !important;
+    border-color: var(--hud-border) !important;
+}

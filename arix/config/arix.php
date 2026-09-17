@@ -41,7 +41,7 @@ return [
 
     'flashMessage' => 1,
 
-    'font' => 'default',
+    'font' => 'jetbrains_mono',
     'icon' => 'heroicons',
 
     /* LAYOUTS */
@@ -72,30 +72,30 @@ return [
     'slot7' => 'disabled',
 
     /* COLORS DARKMODE */
-    'primary' => '#4A35CF',
+    'primary' => '#8B5CF6',
     
-    'successText' => '#E1FFD8',
-    'successBorder' => '#56AA2B',
-    'successBackground' => '#3D8F1F',
+    'successText' => '#00E5FF',
+    'successBorder' => '#00E5FF',
+    'successBackground' => '#083344',
 
     'dangerText' => '#FFD8D8',
     'dangerBorder' => '#AA2A2A',
     'dangerBackground' => '#8F1F20',
 
-    'secondaryText' => '#B2B2C1',
-    'secondaryBorder' => '#42425B',
-    'secondaryBackground' => '#2B2B40',
+    'secondaryText' => '#CBD5E1',
+    'secondaryBorder' => '#8B5CF6',
+    'secondaryBackground' => '#101322',
 
-    'gray50' => '#F4F4F4',
-    'gray100' => '#D5D5DB',
-    'gray200' => '#B2B2C1',
-    'gray300' => '#8282A4',
-    'gray400' => '#5E5E7F',
-    'gray500' => '#42425B',
-    'gray600' => '#2B2B40',
-    'gray700' => '#1D1D37',
-    'gray800' => '#0B0D2A',
-    'gray900' => '#040519',
+    'gray50' => '#F1F5F9',
+    'gray100' => '#E2E8F0',
+    'gray200' => '#CBD5E1',
+    'gray300' => '#94A3B8',
+    'gray400' => '#64748B',
+    'gray500' => '#181C32',
+    'gray600' => '#101322',
+    'gray700' => '#0B0D16',
+    'gray800' => '#08090F',
+    'gray900' => '#05060A',
 
     /* COLORS LIGHTMODE */
     'lightmode_primary' => '#4A35CF',

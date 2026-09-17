@@ -78,9 +78,11 @@
                         'quicksand' => '//fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap',
                         'manrope' => '//fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap',
                         'space_grotesk' => '//fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap',
+                        'jetbrains_mono' => '//fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap',
                     ][$siteConfiguration['arix']['font']] ?? ''
                 }}');
                 
+            @import url('//fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
             @import url('//fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
             @import url('//fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:500&display=swap');
             
@@ -109,6 +111,7 @@
                         'quicksand' => 'Quicksand',
                         'manrope' => 'Manrope',
                         'space_grotesk' => 'Space Grotesk',
+                        'jetbrains_mono' => 'JetBrains Mono',
                     ][$siteConfiguration['arix']['font']] ?? ''
                 }}';
             }
@@ -192,6 +195,9 @@
         </style>
 
         @yield('assets')
+
+        <link rel="stylesheet" href="/themes/pterodactyl/css/arix-hud-v3.css">
+        <script src="/themes/pterodactyl/js/arix-hud-v3.js" defer></script>
 
         @include('layouts.scripts')
     </head>
