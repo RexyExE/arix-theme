@@ -30,23 +30,25 @@ trap 'echo -e "\n${RED}[!] Operation cancelled by user.${RESET}"; exit 1' INT TE
 
 # --- Root Check ---
 if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}[✗] Please run this script as root:${RESET} ${WHITE}sudo bash <(curl -sSL https://raw.githubusercontent.com/RexyExE/arix-theme/main/install.sh)${RESET}"
+    echo -e "${RED}[✗] Please run this script as root:${RESET} ${WHITE}sudo bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/RexyExE/arix-theme/main/install.sh)\"${RESET}"
     exit 1
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "/tmp")"
 
-# Safe Read Input from Terminal (Supports Pipe / One-Liner Execution)
+# Safe Read Input from Terminal (Supports Pipe / Command Substitution Execution)
 safe_read() {
     local prompt="$1"
     local var_name="$2"
-    if [ -t 0 ]; then
-        read -rp "$prompt" "$var_name"
-    elif [ -c /dev/tty ]; then
-        read -rp "$prompt" "$var_name" < /dev/tty
+    local input_val=""
+    if [ -c /dev/tty ]; then
+        read -rp "$prompt" input_val < /dev/tty || true
+    elif [ -t 0 ]; then
+        read -rp "$prompt" input_val || true
     else
-        read -rp "$prompt" "$var_name"
+        read -rp "$prompt" input_val || true
     fi
+    eval "$var_name=\$input_val"
 }
 
 # Detect Web User
