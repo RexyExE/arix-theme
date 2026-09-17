@@ -66,40 +66,45 @@ detect_web_user() {
     fi
 }
 
-# Find Theme Source Directory or Auto-Fetch from GitHub
+# Always Fetch Latest Theme Files Directly from GitHub
 find_theme_source() {
+    local GITHUB_TMP="/tmp/arix_v3_download"
+    rm -rf "$GITHUB_TMP"
+    mkdir -p "$GITHUB_TMP"
+    echo -e "${CYAN}[*]${RESET} Pulling latest Arix Theme files directly from GitHub (${GITHUB_REPO})..." >&2
+    
+    # 1. Try git clone (fastest & full latest tree)
+    if command -v git >/dev/null 2>&1; then
+        if git clone --depth 1 "$GITHUB_REPO" "$GITHUB_TMP" >> "$LOG_FILE" 2>&1; then
+            if [ -d "$GITHUB_TMP/arix" ]; then
+                echo "$GITHUB_TMP/arix"
+                return
+            fi
+        fi
+    fi
+
+    # 2. Fallback: curl tarball directly from GitHub
+    if curl -sSL "$GITHUB_TAR" | tar -xz -C "$GITHUB_TMP" --strip-components=1 >> "$LOG_FILE" 2>&1; then
+        if [ -d "$GITHUB_TMP/arix" ]; then
+            echo "$GITHUB_TMP/arix"
+            return
+        fi
+    fi
+
+    # 3. Offline fallback only if GitHub cannot be reached
     if [ -d "$SCRIPT_DIR/arix" ] && [ -f "$SCRIPT_DIR/arix/config/arix.php" ]; then
+        echo -e "${YELLOW}[!]${RESET} Could not reach GitHub, using local fallback." >&2
         echo "$SCRIPT_DIR/arix"
+        return
     elif [ -d "$SCRIPT_DIR/Arix Theme v2.0.8/arix" ] && [ -f "$SCRIPT_DIR/Arix Theme v2.0.8/arix/config/arix.php" ]; then
         echo "$SCRIPT_DIR/Arix Theme v2.0.8/arix"
-    elif [ -d "$PANEL_DIR/arix" ] && [ -f "$PANEL_DIR/arix/config/arix.php" ]; then
-        echo "$PANEL_DIR/arix"
+        return
     elif [ -d "$SCRIPT_DIR/pterodactyl/arix/v2.0.8" ]; then
         echo "$SCRIPT_DIR/pterodactyl/arix/v2.0.8"
-    else
-        # Auto-download directly from GitHub
-        local GITHUB_TMP="/tmp/arix_v3_download"
-        rm -rf "$GITHUB_TMP"
-        mkdir -p "$GITHUB_TMP"
-        echo -e "${CYAN}[*]${RESET} Downloading latest theme files directly from GitHub..." >&2
-        
-        if command -v git >/dev/null 2>&1 && git clone --depth 1 "$GITHUB_REPO" "$GITHUB_TMP" >> "$LOG_FILE" 2>&1; then
-            if [ -d "$GITHUB_TMP/arix" ]; then
-                echo "$GITHUB_TMP/arix"
-                return
-            fi
-        fi
-
-        # Fallback: curl tarball
-        if curl -sSL "$GITHUB_TAR" | tar -xz -C "$GITHUB_TMP" --strip-components=1 >> "$LOG_FILE" 2>&1; then
-            if [ -d "$GITHUB_TMP/arix" ]; then
-                echo "$GITHUB_TMP/arix"
-                return
-            fi
-        fi
-
-        echo ""
+        return
     fi
+
+    echo ""
 }
 
 # Clean Terminal Header Banner
