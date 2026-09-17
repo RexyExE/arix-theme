@@ -103,10 +103,6 @@
                         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
                             <i data-lucide="menu" class="toggle-icon" style="width: 20px; height: 20px;"></i>
                         </a>
-                        <div class="header-breadcrumbs hidden-xs">
-                            <i data-lucide="terminal" style="width: 14px; height: 14px; color: #8b5cf6;"></i>
-                            <span>Admin Console</span>
-                        </div>
                     </div>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">

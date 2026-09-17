@@ -685,17 +685,20 @@ td:last-child {
 }
 
 .skin-blue .sidebar-menu > li.active > a {
-    background: var(--sv-bubble-gradient) !important;
+    background: rgba(139, 92, 246, 0.16) !important;
+    border: 1px solid rgba(139, 92, 246, 0.35) !important;
+    border-left: 3px solid #8b5cf6 !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: var(--sv-purple-glow) !important;
-    border-left: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    border-radius: 10px !important;
 }
 
 .skin-blue .sidebar-menu > li.active > a > i,
 .skin-blue .sidebar-menu > li.active > a > svg {
-    color: #ffffff !important;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    color: #c084fc !important;
+    filter: none !important;
 }
 
 /* Arix Theme sidebar item (the gradient animated one) */
@@ -2468,6 +2471,10 @@ body.fixed {
     background-color: var(--sv-bg, #090714) !important;
     color: #cbd5e1 !important;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
     overflow-x: hidden !important;
 }
 
@@ -2715,14 +2722,14 @@ body.skin-blue::after {
 
 .sidebar-menu > li > a {
     border-radius: 10px !important;
-    margin-bottom: 2px !important;
-    padding: 0.55rem 0.85rem !important;
+    margin-bottom: 3px !important;
+    padding: 0.65rem 0.95rem !important;
     display: flex !important;
     align-items: center !important;
     gap: 0.75rem !important;
     color: #94a3b8 !important;
     font-weight: 500 !important;
-    font-size: 0.84rem !important;
+    font-size: 0.92rem !important;
     transition: all 0.15s ease !important;
     background: transparent !important;
     border: 1px solid transparent !important;
@@ -2731,8 +2738,8 @@ body.skin-blue::after {
 
 .sidebar-menu > li > a i,
 .sidebar-menu > li > a svg {
-    width: 17px !important;
-    height: 17px !important;
+    width: 18px !important;
+    height: 18px !important;
     color: #64748b !important;
     transition: color 0.15s ease !important;
     flex-shrink: 0 !important;
@@ -2749,16 +2756,18 @@ body.skin-blue::after {
 }
 
 .sidebar-menu > li.active > a {
-    background: rgba(139, 92, 246, 0.14) !important;
-    border: 1px solid rgba(139, 92, 246, 0.28) !important;
-    color: #c084fc !important;
+    background: rgba(139, 92, 246, 0.16) !important;
+    border: 1px solid rgba(139, 92, 246, 0.35) !important;
+    border-left: 3px solid #8b5cf6 !important;
+    color: #ffffff !important;
     font-weight: 600 !important;
     box-shadow: none !important;
+    border-radius: 10px !important;
 }
 
 .sidebar-menu > li.active > a i,
 .sidebar-menu > li.active > a svg {
-    color: #a855f7 !important;
+    color: #c084fc !important;
     filter: none !important;
 }
 
@@ -2772,37 +2781,38 @@ body.skin-blue::after {
 }
 
 .content-header {
-    padding: 1.5rem 2rem 0.5rem !important;
+    padding: 2rem 2.5rem 0.5rem !important;
 }
 
 .content-header h1 {
     color: #ffffff !important;
-    font-size: 1.5rem !important;
+    font-size: 1.75rem !important;
     font-weight: 700 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
-    gap: 0.6rem !important;
+    gap: 0.75rem !important;
 }
 
-.content-header small {
+.content-header small,
+.content-header p {
     color: #94a3b8 !important;
-    font-size: 0.85rem !important;
+    font-size: 0.95rem !important;
     font-weight: 400 !important;
     display: block !important;
-    margin-top: 0.25rem !important;
+    margin-top: 0.35rem !important;
 }
 
 .breadcrumb {
     background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-radius: 9999px !important;
-    padding: 0.4rem 0.9rem !important;
+    padding: 0.45rem 1rem !important;
     margin: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.4rem !important;
-    font-size: 0.78rem !important;
+    gap: 0.5rem !important;
+    font-size: 0.85rem !important;
     font-weight: 500 !important;
 }
 
@@ -2822,7 +2832,146 @@ body.skin-blue::after {
 }
 
 .content {
-    padding: 0 1.75rem 2.5rem !important;
+    padding: 0.5rem 2.5rem 3.5rem !important;
+}
+
+/* ---- Silk Veil Admin Content Container & Cards ---- */
+.admin-container {
+    max-width: 1240px;
+    width: 100%;
+    margin: 0;
+}
+
+.admin-card {
+    background: rgba(14, 12, 26, 0.82) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+    margin-bottom: 2rem !important;
+}
+
+.admin-card-header {
+    padding: 1.5rem 2rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+}
+
+.admin-card-title {
+    margin: 0 !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+}
+
+.admin-card-subtitle {
+    margin: 0.35rem 0 0 0 !important;
+    font-size: 0.88rem !important;
+    color: #94a3b8 !important;
+}
+
+.admin-card-body {
+    padding: 2rem !important;
+}
+
+.admin-card-footer {
+    padding: 1.25rem 2rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: rgba(0, 0, 0, 0.18) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.admin-badge-core {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    color: #a855f7 !important;
+    background: rgba(168, 85, 247, 0.12) !important;
+    border: 1px solid rgba(168, 85, 247, 0.3) !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+.admin-form-group {
+    margin-bottom: 2.25rem !important;
+}
+
+.admin-label {
+    color: #f1f5f9 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 0.4rem !important;
+    display: block !important;
+}
+
+.admin-help-text {
+    color: #94a3b8 !important;
+    font-size: 0.88rem !important;
+    margin: 0 0 0.85rem 0 !important;
+    line-height: 1.45 !important;
+}
+
+.admin-input {
+    background: rgba(8, 6, 18, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1.15rem !important;
+    font-size: 0.95rem !important;
+    width: 100% !important;
+    height: 48px !important;
+    transition: all 0.2s ease !important;
+}
+
+.admin-input:focus {
+    border-color: #8b5cf6 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+}
+
+.twofa-card {
+    padding: 1.25rem 1.35rem !important;
+    border-radius: 14px !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.twofa-card .radio-title {
+    font-weight: 700 !important;
+    font-size: 0.98rem !important;
+}
+
+.twofa-card .radio-desc {
+    font-size: 0.88rem !important;
+    color: #94a3b8 !important;
+    margin: 0 !important;
+    line-height: 1.45 !important;
+}
+
+.twofa-card .radio-indicator {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
 }
 
 /* 5. Legacy Box Transformation to Silk Veil Bubble Glass */
@@ -3144,12 +3293,12 @@ textarea.form-control:focus {
 .nav-tabs-custom > .nav-tabs > li > a,
 .nav-tabs-custom > .nav-tabs > li.active > a,
 .nav-tabs-custom > .nav-tabs > li.active:hover > a {
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     border: none !important;
     color: #94a3b8 !important;
     font-weight: 600 !important;
-    font-size: 0.84rem !important;
-    padding: 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+    padding: 0.6rem 1.4rem !important;
     transition: all 0.15s ease !important;
     background: transparent !important;
     margin: 0 !important;

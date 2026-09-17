@@ -6,17 +6,17 @@
 @endsection
 
 @section('content-header')
-    <div style="max-width: 960px; margin: 0 auto 1.5rem auto;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div class="admin-container" style="margin-bottom: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
             <div>
-                <h1 style="font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-                    <i data-lucide="settings" style="width: 22px; height: 22px; color: #a855f7;"></i>
+                <h1 style="font-size: 1.75rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.65rem;">
+                    <i data-lucide="settings" style="width: 26px; height: 26px; color: #a855f7;"></i>
                     Panel Settings
                 </h1>
-                <p style="color: #94a3b8; font-size: 0.85rem; margin: 0.25rem 0 0 0;">Configure panel identity, public branding, and security requirements.</p>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin: 0.35rem 0 0 0;">Configure panel identity, public branding, and security requirements.</p>
             </div>
-            <ol class="breadcrumb" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); padding: 0.35rem 0.85rem; margin: 0; border-radius: 9999px;">
-                <li><a href="{{ route('admin.index') }}" style="color: #a855f7;"><i data-lucide="home" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i> Admin</a></li>
+            <ol class="breadcrumb" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.45rem 1rem; margin: 0; border-radius: 9999px;">
+                <li><a href="{{ route('admin.index') }}" style="color: #a855f7; font-weight: 600;"><i data-lucide="home" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 3px;"></i> Admin</a></li>
                 <li class="active" style="color: #cbd5e1;">Settings</li>
             </ol>
         </div>
@@ -24,97 +24,96 @@
 @endsection
 
 @section('content')
-    <div style="max-width: 960px; margin: 0 auto;">
+    <div class="admin-container">
         {{-- Modern Segmented Tab Bar --}}
-        <div style="margin-bottom: 1.25rem;">
+        <div style="margin-bottom: 1.5rem;">
             @yield('settings::nav')
         </div>
 
         {{-- Main Settings Form Card --}}
-        <div class="admin-card" style="background: rgba(14, 12, 26, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);">
+        <div class="admin-card">
             {{-- Card Header --}}
-            <div style="padding: 1.25rem 1.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between;">
+            <div class="admin-card-header">
                 <div>
-                    <h3 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
-                        <i data-lucide="sliders" style="width: 18px; height: 18px; color: #a855f7;"></i>
+                    <h3 class="admin-card-title">
+                        <i data-lucide="sliders" style="width: 20px; height: 20px; color: #a855f7;"></i>
                         General Configuration
                     </h3>
-                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #94a3b8;">Manage company naming and authentication verification policies.</p>
+                    <p class="admin-card-subtitle">Manage company naming and authentication verification policies.</p>
                 </div>
-                <span style="font-size: 0.65rem; font-weight: 700; color: #a855f7; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.25); padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.08em; text-transform: uppercase;">CORE</span>
+                <span class="admin-badge-core">CORE</span>
             </div>
 
             <form action="{{ route('admin.settings') }}" method="POST">
-                <div style="padding: 1.75rem;">
+                <div class="admin-card-body">
                     {{-- 1. Company Name Field --}}
-                    <div class="form-group" style="margin-bottom: 2rem;">
-                        <label for="appName" style="color: #e2e8f0; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.4rem; display: block;">
+                    <div class="admin-form-group">
+                        <label for="appName" class="admin-label">
                             Company Name
                         </label>
-                        <p style="color: #64748b; font-size: 0.8rem; margin: 0 0 0.65rem 0;">This name is displayed across navigation titles, emails, and client panel views.</p>
-                        <div style="position: relative; max-width: 540px;">
+                        <p class="admin-help-text">This name is displayed across navigation titles, emails, and client panel views.</p>
+                        <div style="max-width: 640px;">
                             <input 
                                 type="text" 
                                 id="appName"
-                                class="form-control" 
+                                class="form-control admin-input" 
                                 name="app:name" 
                                 value="{{ old('app:name', config('app.name')) }}" 
                                 placeholder="e.g. My Hosting Panel"
-                                style="background: rgba(8, 6, 18, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; color: #ffffff; padding: 0.65rem 1rem; font-size: 0.88rem; width: 100%; height: 42px;" 
                             />
                         </div>
                     </div>
 
                     {{-- 2. Two-Factor Authentication Requirement --}}
-                    <div class="form-group" style="margin-bottom: 0.5rem;">
-                        <label style="color: #e2e8f0; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.4rem; display: block;">
+                    <div class="admin-form-group" style="margin-bottom: 0.5rem;">
+                        <label class="admin-label">
                             Two-Factor Authentication Requirement
                         </label>
-                        <p style="color: #64748b; font-size: 0.8rem; margin: 0 0 0.85rem 0;">Require multi-factor authentication (TOTP) before accounts can access panel resources.</p>
+                        <p class="admin-help-text">Require multi-factor authentication (TOTP) before accounts can access panel resources.</p>
                         
                         @php
                             $level = old('pterodactyl:auth:2fa_required', config('pterodactyl.auth.2fa_required'));
                         @endphp
 
-                        <div class="row" style="margin-left: -6px; margin-right: -6px; gap: 0.75rem 0;">
-                            {{-- Option 0: Not Required --}}
-                            <div class="col-xs-12 col-sm-4" style="padding-left: 6px; padding-right: 6px;">
-                                <label style="display: block; cursor: pointer; margin: 0;">
+                        <div class="row" style="margin-left: -8px; margin-right: -8px;">
+                            {{-- Option 0: Optional --}}
+                            <div class="col-xs-12 col-sm-4" style="padding-left: 8px; padding-right: 8px; margin-bottom: 1rem;">
+                                <label style="display: block; cursor: pointer; margin: 0; height: 100%;">
                                     <input type="radio" name="pterodactyl:auth:2fa_required" value="0" @if ($level == 0) checked @endif style="display: none;" onchange="updateRadioCards(this)">
-                                    <div class="twofa-card {{ $level == 0 ? 'active' : '' }}" style="padding: 1rem 1.15rem; border-radius: 12px; border: 1px solid {{ $level == 0 ? 'rgba(139, 92, 246, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 0 ? 'rgba(139, 92, 246, 0.12)' : 'rgba(8, 6, 18, 0.5)' }}; transition: all 0.2s ease;">
-                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-                                            <span style="font-weight: 700; font-size: 0.86rem; color: {{ $level == 0 ? '#ffffff' : '#cbd5e1' }};">Optional</span>
-                                            <span class="radio-indicator" style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid {{ $level == 0 ? '#8b5cf6' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 0 ? '#8b5cf6' : 'transparent' }}; display: inline-block;"></span>
+                                    <div class="twofa-card {{ $level == 0 ? 'active' : '' }}" style="border: 1px solid {{ $level == 0 ? 'rgba(139, 92, 246, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 0 ? 'rgba(139, 92, 246, 0.12)' : 'rgba(8, 6, 18, 0.5)' }};">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+                                            <span class="radio-title" style="color: {{ $level == 0 ? '#ffffff' : '#e2e8f0' }};">Optional</span>
+                                            <span class="radio-indicator" style="border: 2px solid {{ $level == 0 ? '#8b5cf6' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 0 ? '#8b5cf6' : 'transparent' }};"></span>
                                         </div>
-                                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 0; line-height: 1.35;">Users choose whether to enable 2FA protection on their accounts.</p>
+                                        <p class="radio-desc">Users choose whether to enable 2FA protection on their accounts.</p>
                                     </div>
                                 </label>
                             </div>
 
                             {{-- Option 1: Admin Only --}}
-                            <div class="col-xs-12 col-sm-4" style="padding-left: 6px; padding-right: 6px;">
-                                <label style="display: block; cursor: pointer; margin: 0;">
+                            <div class="col-xs-12 col-sm-4" style="padding-left: 8px; padding-right: 8px; margin-bottom: 1rem;">
+                                <label style="display: block; cursor: pointer; margin: 0; height: 100%;">
                                     <input type="radio" name="pterodactyl:auth:2fa_required" value="1" @if ($level == 1) checked @endif style="display: none;" onchange="updateRadioCards(this)">
-                                    <div class="twofa-card {{ $level == 1 ? 'active' : '' }}" style="padding: 1rem 1.15rem; border-radius: 12px; border: 1px solid {{ $level == 1 ? 'rgba(245, 158, 11, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 1 ? 'rgba(245, 158, 11, 0.12)' : 'rgba(8, 6, 18, 0.5)' }}; transition: all 0.2s ease;">
-                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-                                            <span style="font-weight: 700; font-size: 0.86rem; color: {{ $level == 1 ? '#ffffff' : '#cbd5e1' }};">Admin Only</span>
-                                            <span class="radio-indicator" style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid {{ $level == 1 ? '#f59e0b' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 1 ? '#f59e0b' : 'transparent' }}; display: inline-block;"></span>
+                                    <div class="twofa-card {{ $level == 1 ? 'active' : '' }}" style="border: 1px solid {{ $level == 1 ? 'rgba(245, 158, 11, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 1 ? 'rgba(245, 158, 11, 0.12)' : 'rgba(8, 6, 18, 0.5)' }};">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+                                            <span class="radio-title" style="color: {{ $level == 1 ? '#ffffff' : '#e2e8f0' }};">Admin Only</span>
+                                            <span class="radio-indicator" style="border: 2px solid {{ $level == 1 ? '#f59e0b' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 1 ? '#f59e0b' : 'transparent' }};"></span>
                                         </div>
-                                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 0; line-height: 1.35;">Required for administrative users before accessing panel controls.</p>
+                                        <p class="radio-desc">Required for administrative users before accessing panel controls.</p>
                                     </div>
                                 </label>
                             </div>
 
                             {{-- Option 2: All Users --}}
-                            <div class="col-xs-12 col-sm-4" style="padding-left: 6px; padding-right: 6px;">
-                                <label style="display: block; cursor: pointer; margin: 0;">
+                            <div class="col-xs-12 col-sm-4" style="padding-left: 8px; padding-right: 8px; margin-bottom: 1rem;">
+                                <label style="display: block; cursor: pointer; margin: 0; height: 100%;">
                                     <input type="radio" name="pterodactyl:auth:2fa_required" value="2" @if ($level == 2) checked @endif style="display: none;" onchange="updateRadioCards(this)">
-                                    <div class="twofa-card {{ $level == 2 ? 'active' : '' }}" style="padding: 1rem 1.15rem; border-radius: 12px; border: 1px solid {{ $level == 2 ? 'rgba(16, 185, 129, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 2 ? 'rgba(16, 185, 129, 0.12)' : 'rgba(8, 6, 18, 0.5)' }}; transition: all 0.2s ease;">
-                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-                                            <span style="font-weight: 700; font-size: 0.86rem; color: {{ $level == 2 ? '#ffffff' : '#cbd5e1' }};">All Users</span>
-                                            <span class="radio-indicator" style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid {{ $level == 2 ? '#10b981' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 2 ? '#10b981' : 'transparent' }}; display: inline-block;"></span>
+                                    <div class="twofa-card {{ $level == 2 ? 'active' : '' }}" style="border: 1px solid {{ $level == 2 ? 'rgba(16, 185, 129, 0.5)' : 'rgba(255, 255, 255, 0.08)' }}; background: {{ $level == 2 ? 'rgba(16, 185, 129, 0.12)' : 'rgba(8, 6, 18, 0.5)' }};">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+                                            <span class="radio-title" style="color: {{ $level == 2 ? '#ffffff' : '#e2e8f0' }};">All Users</span>
+                                            <span class="radio-indicator" style="border: 2px solid {{ $level == 2 ? '#10b981' : 'rgba(255, 255, 255, 0.25)' }}; background: {{ $level == 2 ? '#10b981' : 'transparent' }};"></span>
                                         </div>
-                                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 0; line-height: 1.35;">Mandatory for all registered client and administrator accounts.</p>
+                                        <p class="radio-desc">Mandatory for all registered client and administrator accounts.</p>
                                     </div>
                                 </label>
                             </div>
@@ -123,10 +122,10 @@
                 </div>
 
                 {{-- Card Action Footer --}}
-                <div style="padding: 1rem 1.75rem; border-top: 1px solid rgba(255, 255, 255, 0.06); background: rgba(0, 0, 0, 0.15); display: flex; justify-content: flex-end; align-items: center; gap: 0.75rem;">
+                <div class="admin-card-footer">
                     {!! csrf_field() !!}
-                    <button type="submit" name="_method" value="PATCH" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-weight: 600; font-size: 0.84rem; border-radius: 10px;">
-                        <i data-lucide="save" style="width: 16px; height: 16px;"></i>
+                    <button type="submit" name="_method" value="PATCH" class="btn btn-primary" style="padding: 0.7rem 1.85rem; font-weight: 600; font-size: 0.95rem; border-radius: 10px; height: 46px; display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); border: none; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">
+                        <i data-lucide="save" style="width: 18px; height: 18px;"></i>
                         Save Changes
                     </button>
                 </div>
@@ -139,6 +138,8 @@
         document.querySelectorAll('.twofa-card').forEach(card => {
             card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
             card.style.background = 'rgba(8, 6, 18, 0.5)';
+            const title = card.querySelector('.radio-title');
+            if (title) title.style.color = '#e2e8f0';
             const indicator = card.querySelector('.radio-indicator');
             if (indicator) {
                 indicator.style.borderColor = 'rgba(255, 255, 255, 0.25)';
@@ -152,6 +153,8 @@
             const bg = val == 0 ? 'rgba(139, 92, 246, 0.12)' : (val == 1 ? 'rgba(245, 158, 11, 0.12)' : 'rgba(16, 185, 129, 0.12)');
             activeCard.style.borderColor = color;
             activeCard.style.background = bg;
+            const title = activeCard.querySelector('.radio-title');
+            if (title) title.style.color = '#ffffff';
             const indicator = activeCard.querySelector('.radio-indicator');
             if (indicator) {
                 indicator.style.borderColor = color;
