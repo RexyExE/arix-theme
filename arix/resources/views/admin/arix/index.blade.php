@@ -6,9 +6,17 @@
 
 @section('content')
     <form action="{{ route('admin.arix') }}" method="POST">
-        <div class="header">
-            <p>General settings</p>
-            <span class="description-text">Change the general settings of Arix Theme.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1)); display: flex; align-items: center; justify-content: center; color: #818cf8; flex-shrink: 0;">
+                <i data-lucide="wand-2" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    General Settings
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #818cf8; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">CORE</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Configure your panel branding, dark/light logos, dimensions, and support navigation links.</span>
+            </div>
         </div>
         <x-arix.input-field 
             id="arix:logo" 

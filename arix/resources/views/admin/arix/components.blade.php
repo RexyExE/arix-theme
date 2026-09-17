@@ -30,9 +30,17 @@
 @section('content')
 
     <form action="{{ route('admin.arix.components') }}" method="POST" class="content-box content-box-wide">
-        <div class="header">
-            <p>Components Settings</p>
-            <span class="description-text">Customize the components shown on Arix Theme.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.1)); display: flex; align-items: center; justify-content: center; color: #10b981; flex-shrink: 0;">
+                <i data-lucide="layout-grid" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Component Gallery
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">UI KIT</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Customize server card designs, console graphs layout, statistics widgets, and server rows.</span>
+            </div>
         </div>
         
         <x-arix.form-wrapper 

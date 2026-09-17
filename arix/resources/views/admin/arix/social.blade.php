@@ -13,9 +13,17 @@
 
 @section('content')
     <form action="{{ route('admin.arix.social') }}" method="POST" class="content-box">
-        <div class="header">
-            <p>Social settings</p>
-            <span class="description-text">Change the social settings.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.1)); display: flex; align-items: center; justify-content: center; color: #c084fc; flex-shrink: 0;">
+                <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Community & Socials
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #c084fc; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">COMMUNITY</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Manage external community links, social action buttons, and Discord server presence widgets.</span>
+            </div>
         </div>
         <x-arix.form-wrapper 
             title="Social Media Configuration" 

@@ -1506,3 +1506,338 @@ hr {
         margin-bottom: 1rem !important;
     }
 }
+
+/* ==========================================================================
+   ARIX EDITOR — SILK VEIL ULTRA LUXURY SUITE
+   ========================================================================== */
+
+/* Editor Navigation Bar */
+nav {
+    background: rgba(8, 7, 15, 0.8) !important;
+    backdrop-filter: blur(24px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 0.85rem 1.75rem !important;
+    position: relative;
+    z-index: 50;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+nav .logo {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    font-size: 1.05rem !important;
+    color: #f8fafc !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+nav .logo img {
+    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.4)) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+nav .logo:hover img {
+    transform: scale(1.08) rotate(-4deg) !important;
+}
+
+nav .nav-end a {
+    color: #94a3b8 !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 0.95rem !important;
+    border-radius: 9999px !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+nav .nav-end a:hover {
+    color: #ffffff !important;
+    background: rgba(139, 92, 246, 0.15) !important;
+    border-color: rgba(139, 92, 246, 0.35) !important;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.25) !important;
+    transform: translateY(-1px) !important;
+}
+
+nav .account {
+    background: rgba(15, 13, 28, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 0.3rem 0.85rem 0.3rem 0.4rem !important;
+    border-radius: 9999px !important;
+    gap: 0.6rem !important;
+}
+
+nav .account .user-image {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgba(139, 92, 246, 0.6) !important;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Left Icon Sidebar */
+.wrapper .sidebar {
+    background: rgba(8, 7, 15, 0.7) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
+    padding: 1.25rem 0.85rem !important;
+    gap: 0.5rem !important;
+    z-index: 40;
+}
+
+.wrapper .sidebar ul {
+    gap: 0.5rem !important;
+}
+
+.wrapper .sidebar a {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 14px !important;
+    color: #94a3b8 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+}
+
+.wrapper .sidebar a:hover {
+    color: #e2e8f0 !important;
+    background: rgba(139, 92, 246, 0.12) !important;
+    border-color: rgba(139, 92, 246, 0.25) !important;
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.2) !important;
+    transform: translateX(2px) !important;
+}
+
+.wrapper .sidebar li.active a {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.2)) !important;
+    border: 1px solid rgba(168, 85, 247, 0.5) !important;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.wrapper .sidebar li .link-tooltip {
+    background: rgba(15, 13, 28, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 8px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    padding: 0.35rem 0.75rem !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(139, 92, 246, 0.2) !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* Side Editor Panel */
+.sideEditor {
+    background: rgba(10, 9, 20, 0.75) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 1.5rem 1.5rem 0 !important;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+.sideEditor.sideEditorWide {
+    background: rgba(10, 9, 20, 0.8) !important;
+}
+
+/* Form inputs & controls inside editor */
+.input-field input,
+.input-field select,
+.input-field textarea {
+    background: rgba(14, 12, 26, 0.55) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: #f8fafc !important;
+    font-size: 0.88rem !important;
+    padding: 0.65rem 0.95rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.input-field input:focus,
+.input-field select:focus,
+.input-field textarea:focus {
+    background: rgba(18, 15, 34, 0.8) !important;
+    border-color: rgba(139, 92, 246, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15), 0 0 20px rgba(139, 92, 246, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.input-field label {
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: #cbd5e1 !important;
+    margin-bottom: 0.4rem !important;
+    letter-spacing: 0.01em !important;
+}
+
+.input-field small {
+    color: #94a3b8 !important;
+    font-size: 0.78rem !important;
+    margin-top: 0.35rem !important;
+}
+
+/* Form Wrappers & Section Cards */
+.form-wrapper {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.form-wrapper .info-box h2 {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    letter-spacing: -0.01em !important;
+}
+
+.form-wrapper .info-box p {
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+}
+
+/* Option Cards (Layout, Servers, etc.) */
+.option-input .label-card {
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    background: rgba(14, 12, 26, 0.45) !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    overflow: hidden !important;
+}
+
+.option-input .label-card:hover {
+    border-color: rgba(139, 92, 246, 0.35) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 16px rgba(139, 92, 246, 0.15) !important;
+}
+
+.option-input input:checked ~ .label-card {
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.3), inset 0 0 12px rgba(168, 85, 247, 0.15) !important;
+    background: rgba(20, 16, 38, 0.6) !important;
+}
+
+/* Icon Options Grid */
+.icon-options label {
+    background: rgba(14, 12, 26, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    color: #cbd5e1 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.icon-options label:hover {
+    border-color: rgba(139, 92, 246, 0.4) !important;
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+.icon-options input:checked ~ label {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.2)) !important;
+    border-color: #a855f7 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.35) !important;
+}
+
+/* Floating Save Bar */
+.sideEditor .floating-button,
+.content-container .container .floating-button {
+    background: rgba(10, 8, 18, 0.85) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.content-container .container .floating-button {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.15) !important;
+}
+
+/* Modern Luminous Buttons */
+.button.button-primary {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.02em !important;
+    padding: 0.75rem 1.4rem !important;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.button.button-primary:hover {
+    background: linear-gradient(135deg, #8b5cf6, #c084fc) !important;
+    box-shadow: 0 6px 28px rgba(139, 92, 246, 0.55), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+.button.button-secondary {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.button.button-secondary:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+/* Callout in Arix Editor */
+.callout {
+    background: rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid rgba(139, 92, 246, 0.25) !important;
+    border-radius: 12px !important;
+    color: #c4b5fd !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Drag-and-drop banner in components page */
+.drag-n-drop-banner {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1)) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.drag-n-drop-banner:hover {
+    border-color: rgba(139, 92, 246, 0.6) !important;
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.25) !important;
+    transform: translateY(-2px) !important;
+}
+
+.drag-n-drop-banner h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.drag-n-drop-banner p {
+    color: #a855f7 !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+}

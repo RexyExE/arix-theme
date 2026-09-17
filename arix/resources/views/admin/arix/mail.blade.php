@@ -6,9 +6,17 @@
 
 @section('content')
     <form action="{{ route('admin.arix.mail') }}" method="POST" class="content-box">
-        <div class="header">
-            <p>Mail settings</p>
-            <span class="description-text">Change the mail template settings.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.1)); display: flex; align-items: center; justify-content: center; color: #3b82f6; flex-shrink: 0;">
+                <i data-lucide="mailbox" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Email Templates
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #3b82f6; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">NOTIFICATIONS</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Customize HTML email notification templates, header logo, background tone, and brand accents.</span>
+            </div>
         </div>
 
         <x-arix.form-wrapper 

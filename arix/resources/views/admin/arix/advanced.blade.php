@@ -6,9 +6,17 @@
 
 @section('content')
     <form action="{{ route('admin.arix.advanced') }}" method="POST" class="content-box">
-        <div class="header">
-            <p>Advanced settings</p>
-            <span class="description-text">Change Arix advanced settings.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 63, 94, 0.1)); display: flex; align-items: center; justify-content: center; color: #f43f5e; flex-shrink: 0;">
+                <i data-lucide="cog" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Advanced Controls
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #f43f5e; background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">PRO</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Fine-tune avatar engines, low resource alerts, theme backups, and system-level configurations.</span>
+            </div>
         </div>
 
         <x-arix.form-wrapper 

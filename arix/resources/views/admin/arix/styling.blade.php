@@ -37,9 +37,17 @@
 
 @section('content')
     <form action="{{ route('admin.arix.styling') }}" method="POST" class="content-box">
-        <div class="header">
-            <p>Styling settings</p>
-            <span class="description-text">Customize the general appears of Arix Theme.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.1)); display: flex; align-items: center; justify-content: center; color: #a855f7; flex-shrink: 0;">
+                <i data-lucide="palette" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Styling Studio
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #a855f7; background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">VISUAL</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Fine-tune backgrounds, borders, typography, and component styling across your entire panel.</span>
+            </div>
         </div>
         
         <x-arix.form-wrapper 

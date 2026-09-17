@@ -7,9 +7,17 @@
 @section('content')
 
     <form action="{{ route('admin.arix.layout') }}" method="POST">
-        <div class="header">
-            <p>General layout settings</p>
-            <span class="description-text">Change the general layout settings of Arix Theme.</span>
+        <div class="header" style="display: flex; align-items: flex-start; gap: 0.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 1.25rem;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(14, 165, 233, 0.1)); display: flex; align-items: center; justify-content: center; color: #06b6d4; flex-shrink: 0;">
+                <i data-lucide="layout" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                    Layout Architecture
+                    <span style="font-size: 0.62rem; font-weight: 700; color: #06b6d4; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.3); padding: 0.15rem 0.55rem; border-radius: 9999px; letter-spacing: 0.06em; text-transform: uppercase;">STRUCTURE</span>
+                </p>
+                <span class="description-text" style="color: #94a3b8; font-size: 0.82rem;">Select your preferred panel navigation blueprint, sidebar hierarchy, and server control modes.</span>
+            </div>
         </div>
         <div>
             <p class="subtitle">General Layout</p>
