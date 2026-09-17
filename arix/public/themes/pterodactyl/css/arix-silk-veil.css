@@ -2456,3 +2456,1054 @@ div[class*="Dialog___styled"] label {
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
 }
+
+/* ==========================================================================
+   PART IX: COMPLETE ADMIN PANEL REDESIGN & RESPONSIVE ENGINE (SILK VEIL)
+   Replaces legacy AdminLTE 2015 styles with high-end Bubble Glassmorphism.
+   Provides full mobile drawer navigation, responsive table scrollers & clean touch UI.
+   ========================================================================== */
+
+/* 1. Shell & Global Admin Typography */
+body.skin-blue,
+body.fixed {
+    background-color: var(--sv-bg, #090714) !important;
+    color: #cbd5e1 !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    overflow-x: hidden !important;
+}
+
+body.skin-blue::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 65%);
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.skin-blue::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 65%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wrapper {
+    background: transparent !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 2. Silk Veil Admin Header */
+.main-header {
+    background: rgba(9, 7, 20, 0.82) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45) !important;
+    height: 64px !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+}
+
+.main-header .logo {
+    height: 64px !important;
+    line-height: 64px !important;
+    background: transparent !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.12rem !important;
+    letter-spacing: -0.02em !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.main-header .logo:hover {
+    color: #c084fc !important;
+}
+
+.main-header .navbar {
+    background: transparent !important;
+    margin-left: 230px !important;
+    min-height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 1.5rem !important;
+}
+
+.main-header .sidebar-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-decoration: none !important;
+}
+
+.main-header .sidebar-toggle:hover {
+    background: rgba(139, 92, 246, 0.18) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+    color: #ffffff !important;
+    transform: scale(1.05);
+}
+
+.navbar-custom-menu .navbar-nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.navbar-custom-menu .navbar-nav > li {
+    float: none !important;
+}
+
+.navbar-custom-menu .user-menu a {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 9999px !important;
+    padding: 0.3rem 0.9rem 0.3rem 0.35rem !important;
+    color: #ffffff !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar-custom-menu .user-menu a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.navbar-custom-menu .user-image {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    border: 2px solid #8b5cf6 !important;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5) !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+.nav-action-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
+    text-decoration: none !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-action-btn:hover {
+    background: rgba(139, 92, 246, 0.18) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+.nav-action-btn.logout:hover {
+    background: rgba(239, 68, 68, 0.18) !important;
+    border-color: rgba(239, 68, 68, 0.4) !important;
+    color: #f87171 !important;
+}
+
+/* 3. Sidebar Redesign */
+.main-sidebar {
+    background: rgba(8, 6, 18, 0.88) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
+    position: fixed !important;
+    top: 64px !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 230px !important;
+    padding-top: 1rem !important;
+    overflow-y: auto !important;
+    z-index: 1025 !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.sidebar-menu {
+    padding: 0 0.75rem !important;
+    list-style: none !important;
+    margin: 0 !important;
+}
+
+.sidebar-menu li.header {
+    background: transparent !important;
+    color: #8b5cf6 !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    padding: 1.15rem 0.85rem 0.45rem !important;
+}
+
+.sidebar-menu > li > a {
+    border-radius: 12px !important;
+    margin-bottom: 4px !important;
+    padding: 0.65rem 0.85rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    text-decoration: none !important;
+}
+
+.sidebar-menu > li > a i,
+.sidebar-menu > li > a svg {
+    width: 18px !important;
+    height: 18px !important;
+    color: #64748b !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+}
+
+.sidebar-menu > li > a:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    transform: translateX(3px);
+}
+
+.sidebar-menu > li > a:hover i,
+.sidebar-menu > li > a:hover svg {
+    color: #c084fc !important;
+    transform: scale(1.1);
+}
+
+.sidebar-menu > li.active > a {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(99, 102, 241, 0.12)) !important;
+    border: 1px solid rgba(139, 92, 246, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.18) !important;
+}
+
+.sidebar-menu > li.active > a i,
+.sidebar-menu > li.active > a svg {
+    color: #a855f7 !important;
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.7)) !important;
+}
+
+/* 4. Content Shell & Breadcrumbs */
+.content-wrapper {
+    background: transparent !important;
+    margin-left: 230px !important;
+    padding-top: 64px !important;
+    min-height: 100vh !important;
+    transition: margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.content-header {
+    padding: 1.5rem 1.75rem 0.75rem !important;
+}
+
+.content-header h1 {
+    color: #ffffff !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+}
+
+.content-header small {
+    color: #94a3b8 !important;
+    font-size: 0.88rem !important;
+    font-weight: 400 !important;
+    display: block !important;
+    margin-top: 0.25rem !important;
+}
+
+.breadcrumb {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 9999px !important;
+    padding: 0.4rem 0.9rem !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+}
+
+.breadcrumb li + li:before {
+    color: #64748b !important;
+    content: "/ " !important;
+}
+
+.breadcrumb a {
+    color: #a855f7 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+
+.breadcrumb li.active {
+    color: #cbd5e1 !important;
+}
+
+.content {
+    padding: 0 1.75rem 2.5rem !important;
+}
+
+/* 5. Legacy Box Transformation to Silk Veil Bubble Glass */
+.box {
+    background: rgba(13, 10, 26, 0.72) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+    margin-bottom: 1.5rem !important;
+    border-top: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.box.box-primary { border-color: rgba(139, 92, 246, 0.25) !important; }
+.box.box-success { border-color: rgba(16, 185, 129, 0.25) !important; }
+.box.box-danger  { border-color: rgba(239, 68, 68, 0.25) !important; }
+.box.box-warning { border-color: rgba(245, 158, 11, 0.25) !important; }
+.box.box-info    { border-color: rgba(6, 182, 212, 0.25) !important; }
+
+.box-header {
+    padding: 1.25rem 1.5rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+}
+
+.box-header.with-border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.box-title {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.box-tools {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    position: static !important;
+}
+
+.box-body {
+    padding: 1.5rem !important;
+    color: #cbd5e1 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+.box-footer {
+    padding: 1rem 1.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: rgba(0, 0, 0, 0.12) !important;
+    border-radius: 0 0 18px 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-wrap: wrap !important;
+    gap: 0.6rem !important;
+}
+
+/* 6. High-Precision Glass Tables */
+.table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.table thead th,
+.table th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: none !important;
+    color: #94a3b8 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 0.85rem 1rem !important;
+}
+
+.table tbody tr td,
+.table td {
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-bottom: none !important;
+    color: #cbd5e1 !important;
+    font-size: 0.86rem !important;
+    padding: 0.9rem 1rem !important;
+    vertical-align: middle !important;
+    transition: background 0.15s ease !important;
+}
+
+.table tbody tr:hover td {
+    background: rgba(139, 92, 246, 0.06) !important;
+    color: #ffffff !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.015) !important;
+}
+
+/* 7. Inputs, Selects & Form Fields */
+.form-control,
+select.form-control,
+textarea.form-control {
+    background: rgba(8, 6, 20, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-size: 0.86rem !important;
+    padding: 0.6rem 0.9rem !important;
+    height: auto !important;
+    min-height: 42px !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-control:focus,
+select.form-control:focus,
+textarea.form-control:focus {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.22) !important;
+    background: rgba(14, 11, 32, 0.85) !important;
+    outline: none !important;
+}
+
+.form-group label {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.4rem !important;
+    display: block !important;
+}
+
+.help-block {
+    color: #64748b !important;
+    font-size: 0.78rem !important;
+    margin-top: 0.35rem !important;
+}
+
+.input-group-addon {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #94a3b8 !important;
+    border-radius: 12px !important;
+}
+
+/* 8. Button Suite */
+.btn {
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    padding: 0.5rem 1.15rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border: 1px solid transparent !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+}
+
+.btn:hover {
+    transform: translateY(-1px) !important;
+}
+
+.btn:active {
+    transform: translateY(0) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.35) !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #9d74f8, #7579f3) !important;
+    box-shadow: 0 6px 22px rgba(139, 92, 246, 0.5) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border-color: rgba(16, 185, 129, 0.5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3) !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    border-color: rgba(245, 158, 11, 0.5) !important;
+    color: #ffffff !important;
+}
+
+.btn-default {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #cbd5e1 !important;
+}
+
+.btn-default:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-sm {
+    padding: 0.35rem 0.85rem !important;
+    font-size: 0.76rem !important;
+}
+
+.btn-xs {
+    padding: 0.2rem 0.6rem !important;
+    font-size: 0.7rem !important;
+}
+
+/* 9. Badges & Labels */
+.label,
+.badge {
+    border-radius: 9999px !important;
+    font-weight: 700 !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0.25rem 0.65rem !important;
+    text-transform: uppercase !important;
+    border: 1px solid transparent !important;
+    display: inline-block !important;
+}
+
+.label-success {
+    background: rgba(16, 185, 129, 0.18) !important;
+    border-color: rgba(16, 185, 129, 0.35) !important;
+    color: #10b981 !important;
+}
+
+.label-primary {
+    background: rgba(139, 92, 246, 0.18) !important;
+    border-color: rgba(139, 92, 246, 0.35) !important;
+    color: #c084fc !important;
+}
+
+.label-danger {
+    background: rgba(239, 68, 68, 0.18) !important;
+    border-color: rgba(239, 68, 68, 0.35) !important;
+    color: #f87171 !important;
+}
+
+.label-warning {
+    background: rgba(245, 158, 11, 0.18) !important;
+    border-color: rgba(245, 158, 11, 0.35) !important;
+    color: #fbbf24 !important;
+}
+
+.label-info {
+    background: rgba(6, 182, 212, 0.18) !important;
+    border-color: rgba(6, 182, 212, 0.35) !important;
+    color: #38bdf8 !important;
+}
+
+.label-default {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #cbd5e1 !important;
+}
+
+/* 10. Nav Tabs Pill Capsule */
+.nav-tabs,
+.nav-tabs-custom > .nav-tabs {
+    background: rgba(10, 8, 22, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 9999px !important;
+    padding: 4px !important;
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    margin-bottom: 1.5rem !important;
+    border-bottom: none !important;
+}
+
+.nav-tabs > li > a,
+.nav-tabs-custom > .nav-tabs > li > a {
+    border-radius: 9999px !important;
+    border: 1px solid transparent !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    padding: 0.45rem 1.1rem !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    margin: 0 !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs-custom > .nav-tabs > li.active > a,
+.nav-tabs > li > a:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(99, 102, 241, 0.15)) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2) !important;
+}
+
+.nav-tabs-custom {
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+}
+
+.nav-tabs-custom > .tab-content {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* 11. Pagination */
+.pagination {
+    margin: 1rem 0 !important;
+    display: flex !important;
+    gap: 0.3rem !important;
+    flex-wrap: wrap !important;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    padding: 0.45rem 0.85rem !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.pagination > li > a:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+    color: #ffffff !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* 12. Alerts & Callouts */
+.callout,
+.alert {
+    border-radius: 16px !important;
+    border-left-width: 4px !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    margin-bottom: 1.25rem !important;
+    padding: 1rem 1.25rem !important;
+}
+
+.alert-danger,
+.callout-danger {
+    background: rgba(239, 68, 68, 0.1) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    border-left: 4px solid #ef4444 !important;
+    color: #fca5a5 !important;
+}
+
+.alert-success,
+.callout-success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    border-left: 4px solid #10b981 !important;
+    color: #6ee7b7 !important;
+}
+
+.alert-warning,
+.callout-warning {
+    background: rgba(245, 158, 11, 0.1) !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    border-left: 4px solid #f59e0b !important;
+    color: #fde68a !important;
+}
+
+.alert-info,
+.callout-info {
+    background: rgba(6, 182, 212, 0.1) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    border-left: 4px solid #06b6d4 !important;
+    color: #7dd3fc !important;
+}
+
+/* 13. Select2 Overrides */
+.select2-container--default .select2-selection--single {
+    background: rgba(8, 6, 20, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 0.5rem !important;
+    color: #ffffff !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #ffffff !important;
+    font-size: 0.86rem !important;
+    line-height: 40px !important;
+    padding-left: 0.4rem !important;
+}
+
+.select2-dropdown {
+    background: rgba(14, 11, 28, 0.96) !important;
+    backdrop-filter: blur(28px) !important;
+    border: 1px solid rgba(139, 92, 246, 0.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
+    overflow: hidden !important;
+}
+
+.select2-results__option {
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.85rem !important;
+    color: #cbd5e1 !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: rgba(139, 92, 246, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* 14. SweetAlert Popups */
+.sweet-alert {
+    background: rgba(14, 11, 28, 0.95) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8) !important;
+    color: #ffffff !important;
+}
+
+.sweet-alert h2 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.sweet-alert p {
+    color: #cbd5e1 !important;
+}
+
+.sweet-alert button {
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.25rem !important;
+}
+
+/* 15. Admin Footer */
+.main-footer {
+    background: rgba(9, 7, 20, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    padding: 1.25rem 1.75rem !important;
+    margin-left: 230px !important;
+    transition: margin-left 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADMIN ENGINE (MOBILE & TABLET VIEWPORTS)
+   ========================================================================== */
+
+/* Mobile Sidebar Backdrop */
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 3, 15, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1040;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    /* Mobile Header */
+    .main-header {
+        height: 60px !important;
+    }
+
+    .main-header .logo {
+        width: 50px !important;
+        height: 60px !important;
+        line-height: 60px !important;
+        border-right: none !important;
+        padding: 0 !important;
+    }
+
+    .main-header .logo .logo-lg {
+        display: none !important;
+    }
+
+    .main-header .logo .logo-mini {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .main-header .navbar {
+        margin-left: 50px !important;
+        min-height: 60px !important;
+        padding: 0 0.75rem !important;
+    }
+
+    /* Off-Canvas Drawer Sidebar */
+    .main-sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 270px !important;
+        height: 100vh !important;
+        z-index: 1060 !important;
+        transform: translateX(-280px) !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        background: rgba(8, 6, 18, 0.97) !important;
+        backdrop-filter: blur(32px) !important;
+        padding-top: 1.5rem !important;
+        box-shadow: none !important;
+    }
+
+    body.sidebar-open .main-sidebar {
+        transform: translateX(0) !important;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(139, 92, 246, 0.2) !important;
+    }
+
+    body.sidebar-open .sidebar-backdrop {
+        display: block !important;
+        opacity: 1 !important;
+    }
+
+    /* Content Area on Mobile */
+    .content-wrapper {
+        margin-left: 0 !important;
+        padding-top: 60px !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    .content-header {
+        padding: 1rem 0.25rem 0.5rem !important;
+    }
+
+    .content-header h1 {
+        font-size: 1.35rem !important;
+        flex-wrap: wrap !important;
+    }
+
+    .content {
+        padding: 0 0.25rem 2rem !important;
+    }
+
+    /* Prevent Row Overflow blowout */
+    .row {
+        margin-left: -6px !important;
+        margin-right: -6px !important;
+    }
+
+    [class*="col-"] {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    /* Cards & Boxes */
+    .box,
+    .stat-card {
+        border-radius: 14px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .box-header,
+    .box-body,
+    .box-footer {
+        padding: 1rem !important;
+    }
+
+    /* Tables Auto-Scroller on Mobile */
+    .box-body > .table,
+    .box > .table,
+    .table-responsive > .table,
+    .table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        min-width: 580px;
+    }
+
+    /* Footer Mobile Stacking */
+    .main-footer {
+        margin-left: 0 !important;
+        padding: 1rem !important;
+        text-align: center !important;
+    }
+
+    .main-footer .pull-right {
+        float: none !important;
+        margin: 0.5rem 0 0 0 !important;
+    }
+
+    /* Breadcrumbs on Mobile */
+    .breadcrumb {
+        font-size: 0.72rem !important;
+        padding: 0.3rem 0.65rem !important;
+    }
+
+    /* Touch Friendly Form Inputs */
+    .form-control,
+    select.form-control {
+        font-size: 16px !important; /* Prevents iOS auto-zoom on input focus */
+        min-height: 44px !important;
+    }
+
+    .btn {
+        min-height: 40px !important;
+    }
+
+    /* Arix Theme Editor Mobile Ergonomics */
+    .sideEditor-container {
+        flex-direction: column !important;
+    }
+
+    .sideEditor {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-right: none !important;
+    }
+
+    .iframe-container {
+        display: none !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .sidebar ul {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 0.4rem !important;
+        padding: 0.5rem !important;
+    }
+
+    .sidebar .sidebar-bottom {
+        display: none !important;
+    }
+
+    .sidebar .link-tooltip {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Tablet Viewport Adjustments */
+    .main-sidebar {
+        width: 210px !important;
+    }
+
+    .main-header .navbar {
+        margin-left: 210px !important;
+    }
+
+    .content-wrapper,
+    .main-footer {
+        margin-left: 210px !important;
+    }
+
+    .sideEditor-container {
+        flex-direction: column !important;
+    }
+
+    .sideEditor {
+        width: 100% !important;
+    }
+
+    .iframe-container {
+        min-height: 450px !important;
+    }
+}
+

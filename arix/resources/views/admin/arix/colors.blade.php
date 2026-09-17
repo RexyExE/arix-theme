@@ -22,6 +22,13 @@
             <p class="subtitle">Color presets</p>
             <div class="color-options">
                 <x-arix.preset 
+                    name="Silk Veil"
+                    color="silkveil"
+                    text="#cbd5e1"
+                    primary="#8B5CF6"
+                    background="#090714"
+                />
+                <x-arix.preset 
                     name="Pink"
                     color="pink"
                     text="#9d7f9a"
@@ -356,6 +363,48 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const colorPresets = {
+            silkveil: {
+                "light-primary": "#8b5cf6",
+                "light-successText": "#10b981",
+                "light-successBorder": "rgba(16, 185, 129, 0.4)",
+                "light-successBackground": "rgba(16, 185, 129, 0.12)",
+                "light-dangerText": "#ef4444",
+                "light-dangerBorder": "rgba(239, 68, 68, 0.4)",
+                "light-dangerBackground": "rgba(239, 68, 68, 0.12)",
+                "light-secondaryText": "#475569",
+                "light-secondaryBorder": "#cbd5e1",
+                "light-secondaryBackground": "#f1f5f9",
+                "light-gray50": "#0f172a",
+                "light-gray100": "#1e293b",
+                "light-gray200": "#334155",
+                "light-gray300": "#64748b",
+                "light-gray400": "#94a3b8",
+                "light-gray500": "#cbd5e1",
+                "light-gray600": "#e2e8f0",
+                "light-gray700": "#f1f5f9",
+                "light-gray800": "#f8fafc",
+                "light-gray900": "#ffffff",
+                "primary": "#8b5cf6",
+                "successText": "#10b981",
+                "successBorder": "rgba(16, 185, 129, 0.4)",
+                "successBackground": "rgba(16, 185, 129, 0.12)",
+                "dangerText": "#ef4444",
+                "dangerBorder": "rgba(239, 68, 68, 0.4)",
+                "dangerBackground": "rgba(239, 68, 68, 0.12)",
+                "secondaryText": "#cbd5e1",
+                "secondaryBorder": "rgba(255, 255, 255, 0.12)",
+                "secondaryBackground": "rgba(255, 255, 255, 0.05)",
+                "gray50": "#f8fafc",
+                "gray100": "#f1f5f9",
+                "gray200": "#cbd5e1",
+                "gray300": "#94a3b8",
+                "gray400": "#64748b",
+                "gray500": "#334155",
+                "gray600": "#1e1b4b",
+                "gray700": "#15102a",
+                "gray800": "#090714",
+                "gray900": "#04030a",
+            },
             default: {
                 "light-primary": "#4a35cf",
 

@@ -106,14 +106,12 @@
         <div class="wrapper">
             <header class="main-header">
                 <a href="{{ route('index') }}" class="logo">
-                    <span>{{ config('app.name', 'Pterodactyl') }}</span>
+                    <span class="logo-mini"><i data-lucide="shield" style="width: 22px; height: 22px; color: #a855f7;"></i></span>
+                    <span class="logo-lg"><i data-lucide="shield" style="width: 20px; height: 20px; color: #a855f7; display: inline-block; vertical-align: middle; margin-right: 6px;"></i>{{ config('app.name', 'Pterodactyl') }}</span>
                 </a>
                 <nav class="navbar navbar-static-top">
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
+                        <i data-lucide="menu" class="toggle-icon" style="width: 20px; height: 20px;"></i>
                     </a>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
@@ -124,10 +122,10 @@
                                 </a>
                             </li>
                             <li>
-                                <li><a href="{{ route('index') }}" data-toggle="tooltip" data-placement="bottom" title="Exit Admin Control"><i class="fa fa-server"></i></a></li>
+                                <a href="{{ route('index') }}" data-toggle="tooltip" data-placement="bottom" title="Exit Admin Control" class="nav-action-btn"><i data-lucide="server" style="width: 18px; height: 18px;"></i></a>
                             </li>
                             <li>
-                                <li><a href="{{ route('auth.logout') }}" id="logoutButton" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                <a href="{{ route('auth.logout') }}" id="logoutButton" data-toggle="tooltip" data-placement="bottom" title="Logout" class="nav-action-btn logout"><i data-lucide="log-out" style="width: 18px; height: 18px;"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -197,6 +195,7 @@
                     </ul>
                 </section>
             </aside>
+            <div class="sidebar-backdrop" data-toggle="push-menu"></div>
             <div class="content-wrapper">
                 <section class="content-header">
                     @yield('content-header')
