@@ -685,19 +685,18 @@ td:last-child {
 }
 
 .skin-blue .sidebar-menu > li.active > a {
-    background: rgba(139, 92, 246, 0.16) !important;
-    border: 1px solid rgba(139, 92, 246, 0.35) !important;
-    border-left: 3px solid #8b5cf6 !important;
+    background: #a855f7 !important;
+    border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: none !important;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35) !important;
     filter: none !important;
     border-radius: 10px !important;
 }
 
 .skin-blue .sidebar-menu > li.active > a > i,
 .skin-blue .sidebar-menu > li.active > a > svg {
-    color: #c084fc !important;
+    color: #ffffff !important;
     filter: none !important;
 }
 
@@ -2570,17 +2569,8 @@ body.skin-blue::after {
     gap: 1rem !important;
 }
 
-.main-header .navbar .header-breadcrumbs {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.45rem !important;
-    font-size: 0.82rem !important;
-    color: #94a3b8 !important;
-    font-weight: 500 !important;
-}
-
 .main-header .sidebar-toggle {
-    display: none !important;
+    display: inline-flex !important;
     width: 36px !important;
     height: 36px !important;
     line-height: 36px !important;
@@ -2588,23 +2578,16 @@ body.skin-blue::after {
     margin: 0 !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 10px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    color: #cbd5e1 !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: #9896b0 !important;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
     text-decoration: none !important;
 }
 
-@media (max-width: 991px) {
-    .main-header .sidebar-toggle {
-        display: inline-flex !important;
-    }
-}
-
 .main-header .sidebar-toggle:hover {
-    background: rgba(139, 92, 246, 0.18) !important;
-    border-color: rgba(139, 92, 246, 0.4) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
     color: #ffffff !important;
 }
 
@@ -2756,18 +2739,17 @@ body.skin-blue::after {
 }
 
 .sidebar-menu > li.active > a {
-    background: rgba(139, 92, 246, 0.16) !important;
-    border: 1px solid rgba(139, 92, 246, 0.35) !important;
-    border-left: 3px solid #8b5cf6 !important;
+    background: #a855f7 !important;
+    border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: none !important;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35) !important;
     border-radius: 10px !important;
 }
 
 .sidebar-menu > li.active > a i,
 .sidebar-menu > li.active > a svg {
-    color: #c084fc !important;
+    color: #ffffff !important;
     filter: none !important;
 }
 
@@ -2972,6 +2954,316 @@ body.skin-blue::after {
     display: inline-block !important;
     transition: all 0.2s ease !important;
     flex-shrink: 0 !important;
+}
+
+/* ==========================================================================
+   MORI COMMAND CENTER & DASHBOARD SPECIFIC COMPONENTS
+   ========================================================================== */
+
+/* Sidebar User Profile Block */
+.sidebar-user-block {
+    background: #141224 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    padding: 10px 12px !important;
+    margin: 12px 14px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+}
+
+.sidebar-user-block .user-avatar-wrap {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    background: rgba(168, 85, 247, 0.15) !important;
+    border: 1px solid rgba(168, 85, 247, 0.3) !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    overflow: visible !important;
+}
+
+.sidebar-user-block .user-avatar-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+}
+
+.sidebar-user-block .user-online-dot {
+    position: absolute !important;
+    bottom: -2px !important;
+    right: -2px !important;
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 50% !important;
+    background: #10b981 !important;
+    border: 2px solid #141224 !important;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6) !important;
+}
+
+.sidebar-user-block .user-meta {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.sidebar-user-block .user-display-name {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.sidebar-user-block .user-display-role {
+    color: #10b981 !important;
+    font-size: 0.58rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    margin-top: 2px !important;
+}
+
+/* Category Headers (MAIN, MANAGEMENT, CONFIG) */
+.skin-blue .sidebar-menu > li.header,
+.sidebar-menu li.header {
+    background: transparent !important;
+    color: #5e5c78 !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    padding: 1.15rem 1rem 0.35rem !important;
+    border: none !important;
+}
+
+/* Mori Welcome Hero Card */
+.mori-welcome-card {
+    background: linear-gradient(135deg, #181432 0%, #110e24 100%) !important;
+    border: 1px solid rgba(168, 85, 247, 0.16) !important;
+    border-radius: 16px !important;
+    padding: 1.75rem 2.25rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin-bottom: 1.5rem !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+.mori-welcome-card::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 45% !important;
+    background-image: 
+        radial-gradient(circle at 60% 30%, rgba(192, 132, 252, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 85% 65%, rgba(192, 132, 252, 0.35) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 75% 20%, rgba(255, 255, 255, 0.45) 1px, transparent 1px) !important;
+    background-size: 100% 100% !important;
+    pointer-events: none !important;
+}
+
+.mori-tag {
+    color: #a855f7 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.45rem !important;
+}
+
+.mori-greeting {
+    font-size: 1.85rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 0.45rem 0 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.mori-greeting .mori-name-underline {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.mori-greeting .mori-name-underline::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 2px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 3px !important;
+    background: #a855f7 !important;
+    border-radius: 2px !important;
+}
+
+.mori-caption {
+    color: #9896b2 !important;
+    font-size: 0.92rem !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+}
+
+/* Mori 4-Column Stats Grid */
+.mori-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+}
+
+@media (max-width: 1200px) {
+    .mori-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .mori-stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.mori-stat-card {
+    background: #141224 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 14px !important;
+    padding: 1.25rem 1.45rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.mori-stat-card:hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(168, 85, 247, 0.3) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.mori-stat-label {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    color: #72708c !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+}
+
+.mori-stat-value {
+    font-size: 2.1rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 0.4rem !important;
+}
+
+.mori-stat-sub {
+    font-size: 0.85rem !important;
+    color: #8e8ca8 !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.65rem !important;
+}
+
+.mori-stat-bar {
+    width: 32px !important;
+    height: 3px !important;
+    background: #a855f7 !important;
+    border-radius: 2px !important;
+}
+
+/* Mori Live Telemetry Status Bar */
+.mori-live-bar {
+    background: #110f20 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    padding: 0.9rem 1.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem !important;
+    font-size: 0.82rem !important;
+    margin-bottom: 1.75rem !important;
+}
+
+.mori-live-bar .live-indicator {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+}
+
+.mori-live-bar .live-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #10b981 !important;
+    box-shadow: 0 0 10px #10b981 !important;
+    animation: livePulse 2s infinite !important;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.mori-live-bar .live-text {
+    color: #10b981 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    font-size: 0.78rem !important;
+}
+
+.mori-live-bar .telemetry-item {
+    display: inline-flex !important;
+    align-items: baseline !important;
+    gap: 0.35rem !important;
+}
+
+.mori-live-bar .telemetry-label {
+    color: #676580 !important;
+    font-size: 0.76rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    font-weight: 600 !important;
+}
+
+.mori-live-bar .telemetry-val {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.82rem !important;
+}
+
+.mori-live-bar .telemetry-discord {
+    margin-left: auto !important;
+}
+
+.mori-live-bar .telemetry-discord-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    color: #9896b0 !important;
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-decoration: none !important;
+    padding: 0.25rem 0.65rem !important;
+    border-radius: 9999px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: all 0.2s ease !important;
+}
+
+.mori-live-bar .telemetry-discord-link:hover {
+    color: #ffffff !important;
+    background: #5865F2 !important;
+    border-color: #5865F2 !important;
 }
 
 /* 5. Legacy Box Transformation to Silk Veil Bubble Glass */

@@ -93,9 +93,8 @@
                 <a href="{{ route('index') }}" class="logo">
                     <span class="logo-mini"><i data-lucide="shield" style="width: 22px; height: 22px; color: #a855f7;"></i></span>
                     <span class="logo-lg">
-                        <i data-lucide="shield" style="width: 20px; height: 20px; color: #a855f7;"></i>
+                        <span class="logo-icon-box"><i data-lucide="shield" style="width: 18px; height: 18px; color: #a855f7;"></i></span>
                         <span class="logo-text">{{ config('app.name', 'Pterodactyl') }}</span>
-                        <span class="logo-badge">ADMIN</span>
                     </span>
                 </a>
                 <nav class="navbar navbar-static-top">
@@ -109,8 +108,7 @@
                             <li class="user-menu">
                                 <a href="{{ route('account') }}">
                                     <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160" class="user-image" alt="User Image">
-                                    <span class="hidden-xs user-name">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
-                                    <span class="user-role-badge hidden-xs">ROOT</span>
+                                    <span class="hidden-xs user-name">{{ Auth::user()->username ?? Auth::user()->name_first }}</span>
                                 </a>
                             </li>
                             <li>
@@ -125,11 +123,21 @@
             </header>
             <aside class="main-sidebar">
                 <section class="sidebar">
+                    <div class="sidebar-user-block">
+                        <div class="user-avatar-wrap">
+                            <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=120" alt="{{ Auth::user()->username ?? Auth::user()->name_first }}">
+                            <span class="user-online-dot"></span>
+                        </div>
+                        <div class="user-meta">
+                            <span class="user-display-name">{{ Auth::user()->username ?? (Auth::user()->name_first . ' ' . Auth::user()->name_last) }}</span>
+                            <span class="user-display-role">ROOT ADMINISTRATOR</span>
+                        </div>
+                    </div>
                     <ul class="sidebar-menu">
-                        <li class="header">BASIC ADMINISTRATION</li>
+                        <li class="header">MAIN</li>
                         <li class="{{ Route::currentRouteName() !== 'admin.index' ?: 'active' }}">
                             <a href="{{ route('admin.index') }}">
-                                <i data-lucide="home"></i> <span>Overview</span>
+                                <i data-lucide="layout-grid"></i> <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.settings') ?: 'active' }}">
@@ -149,6 +157,21 @@
                             </a>
                         </li>
                         <li class="header">MANAGEMENT</li>
+                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.servers') ?: 'active' }}">
+                            <a href="{{ route('admin.servers') }}">
+                                <i data-lucide="terminal-square"></i> <span>Servers</span>
+                            </a>
+                        </li>
+                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.nodes') ?: 'active' }}">
+                            <a href="{{ route('admin.nodes') }}">
+                                <i data-lucide="server"></i> <span>Nodes</span>
+                            </a>
+                        </li>
+                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.users') ?: 'active' }}">
+                            <a href="{{ route('admin.users') }}">
+                                <i data-lucide="users"></i> <span>Users</span>
+                            </a>
+                        </li>
                         <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.databases') ?: 'active' }}">
                             <a href="{{ route('admin.databases') }}">
                                 <i data-lucide="database"></i> <span>Databases</span>
@@ -159,30 +182,15 @@
                                 <i data-lucide="globe-2"></i> <span>Locations</span>
                             </a>
                         </li>
-                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.nodes') ?: 'active' }}">
-                            <a href="{{ route('admin.nodes') }}">
-                                <i data-lucide="server"></i> <span>Nodes</span>
+                        <li class="header">CONFIG</li>
+                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.nests') ?: 'active' }}">
+                            <a href="{{ route('admin.nests') }}">
+                                <i data-lucide="layers"></i> <span>Nests & Eggs</span>
                             </a>
                         </li>
-                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.servers') ?: 'active' }}">
-                            <a href="{{ route('admin.servers') }}">
-                                <i data-lucide="terminal-square"></i> <span>Servers</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.users') ?: 'active' }}">
-                            <a href="{{ route('admin.users') }}">
-                                <i data-lucide="users"></i> <span>Users</span>
-                            </a>
-                        </li>
-                        <li class="header">SERVICE MANAGEMENT</li>
                         <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.mounts') ?: 'active' }}">
                             <a href="{{ route('admin.mounts') }}">
                                 <i data-lucide="folder"></i> <span>Mounts</span>
-                            </a>
-                        </li>
-                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.nests') ?: 'active' }}">
-                            <a href="{{ route('admin.nests') }}">
-                                <i data-lucide="layout-grid"></i> <span>Nests</span>
                             </a>
                         </li>
                     </ul>
