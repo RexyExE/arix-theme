@@ -5,26 +5,29 @@
 @endsection
 
 @section('content-header')
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-        <div>
-            <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
-                <i class="fa fa-plus-circle" style="color: #10b981;"></i>
-                Provision New Node
-                <span style="font-size: 0.72rem; font-weight: 600; color: #10b981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">COMPUTE</span>
-            </h1>
-            <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Deploy a new compute node for container workloads and game server orchestration.</p>
+    <div class="admin-container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+            <div>
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fa fa-plus-circle" style="color: #10b981;"></i>
+                    Provision New Node
+                    <span style="font-size: 0.72rem; font-weight: 600; color: #10b981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">COMPUTE</span>
+                </h1>
+                <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Deploy a new compute node for container workloads and game server orchestration.</p>
+            </div>
+            <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
+                <li><a href="{{ route('admin.index') }}" style="color: #a855f7;"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li><a href="{{ route('admin.nodes') }}" style="color: #a855f7;">Nodes</a></li>
+                <li class="active" style="color: #cbd5e1;">New</li>
+            </ol>
         </div>
-        <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
-            <li><a href="{{ route('admin.index') }}" style="color: #a855f7;"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li><a href="{{ route('admin.nodes') }}" style="color: #a855f7;">Nodes</a></li>
-            <li class="active" style="color: #cbd5e1;">New</li>
-        </ol>
     </div>
 @endsection
 
 @section('content')
+<div class="admin-container">
 <form action="{{ route('admin.nodes.new') }}" method="POST">
-    <div class="row" style="margin-top: 0.75rem;">
+    <div class="row">
         {{-- LEFT COLUMN — Identity & Network --}}
         <div class="col-sm-6">
             <div class="stat-card" style="padding: 0; overflow: hidden; margin-bottom: 1.5rem;">
@@ -226,7 +229,7 @@
                 {{-- Submit Footer --}}
                 <div style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: flex-end; align-items: center;">
                     {!! csrf_field() !!}
-                    <button type="submit" class="button button-primary" style="padding: 0.6rem 1.5rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 700;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.45rem;">
                         <i class="fa fa-rocket"></i> Deploy Node
                     </button>
                 </div>
@@ -234,6 +237,7 @@
         </div>
     </div>
 </form>
+</div>
 @endsection
 
 @section('footer-scripts')

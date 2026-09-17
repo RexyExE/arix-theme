@@ -5,36 +5,39 @@
 @endsection
 
 @section('content-header')
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-        <div>
-            <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
-                <i class="fa fa-puzzle-piece" style="color: #f59e0b;"></i>
-                {{ $egg->name }}
-                <span style="font-size: 0.72rem; font-weight: 600; color: #f59e0b; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">EGG CONFIG</span>
-            </h1>
-            <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">{{ str_limit($egg->description, 80) }}</p>
+    <div class="admin-container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+            <div>
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fa fa-puzzle-piece" style="color: #f59e0b;"></i>
+                    {{ $egg->name }}
+                    <span style="font-size: 0.72rem; font-weight: 600; color: #f59e0b; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">EGG CONFIG</span>
+                </h1>
+                <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">{{ str_limit($egg->description, 80) }}</p>
+            </div>
+            <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
+                <li><a href="{{ route('admin.index') }}" style="color: #a855f7;"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li><a href="{{ route('admin.nests') }}" style="color: #a855f7;">Nests</a></li>
+                <li><a href="{{ route('admin.nests.view', $egg->nest->id) }}" style="color: #a855f7;">{{ $egg->nest->name }}</a></li>
+                <li class="active" style="color: #cbd5e1;">{{ $egg->name }}</li>
+            </ol>
         </div>
-        <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
-            <li><a href="{{ route('admin.index') }}" style="color: #a855f7;"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li><a href="{{ route('admin.nests') }}" style="color: #a855f7;">Nests</a></li>
-            <li><a href="{{ route('admin.nests.view', $egg->nest->id) }}" style="color: #a855f7;">{{ $egg->nest->name }}</a></li>
-            <li class="active" style="color: #cbd5e1;">{{ $egg->name }}</li>
-        </ol>
     </div>
 @endsection
 
 @section('content')
+<div class="admin-container">
 {{-- Tab Navigation --}}
 <div class="row">
     <div class="col-xs-12">
-        <div style="display: flex; gap: 0.4rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
-            <a href="{{ route('admin.nests.egg.view', $egg->id) }}" style="text-decoration: none; padding: 0.55rem 1.15rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.4); display: inline-flex; align-items: center; gap: 0.4rem;">
+        <div class="admin-tab-nav">
+            <a href="{{ route('admin.nests.egg.view', $egg->id) }}" class="active">
                 <i class="fa fa-cog"></i> Configuration
             </a>
-            <a href="{{ route('admin.nests.egg.variables', $egg->id) }}" style="text-decoration: none; padding: 0.55rem 1.15rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; background: rgba(14, 12, 26, 0.5); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.15s ease;">
+            <a href="{{ route('admin.nests.egg.variables', $egg->id) }}">
                 <i class="fa fa-code"></i> Variables
             </a>
-            <a href="{{ route('admin.nests.egg.scripts', $egg->id) }}" style="text-decoration: none; padding: 0.55rem 1.15rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; background: rgba(14, 12, 26, 0.5); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.15s ease;">
+            <a href="{{ route('admin.nests.egg.scripts', $egg->id) }}">
                 <i class="fa fa-file-code-o"></i> Install Script
             </a>
         </div>
@@ -55,7 +58,7 @@
                 </div>
                 <div>
                     {!! csrf_field() !!}
-                    <button type="submit" name="_method" value="PUT" class="button" style="padding: 0.5rem 1.1rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; background: rgba(244, 63, 94, 0.18); border: 1px solid rgba(244, 63, 94, 0.4); color: #fca5a5; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <button type="submit" name="_method" value="PUT" class="btn btn-danger btn-sm" style="display: inline-flex; align-items: center; gap: 0.4rem;">
                         <i class="fa fa-refresh"></i> Update Egg
                     </button>
                 </div>
@@ -221,15 +224,15 @@
 
                 {{-- Footer Actions --}}
                 <div style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-                    <button id="deleteButton" type="submit" name="_method" value="DELETE" class="button" style="padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.3); color: #fca5a5; display: inline-flex; align-items: center; gap: 0.35rem; transition: all 0.15s ease;">
+                    <button id="deleteButton" type="submit" name="_method" value="DELETE" class="btn btn-danger btn-sm" style="display: inline-flex; align-items: center; gap: 0.35rem;">
                         <i class="fa fa-trash-o"></i> <span class="delete-text"></span>
                     </button>
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         {!! csrf_field() !!}
-                        <a href="{{ route('admin.nests.egg.export', $egg->id) }}" class="button" style="padding: 0.5rem 1.1rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.3); color: #c4b5fd; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+                        <a href="{{ route('admin.nests.egg.export', $egg->id) }}" class="btn btn-default btn-sm" style="display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none;">
                             <i class="fa fa-download"></i> Export
                         </a>
-                        <button type="submit" name="_method" value="PATCH" class="button button-primary" style="padding: 0.5rem 1.35rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.4rem;">
+                        <button type="submit" name="_method" value="PATCH" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 0.4rem;">
                             <i class="fa fa-save"></i> Save Changes
                         </button>
                     </div>
@@ -238,6 +241,7 @@
         </div>
     </div>
 </form>
+</div>
 @endsection
 
 @section('footer-scripts')

@@ -96,13 +96,13 @@
                         <span class="logo-text">{{ config('app.name', 'Pterodactyl') }}</span>
                     </span>
                 </a>
-                <nav class="navbar navbar-static-top">
-                    <div class="navbar-left">
-                        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
+                <nav class="navbar navbar-static-top" style="margin-left: 0 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; flex: 1 !important; width: auto !important;">
+                    <div class="navbar-left" style="display: flex !important; align-items: center !important; margin: 0 !important; float: none !important;">
+                        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; margin: 0 !important; float: none !important;">
                             <i data-lucide="menu" class="toggle-icon" style="width: 20px; height: 20px;"></i>
                         </a>
                     </div>
-                    <div class="navbar-custom-menu">
+                    <div class="navbar-custom-menu" style="display: flex !important; align-items: center !important; margin-left: auto !important; float: none !important;">
                         <ul class="nav navbar-nav">
                             <li class="user-menu">
                                 <a href="{{ route('account') }}">

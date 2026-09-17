@@ -124,7 +124,7 @@
                 {{-- Card Action Footer --}}
                 <div class="admin-card-footer">
                     {!! csrf_field() !!}
-                    <button type="submit" name="_method" value="PATCH" class="btn btn-primary" style="padding: 0.7rem 1.85rem; font-weight: 600; font-size: 0.95rem; border-radius: 10px; height: 46px; display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); border: none; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">
+                    <button type="submit" name="_method" value="PATCH" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
                         <i data-lucide="save" style="width: 18px; height: 18px;"></i>
                         Save Changes
                     </button>

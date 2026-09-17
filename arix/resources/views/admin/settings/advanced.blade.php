@@ -6,25 +6,30 @@
 @endsection
 
 @section('content-header')
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-        <div>
-            <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
-                <i class="fa fa-sliders" style="color: #9f75ff;"></i>
-                Advanced Settings
-                <span style="font-size: 0.72rem; font-weight: 600; color: #c084fc; background: rgba(159, 117, 255, 0.15); border: 1px solid rgba(159, 117, 255, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">SECURITY & NETWORK</span>
-            </h1>
-            <p style="color: #84809c; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Fine-tune bot defenses, API connection timeouts, and automatic port provisioning.</p>
+    <div class="admin-container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+            <div>
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fa fa-sliders" style="color: #9f75ff;"></i>
+                    Advanced Settings
+                    <span style="font-size: 0.72rem; font-weight: 600; color: #c084fc; background: rgba(159, 117, 255, 0.15); border: 1px solid rgba(159, 117, 255, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">SECURITY & NETWORK</span>
+                </h1>
+                <p style="color: #84809c; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Fine-tune bot defenses, API connection timeouts, and automatic port provisioning.</p>
+            </div>
+            <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
+                <li><a href="{{ route('admin.index') }}" style="color: #9f75ff;"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li class="active" style="color: #cbd5e1;">Settings</li>
+            </ol>
         </div>
-        <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
-            <li><a href="{{ route('admin.index') }}" style="color: #9f75ff;"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active" style="color: #cbd5e1;">Settings</li>
-        </ol>
     </div>
 @endsection
 
 @section('content')
-    @yield('settings::nav')
-    <div class="row" style="margin-top: 0.75rem;">
+    <div class="admin-container">
+        <div style="margin-bottom: 1.5rem;">
+            @yield('settings::nav')
+        </div>
+        <div class="row">
         <div class="col-xs-12">
             <form action="" method="POST">
                 {{-- 1. Captcha Gateway Card --}}
@@ -182,7 +187,7 @@
                     {{-- Card Footer --}}
                     <div style="padding: 1rem 1.75rem; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: flex-end; align-items: center; gap: 0.75rem;">
                         {{ csrf_field() }}
-                        <button type="submit" name="_method" value="PATCH" class="button button-primary" style="padding: 0.55rem 1.35rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.45rem;">
+                        <button type="submit" name="_method" value="PATCH" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.45rem;">
                             <i class="fa fa-save"></i> Save Settings
                         </button>
                     </div>
@@ -190,6 +195,7 @@
             </form>
         </div>
     </div>
+</div>
 
     <script>
         (function () {

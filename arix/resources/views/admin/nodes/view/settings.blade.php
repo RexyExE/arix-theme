@@ -5,25 +5,28 @@
 @endsection
 
 @section('content-header')
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-        <div>
-            <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
-                <i class="fa fa-server" style="color: #38bdf8;"></i>
-                {{ $node->name }}
-                <span style="font-size: 0.72rem; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">NODE SETTINGS</span>
-            </h1>
-            <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Adjust node resources, network parameters, and Arix console branding.</p>
+    <div class="admin-container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+            <div>
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fa fa-server" style="color: #38bdf8;"></i>
+                    {{ $node->name }}
+                    <span style="font-size: 0.72rem; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">NODE SETTINGS</span>
+                </h1>
+                <p style="color: #94a3b8; font-size: 0.88rem; margin: 0.3rem 0 0 0;">Adjust node resources, network parameters, and Arix console branding.</p>
+            </div>
+            <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
+                <li><a href="{{ route('admin.index') }}" style="color: #38bdf8;"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li><a href="{{ route('admin.nodes') }}" style="color: #38bdf8;">Nodes</a></li>
+                <li><a href="{{ route('admin.nodes.view', $node->id) }}" style="color: #cbd5e1;">{{ $node->name }}</a></li>
+                <li class="active" style="color: #94a3b8;">Settings</li>
+            </ol>
         </div>
-        <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
-            <li><a href="{{ route('admin.index') }}" style="color: #38bdf8;"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li><a href="{{ route('admin.nodes') }}" style="color: #38bdf8;">Nodes</a></li>
-            <li><a href="{{ route('admin.nodes.view', $node->id) }}" style="color: #cbd5e1;">{{ $node->name }}</a></li>
-            <li class="active" style="color: #94a3b8;">Settings</li>
-        </ol>
     </div>
 @endsection
 
 @section('content')
+<div class="admin-container">
 <div class="row">
     <div class="col-xs-12">
         <div class="nav-tabs-custom nav-tabs-floating" style="margin-bottom: 1.5rem;">
@@ -289,7 +292,7 @@
                 <div style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: flex-end; align-items: center;">
                     {!! method_field('PATCH') !!}
                     {!! csrf_field() !!}
-                    <button type="submit" class="button button-primary" style="padding: 0.6rem 1.5rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 700;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.45rem;">
                         <i class="fa fa-save"></i> Save Changes
                     </button>
                 </div>
@@ -297,6 +300,7 @@
         </div>
     </div>
 </form>
+</div>
 @endsection
 
 @section('footer-scripts')
