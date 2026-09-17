@@ -1,0 +1,597 @@
+/**
+ * ==============================================================================
+ *  ARIX THEME — SILK VEIL / BUBBLE GLASSMORPHISM (Mori Command Center Style)
+ *  Ultra-Premium Frosted Glass, Bubble Surfaces & Ambient Neon Glow
+ *  Inspired by VexaNode Mori Command Center
+ * ==============================================================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Base Surfaces */
+    --sv-bg: #090812;
+    --sv-bg-deep: #06050c;
+    --sv-glass-base: rgba(18, 16, 34, 0.68);
+    --sv-glass-card: rgba(22, 19, 42, 0.72);
+    --sv-glass-elevated: rgba(28, 24, 54, 0.82);
+    --sv-glass-hover: rgba(35, 30, 68, 0.85);
+    --sv-glass-nav: rgba(13, 11, 25, 0.88);
+    --sv-glass-pill: rgba(20, 17, 38, 0.82);
+
+    /* Glass Borders */
+    --sv-border: rgba(255, 255, 255, 0.07);
+    --sv-border-bright: rgba(168, 85, 247, 0.28);
+    --sv-border-hover: rgba(192, 132, 252, 0.45);
+
+    /* Accents & Gradients */
+    --sv-purple-primary: #8b5cf6;
+    --sv-purple-secondary: #a855f7;
+    --sv-purple-glow: 0 6px 28px rgba(139, 92, 246, 0.38), 0 2px 10px rgba(168, 85, 247, 0.22);
+    --sv-bubble-gradient: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    --sv-bubble-gradient-hover: linear-gradient(135deg, #b86bfc 0%, #8b5cf6 100%);
+    --sv-bubble-hero-gradient: linear-gradient(135deg, rgba(147, 51, 234, 0.28) 0%, rgba(76, 29, 149, 0.12) 100%);
+
+    /* Indicators & Status */
+    --sv-emerald: #10b981;
+    --sv-emerald-glow: 0 0 12px rgba(16, 185, 129, 0.6);
+    --sv-amber: #f59e0b;
+    --sv-rose: #f43f5e;
+
+    /* Radii & Blur */
+    --sv-radius-card: 18px;
+    --sv-radius-bubble: 14px;
+    --sv-radius-pill: 9999px;
+    --sv-blur: blur(20px);
+    --sv-blur-subtle: blur(12px);
+
+    /* Typography */
+    --fontFamily: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Override Existing Framework Tokens to Silk Veil */
+    --primary: var(--sv-purple-primary) !important;
+    --gray50: #ffffff !important;
+    --gray100: #f3e8ff !important;
+    --gray200: #d8b4fe !important;
+    --gray300: #a5b4fc !important;
+    --gray400: #7e749c !important;
+    --gray500: #4c4465 !important;
+    --gray600: #2a2542 !important;
+    --gray700: #16132a !important;
+    --gray800: #0f0d1e !important;
+    --gray900: #090812 !important;
+    --gray700-default: #16132a !important;
+    --fallBackGray: rgba(22, 19, 42, 0.72) !important;
+}
+
+/* ==============================================================================
+ *  GLOBAL BACKGROUND & AMBIENT SILK AURA
+ * ============================================================================== */
+html, body {
+    background-color: var(--sv-bg) !important;
+    color: #e2e8f0 !important;
+    font-family: var(--fontFamily) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Floating Ambient Neon Aura Blobs */
+body::before {
+    content: "";
+    position: fixed;
+    top: -15vw;
+    right: -10vw;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(76, 29, 149, 0.05) 50%, transparent 75%);
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -15vw;
+    left: -10vw;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 20, 115, 0.16) 0%, rgba(30, 15, 60, 0.04) 50%, transparent 75%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* ==============================================================================
+ *  SILK VEIL BUBBLE CARDS & SURFACES
+ * ============================================================================== */
+.bg-gray-700, 
+.bg-gray-800, 
+[class*="TitledGreyBox___styled"], 
+[class*="ServerRow___styled"],
+.content-box,
+.card,
+.box {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.bg-gray-700:hover, 
+.bg-gray-800:hover, 
+[class*="ServerRow___styled"]:hover {
+    border-color: var(--sv-border-bright) !important;
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.12), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ==============================================================================
+ *  SIDEBAR BUBBLE NAVIGATION (Mori Reference Style)
+ * ============================================================================== */
+/* Sidebar container */
+aside, 
+nav[class*="Navigation___styled"], 
+.sidebar, 
+[class*="SideBar___styled"],
+[class*="NavigationBar___styled"] {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border-right: 1px solid var(--sv-border) !important;
+}
+
+/* Sidebar Section Headers (MAIN, MANAGEMENT, CONFIG) */
+.sidebar-category,
+.nav-category,
+[class*="Navigation___styled"] h6,
+[class*="SideBar___styled"] h6,
+.nav-section-title {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: var(--gray400) !important;
+    padding: 1.25rem 1rem 0.5rem 1rem !important;
+    margin: 0 !important;
+}
+
+/* Navigation Links & Bubble Pills */
+nav a, 
+.sidebar a, 
+[class*="Navigation___styled"] a,
+[class*="SideBar___styled"] a {
+    border-radius: var(--sv-radius-bubble) !important;
+    padding: 0.65rem 1rem !important;
+    margin: 0.2rem 0.6rem !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    color: #cbd5e1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Active Navigation Item (Glowing Violet Bubble Pill) */
+nav a.active, 
+nav a[aria-current="page"], 
+.sidebar a.active,
+[class*="Navigation___styled"] a.active,
+[class*="Navigation___styled"] a[class*="active"],
+[class*="SideBar___styled"] a.active {
+    background: var(--sv-bubble-gradient) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: var(--sv-purple-glow) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+nav a.active svg,
+.sidebar a.active svg {
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Hover State for Inactive Navigation */
+nav a:not(.active):hover, 
+.sidebar a:not(.active):hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #f1f5f9 !important;
+    transform: translateX(3px);
+}
+
+/* Sidebar User Avatar Card at Top */
+.sidebar-user-card,
+[class*="SideBar___styled"] .user-block {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    padding: 0.85rem !important;
+    margin: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.sidebar-user-avatar {
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid var(--sv-purple-primary);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+
+/* ==============================================================================
+ *  COMMAND CENTER HERO BANNER (Mori Style)
+ * ============================================================================== */
+.mori-hero-banner,
+.dashboard-banner,
+.command-center-card {
+    background: var(--sv-bubble-hero-gradient) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: var(--sv-radius-card) !important;
+    padding: 2rem 2.25rem !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45) !important;
+}
+
+.mori-hero-banner::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
+    filter: blur(25px);
+    pointer-events: none;
+}
+
+.mori-hero-tag {
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: var(--sv-purple-secondary) !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+}
+
+.mori-hero-title {
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: -0.02em !important;
+}
+
+.mori-hero-subtitle {
+    font-size: 0.9rem !important;
+    color: #94a3b8 !important;
+    margin: 0 !important;
+}
+
+/* ==============================================================================
+ *  BUBBLE STAT CARDS WITH GLOW ACCENT LINE (Servers, Users, Backups, Nodes)
+ * ============================================================================== */
+.stat-card, 
+.stat-box,
+[class*="StatCards___styled"] > div {
+    background: var(--sv-glass-card) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) !important;
+    padding: 1.4rem 1.6rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+.stat-card:hover,
+[class*="StatCards___styled"] > div:hover {
+    transform: translateY(-2px);
+    border-color: var(--sv-border-bright) !important;
+}
+
+/* Glowing Bottom Accent Indicator Bar (As seen in screenshot) */
+.stat-card::after,
+[class*="StatCards___styled"] > div::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1.6rem;
+    width: 2.25rem;
+    height: 3px;
+    background: var(--sv-purple-primary);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 0 10px var(--sv-purple-primary);
+}
+
+.stat-label,
+[class*="StatCards___styled"] p:first-child {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+    margin-bottom: 0.4rem !important;
+}
+
+.stat-value,
+[class*="StatCards___styled"] h2,
+[class*="StatCards___styled"] h3 {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.2rem !important;
+    letter-spacing: -0.03em !important;
+}
+
+.stat-subtext,
+[class*="StatCards___styled"] span.text-xs {
+    font-size: 0.78rem !important;
+    color: #64748b !important;
+}
+
+/* ==============================================================================
+ *  FLOATING LIVE TELEMETRY PILL BAR (Live, Uptime, CPU, RAM, Disk, Activity)
+ * ============================================================================== */
+.live-telemetry-bar,
+.mori-telemetry-bar {
+    background: var(--sv-glass-pill) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-pill) !important;
+    padding: 0.65rem 1.5rem !important;
+    margin: 1.25rem 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.telemetry-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+.telemetry-item strong {
+    color: #ffffff;
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+.telemetry-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--sv-emerald);
+    box-shadow: var(--sv-emerald-glow);
+    display: inline-block;
+    animation: svBeaconPulse 2s infinite ease-in-out;
+}
+
+@keyframes svBeaconPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 4px rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        transform: scale(1.25);
+        box-shadow: 0 0 14px rgba(16, 185, 129, 0.9);
+    }
+}
+
+/* ==============================================================================
+ *  BUBBLE BUTTONS & PILLS (Electric Purple Silk)
+ * ============================================================================== */
+button, 
+.button, 
+a.button, 
+[type="button"], 
+[type="submit"] {
+    border-radius: var(--sv-radius-bubble) !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.01em !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: none !important;
+}
+
+/* Primary Action Buttons */
+button.bg-primary-500, 
+button[class*="Button___styled-primary"], 
+.button-primary,
+button[type="submit"] {
+    background: var(--sv-bubble-gradient) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: var(--sv-purple-glow) !important;
+}
+
+button.bg-primary-500:hover, 
+button[class*="Button___styled-primary"]:hover, 
+.button-primary:hover,
+button[type="submit"]:hover {
+    background: var(--sv-bubble-gradient-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5) !important;
+}
+
+/* Secondary & Danger Buttons */
+button.bg-red-500,
+button[class*="Button___styled-danger"] {
+    background: rgba(244, 63, 94, 0.15) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(244, 63, 94, 0.3) !important;
+}
+
+button.bg-red-500:hover,
+button[class*="Button___styled-danger"]:hover {
+    background: rgba(244, 63, 94, 0.28) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(244, 63, 94, 0.35) !important;
+}
+
+/* ==============================================================================
+ *  FROSTED GLASS INPUTS & SEARCH
+ * ============================================================================== */
+input, select, textarea, [type="text"], [type="password"], [type="email"], [type="number"] {
+    background: rgba(14, 12, 26, 0.65) !important;
+    backdrop-filter: var(--sv-blur-subtle) !important;
+    border: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    color: #ffffff !important;
+    padding: 0.65rem 0.95rem !important;
+    font-size: 0.88rem !important;
+    transition: all 0.2s ease !important;
+}
+
+input:focus, select:focus, textarea:focus, 
+[type="text"]:focus, [type="password"]:focus, [type="email"]:focus {
+    outline: none !important;
+    border-color: var(--sv-purple-secondary) !important;
+    background: rgba(22, 19, 42, 0.85) !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.22) !important;
+}
+
+/* ==============================================================================
+ *  TOPBAR NAVIGATION (VexaNode Logo & User Info)
+ * ============================================================================== */
+header, 
+nav.topbar, 
+[class*="NavigationBar___styled"] {
+    background: var(--sv-glass-nav) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+}
+
+/* Breadcrumbs (Admin > Index) */
+.breadcrumbs, 
+[class*="Breadcrumbs___styled"] {
+    font-size: 0.78rem !important;
+    color: var(--gray400) !important;
+}
+
+.breadcrumbs a {
+    color: var(--gray200) !important;
+    font-weight: 500 !important;
+}
+
+/* ==============================================================================
+ *  SERVER CONSOLE & TERMINAL (Silk Veil Style)
+ * ============================================================================== */
+.xterm, 
+.xterm-viewport,
+.xterm-screen,
+#terminal {
+    background-color: #06050d !important;
+    border-radius: var(--sv-radius-card) !important;
+    font-family: var(--font-mono) !important;
+}
+
+.terminal-header {
+    background: rgba(18, 16, 34, 0.9) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-card) var(--sv-radius-card) 0 0 !important;
+}
+
+/* ==============================================================================
+ *  DATA TABLES & FILE MANAGER (Silky Translucent Rows)
+ * ============================================================================== */
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 4px !important;
+}
+
+tr {
+    background: rgba(18, 16, 34, 0.4) !important;
+    border-radius: var(--sv-radius-bubble) !important;
+    transition: background-color 0.15s ease !important;
+}
+
+tr:hover {
+    background: rgba(35, 30, 68, 0.5) !important;
+}
+
+th {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--gray400) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+}
+
+td {
+    border-top: 1px solid var(--sv-border) !important;
+    border-bottom: 1px solid var(--sv-border) !important;
+    padding: 0.85rem 1rem !important;
+}
+
+td:first-child {
+    border-left: 1px solid var(--sv-border) !important;
+    border-radius: var(--sv-radius-bubble) 0 0 var(--sv-radius-bubble) !important;
+}
+
+td:last-child {
+    border-right: 1px solid var(--sv-border) !important;
+    border-radius: 0 var(--sv-radius-bubble) var(--sv-radius-bubble) 0 !important;
+}
+
+/* ==============================================================================
+ *  MODALS & POPUPS (Deep Frosted Silk Popups)
+ * ============================================================================== */
+[class*="Modal___styled"], 
+.modal-content, 
+.swal2-popup {
+    background: var(--sv-glass-elevated) !important;
+    backdrop-filter: var(--sv-blur) !important;
+    -webkit-backdrop-filter: var(--sv-blur) !important;
+    border: 1px solid var(--sv-border-bright) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(139, 92, 246, 0.15) !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.25);
+    border-radius: var(--sv-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+}

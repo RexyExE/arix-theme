@@ -32,16 +32,16 @@ return [
     'loginGradient' => false,
     'backgroundFaded' => 'default',
 
-    'backdrop' => false,
-    'backdropPercentage' => 100,
+    'backdrop' => true,
+    'backdropPercentage' => 75,
     
-    'radiusInput' => 7,
-    'radiusBox' => 10,
+    'radiusInput' => 12,
+    'radiusBox' => 16,
     'borderInput' => true,
 
     'flashMessage' => 1,
 
-    'font' => 'jetbrains_mono',
+    'font' => 'plus_jakarta_sans',
     'icon' => 'heroicons',
 
     /* LAYOUTS */
@@ -74,28 +74,28 @@ return [
     /* COLORS DARKMODE */
     'primary' => '#8B5CF6',
     
-    'successText' => '#00E5FF',
-    'successBorder' => '#00E5FF',
-    'successBackground' => '#083344',
+    'successText' => '#10B981',
+    'successBorder' => '#10B981',
+    'successBackground' => '#064E3B',
 
     'dangerText' => '#FFD8D8',
     'dangerBorder' => '#AA2A2A',
     'dangerBackground' => '#8F1F20',
 
-    'secondaryText' => '#CBD5E1',
-    'secondaryBorder' => '#8B5CF6',
-    'secondaryBackground' => '#101322',
+    'secondaryText' => '#D8B4FE',
+    'secondaryBorder' => '#A855F7',
+    'secondaryBackground' => '#1E1B38',
 
-    'gray50' => '#F1F5F9',
-    'gray100' => '#E2E8F0',
-    'gray200' => '#CBD5E1',
-    'gray300' => '#94A3B8',
-    'gray400' => '#64748B',
-    'gray500' => '#181C32',
-    'gray600' => '#101322',
-    'gray700' => '#0B0D16',
-    'gray800' => '#08090F',
-    'gray900' => '#05060A',
+    'gray50' => '#FFFFFF',
+    'gray100' => '#F3E8FF',
+    'gray200' => '#D8B4FE',
+    'gray300' => '#A5B4FC',
+    'gray400' => '#7E749C',
+    'gray500' => '#4C4465',
+    'gray600' => '#2A2542',
+    'gray700' => '#16132A',
+    'gray800' => '#0F0D1E',
+    'gray900' => '#090812',
 
     /* COLORS LIGHTMODE */
     'lightmode_primary' => '#4A35CF',

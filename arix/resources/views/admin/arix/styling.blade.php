@@ -185,8 +185,8 @@
                     <option value="playfair" {{ $font === 'playfair' ? 'selected' : '' }}>Playfair Display</option>
                     <option value="source_sans" {{ $font === 'source_sans' ? 'selected' : '' }}>Source Sans Pro</option>
                     <option value="quicksand" {{ $font === 'quicksand' ? 'selected' : '' }}>Quicksand</option>
-                    <option value="manrope" {{ $font === 'manrope' ? 'selected' : '' }}>Manrope</option>
-                    <option value="jetbrains_mono" {{ $font === 'jetbrains_mono' ? 'selected' : '' }}>JetBrains Mono (Cyberpunk HUD)</option>
+                    <option value="plus_jakarta_sans" {{ $font === 'plus_jakarta_sans' ? 'selected' : '' }}>Plus Jakarta Sans (Silk Veil)</option>
+                    <option value="jetbrains_mono" {{ $font === 'jetbrains_mono' ? 'selected' : '' }}>JetBrains Mono</option>
                     <option value="space_grotesk" {{ $font === 'space_grotesk' ? 'selected' : '' }}>Space Grotesk</option>
                 </select>
             </div>

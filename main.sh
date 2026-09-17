@@ -117,8 +117,8 @@ show_banner() {
     echo " / ___ |/ /  / />  <   / /   / / / //  __// / / / / //  __/"
     echo "/_/  |_/_/  /_//_/|_| /_/   /_/ /_/ \___//_/ /_/ /_/ \___/ "
     echo -e "${RESET}"
-    echo -e "  ${VIOLET}${BOLD}Arix Theme v3.0${RESET} ${GRAY}•${RESET} ${CYAN}${BOLD}Cyberpunk / Neon-Dark HUD Edition${RESET}"
-    echo -e "  ${GRAY}Direct GitHub One-Liner Installer & Manager${RESET}"
+    echo -e "  ${VIOLET}${BOLD}Arix Theme v3.0${RESET} ${GRAY}•${RESET} ${CYAN}${BOLD}Silk Veil / Bubble Glassmorphism Edition${RESET}"
+    echo -e "  ${GRAY}Inspired by Mori Command Center • Direct GitHub Installer${RESET}"
     echo -e "${DARK_GRAY}─────────────────────────────────────────────────────────────${RESET}"
 }
 
@@ -237,9 +237,9 @@ install_theme() {
 
     # Installation Complete Box
     echo -e "\n${GREEN}┌───────────────────────────────────────────────────────────┐${RESET}"
-    echo -e "${GREEN}│${RESET}  ${WHITE}${BOLD}✓ ARIX THEME v3 INSTALLED SUCCESSFULLY!${RESET}                 ${GREEN}│${RESET}"
+    echo -e "${GREEN}│${RESET}  ${WHITE}${BOLD}✓ ARIX THEME v3 (SILK VEIL) INSTALLED SUCCESSFULLY!${RESET}     ${GREEN}│${RESET}"
     echo -e "${GREEN}│${RESET}  ${GRAY}Open your browser and refresh your Pterodactyl Panel.${RESET}     ${GREEN}│${RESET}"
-    echo -e "${GREEN}│${RESET}  ${VIOLET}Neon HUD Palette & Cold Boot Sequence are active.${RESET}       ${GREEN}│${RESET}"
+    echo -e "${GREEN}│${RESET}  ${VIOLET}Silk Veil Glassmorphism & Bubble Surfaces Active.${RESET}       ${GREEN}│${RESET}"
     echo -e "${GREEN}└───────────────────────────────────────────────────────────┘${RESET}\n"
 }
 
@@ -262,10 +262,12 @@ uninstall_theme() {
     cd "$PANEL_DIR"
     php artisan down >> "$LOG_FILE" 2>&1 || true
 
-    step 1 3 "Removing Arix controllers, configs, and HUD overrides..."
+    step 1 3 "Removing Arix controllers, configs, and glass overrides..."
     rm -rf "$PANEL_DIR/app/Http/Controllers/Admin/Arix"
     rm -rf "$PANEL_DIR/resources/views/admin/arix"
     rm -f "$PANEL_DIR/config/arix.php"
+    rm -f "$PANEL_DIR/public/themes/pterodactyl/css/arix-silk-veil.css"
+    rm -f "$PANEL_DIR/public/themes/pterodactyl/js/arix-silk-veil.js"
     rm -f "$PANEL_DIR/public/themes/pterodactyl/css/arix-hud-v3.css"
     rm -f "$PANEL_DIR/public/themes/pterodactyl/js/arix-hud-v3.js"
     success "Arix custom files removed."

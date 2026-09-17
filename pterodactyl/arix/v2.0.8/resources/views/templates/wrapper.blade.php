@@ -79,9 +79,11 @@
                         'manrope' => '//fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap',
                         'space_grotesk' => '//fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap',
                         'jetbrains_mono' => '//fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap',
+                        'plus_jakarta_sans' => '//fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap',
                     ][$siteConfiguration['arix']['font']] ?? ''
                 }}');
                 
+            @import url('//fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
             @import url('//fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
             @import url('//fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
             @import url('//fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:500&display=swap');
@@ -112,6 +114,7 @@
                         'manrope' => 'Manrope',
                         'space_grotesk' => 'Space Grotesk',
                         'jetbrains_mono' => 'JetBrains Mono',
+                        'plus_jakarta_sans' => 'Plus Jakarta Sans',
                     ][$siteConfiguration['arix']['font']] ?? ''
                 }}';
             }
@@ -196,8 +199,8 @@
 
         @yield('assets')
 
-        <link rel="stylesheet" href="/themes/pterodactyl/css/arix-hud-v3.css">
-        <script src="/themes/pterodactyl/js/arix-hud-v3.js" defer></script>
+        <link rel="stylesheet" href="/themes/pterodactyl/css/arix-silk-veil.css">
+        <script src="/themes/pterodactyl/js/arix-silk-veil.js" defer></script>
 
         @include('layouts.scripts')
     </head>
