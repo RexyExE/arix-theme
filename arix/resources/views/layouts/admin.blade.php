@@ -39,47 +39,6 @@
         @show
 
         <style>
-            .arix{
-                position: relative;
-                font-weight: 500;
-                color: #ffffff;
-                overflow: hidden;
-                z-index: 2;
-            }
-            .arix a{
-                background-color: transparent !important;
-            }
-            .arix::after {
-                opacity: 1;
-                content: '';
-                position: absolute;
-                inset: 0;
-                z-index: -1;
-                background: #EEAECA;
-                filter: blur(20px);
-                background: linear-gradient(225deg,rgba(238, 174, 202, 1) 0%, rgba(125, 107, 242, 1) 25%, rgba(74, 53, 207, 1) 50%, rgba(53, 138, 207, 1) 75%, rgba(53, 207, 125, 1) 100%);
-                animation: arixAnimationNav 10s infinite linear;
-                transition: 0.3s;
-            }
-            .arix:hover::after{
-                opacity: 0.7;
-            }
-            .arix span, .arix svg {
-                font-weight: 500;
-                color: #ffffff;
-            }
-            @keyframes arixAnimationNav {
-                0%, 100% {
-                    transform: scale(3) rotate(0deg) translateX(-25%) translateY(10px);
-                }
-                33% {
-                    transform: scale(3) rotate(10deg) translateX(10px);
-                }
-                66% {
-                    transform: scale(4) rotate(4deg) translateX(25%);
-                }
-            }
-
             :root {
                 --primary: {{ $siteConfiguration['arix']['primary'] }};
                 --primary-border: color-mix(in srgb, var(--primary) 75%, white 25%);
@@ -100,6 +59,32 @@
 
                 --background: {{ $siteConfiguration['arix']['gray800'] }};
             }
+
+            .logo-badge {
+                font-size: 0.62rem;
+                font-weight: 700;
+                color: #a855f7;
+                background: rgba(168, 85, 247, 0.15);
+                border: 1px solid rgba(168, 85, 247, 0.3);
+                padding: 0.15rem 0.5rem;
+                border-radius: 9999px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-left: 0.4rem;
+            }
+
+            .arix-nav-badge {
+                font-size: 0.58rem;
+                font-weight: 700;
+                color: #c084fc;
+                background: rgba(139, 92, 246, 0.18);
+                border: 1px solid rgba(139, 92, 246, 0.35);
+                padding: 0.12rem 0.45rem;
+                border-radius: 9999px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                margin-left: auto;
+            }
         </style>
     </head>
     <body class="hold-transition skin-blue fixed sidebar-mini">
@@ -107,22 +92,33 @@
             <header class="main-header">
                 <a href="{{ route('index') }}" class="logo">
                     <span class="logo-mini"><i data-lucide="shield" style="width: 22px; height: 22px; color: #a855f7;"></i></span>
-                    <span class="logo-lg"><i data-lucide="shield" style="width: 20px; height: 20px; color: #a855f7; display: inline-block; vertical-align: middle; margin-right: 6px;"></i>{{ config('app.name', 'Pterodactyl') }}</span>
+                    <span class="logo-lg">
+                        <i data-lucide="shield" style="width: 20px; height: 20px; color: #a855f7;"></i>
+                        <span class="logo-text">{{ config('app.name', 'Pterodactyl') }}</span>
+                        <span class="logo-badge">ADMIN</span>
+                    </span>
                 </a>
                 <nav class="navbar navbar-static-top">
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
-                        <i data-lucide="menu" class="toggle-icon" style="width: 20px; height: 20px;"></i>
-                    </a>
+                    <div class="navbar-left">
+                        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
+                            <i data-lucide="menu" class="toggle-icon" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <div class="header-breadcrumbs hidden-xs">
+                            <i data-lucide="terminal" style="width: 14px; height: 14px; color: #8b5cf6;"></i>
+                            <span>Admin Console</span>
+                        </div>
+                    </div>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li class="user-menu">
                                 <a href="{{ route('account') }}">
                                     <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
+                                    <span class="hidden-xs user-name">{{ Auth::user()->name_first }} {{ Auth::user()->name_last }}</span>
+                                    <span class="user-role-badge hidden-xs">ROOT</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('index') }}" data-toggle="tooltip" data-placement="bottom" title="Exit Admin Control" class="nav-action-btn"><i data-lucide="server" style="width: 18px; height: 18px;"></i></a>
+                                <a href="{{ route('index') }}" data-toggle="tooltip" data-placement="bottom" title="Exit to Client Panel" class="nav-action-btn"><i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i></a>
                             </li>
                             <li>
                                 <a href="{{ route('auth.logout') }}" id="logoutButton" data-toggle="tooltip" data-placement="bottom" title="Logout" class="nav-action-btn logout"><i data-lucide="log-out" style="width: 18px; height: 18px;"></i></a>
@@ -145,9 +141,10 @@
                                 <i data-lucide="settings"></i> <span>Settings</span>
                             </a>
                         </li>
-                        <li class="arix">
+                        <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.arix') ?: 'active' }}">
                             <a href="{{ route('admin.arix')}}">
                                 <i data-lucide="wand-2"></i><span>Arix Theme</span>
+                                <span class="arix-nav-badge">THEME</span>
                             </a>
                         </li>
                         <li class="{{ ! \Illuminate\Support\Str::startsWith(Route::currentRouteName(), 'admin.api') ?: 'active' }}">
