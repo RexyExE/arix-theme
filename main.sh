@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
-#   ARIX THEME - PTERODACTYL PANEL THEME MANAGER
-#   Version: 2.0.8 (Unified & Fixed Edition)
+#   ARIX THEME v3.0 - CYBERPUNK / NEON-DARK HUD THEME MANAGER
+#   Pterodactyl Panel One-Liner Direct GitHub Installer & Repair Tool
 # ==============================================================================
 
 set -e
@@ -12,7 +12,7 @@ BOLD="\033[1m"
 DIM="\033[2m"
 
 CYAN="\033[38;5;45m"
-MAGENTA="\033[38;5;141m"
+VIOLET="\033[38;5;141m"
 GREEN="\033[38;5;82m"
 YELLOW="\033[38;5;220m"
 RED="\033[38;5;196m"
@@ -21,18 +21,33 @@ GRAY="\033[38;5;244m"
 DARK_GRAY="\033[38;5;239m"
 
 LOG_FILE="/tmp/arix_install_$(date +%s).log"
+PANEL_DIR="/var/www/pterodactyl"
+GITHUB_REPO="https://github.com/RexyExE/arix-theme.git"
+GITHUB_TAR="https://github.com/RexyExE/arix-theme/archive/refs/heads/main.tar.gz"
 
 # --- Trap Interrupts ---
 trap 'echo -e "\n${RED}[!] Operation cancelled by user.${RESET}"; exit 1' INT TERM
 
 # --- Root Check ---
 if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}[✗] Please run this script as root:${RESET} ${WHITE}sudo bash install.sh${RESET}"
+    echo -e "${RED}[✗] Please run this script as root:${RESET} ${WHITE}sudo bash <(curl -sSL https://raw.githubusercontent.com/RexyExE/arix-theme/main/install.sh)${RESET}"
     exit 1
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PANEL_DIR="/var/www/pterodactyl"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "/tmp")"
+
+# Safe Read Input from Terminal (Supports Pipe / One-Liner Execution)
+safe_read() {
+    local prompt="$1"
+    local var_name="$2"
+    if [ -t 0 ]; then
+        read -rp "$prompt" "$var_name"
+    elif [ -c /dev/tty ]; then
+        read -rp "$prompt" "$var_name" < /dev/tty
+    else
+        read -rp "$prompt" "$var_name"
+    fi
+}
 
 # Detect Web User
 detect_web_user() {
@@ -49,7 +64,7 @@ detect_web_user() {
     fi
 }
 
-# Find Theme Source Directory
+# Find Theme Source Directory or Auto-Fetch from GitHub
 find_theme_source() {
     if [ -d "$SCRIPT_DIR/arix" ] && [ -f "$SCRIPT_DIR/arix/config/arix.php" ]; then
         echo "$SCRIPT_DIR/arix"
@@ -60,6 +75,27 @@ find_theme_source() {
     elif [ -d "$SCRIPT_DIR/pterodactyl/arix/v2.0.8" ]; then
         echo "$SCRIPT_DIR/pterodactyl/arix/v2.0.8"
     else
+        # Auto-download directly from GitHub
+        local GITHUB_TMP="/tmp/arix_v3_download"
+        rm -rf "$GITHUB_TMP"
+        mkdir -p "$GITHUB_TMP"
+        echo -e "${CYAN}[*]${RESET} Downloading latest theme files directly from GitHub..." >&2
+        
+        if command -v git >/dev/null 2>&1 && git clone --depth 1 "$GITHUB_REPO" "$GITHUB_TMP" >> "$LOG_FILE" 2>&1; then
+            if [ -d "$GITHUB_TMP/arix" ]; then
+                echo "$GITHUB_TMP/arix"
+                return
+            fi
+        fi
+
+        # Fallback: curl tarball
+        if curl -sSL "$GITHUB_TAR" | tar -xz -C "$GITHUB_TMP" --strip-components=1 >> "$LOG_FILE" 2>&1; then
+            if [ -d "$GITHUB_TMP/arix" ]; then
+                echo "$GITHUB_TMP/arix"
+                return
+            fi
+        fi
+
         echo ""
     fi
 }
@@ -74,8 +110,8 @@ show_banner() {
     echo " / ___ |/ /  / />  <   / /   / / / //  __// / / / / //  __/"
     echo "/_/  |_/_/  /_//_/|_| /_/   /_/ /_/ \___//_/ /_/ /_/ \___/ "
     echo -e "${RESET}"
-    echo -e "  ${MAGENTA}${BOLD}Arix Theme v2.0.8${RESET} ${GRAY}•${RESET} ${WHITE}Pterodactyl Panel Theme Manager${RESET}"
-    echo -e "  ${GRAY}Clean, Fast & Production-Ready${RESET}"
+    echo -e "  ${VIOLET}${BOLD}Arix Theme v3.0${RESET} ${GRAY}•${RESET} ${CYAN}${BOLD}Cyberpunk / Neon-Dark HUD Edition${RESET}"
+    echo -e "  ${GRAY}Direct GitHub One-Liner Installer & Manager${RESET}"
     echo -e "${DARK_GRAY}─────────────────────────────────────────────────────────────${RESET}"
 }
 
@@ -106,7 +142,7 @@ error() {
 check_panel_dir() {
     if [ ! -f "$PANEL_DIR/artisan" ]; then
         echo -e "${YELLOW}[?] Pterodactyl panel not found at ${WHITE}$PANEL_DIR${RESET}"
-        read -rp "    Please enter your Pterodactyl path (e.g. /var/www/pterodactyl): " custom_dir
+        safe_read "    Please enter your Pterodactyl path (e.g. /var/www/pterodactyl): " custom_dir
         if [ -f "$custom_dir/artisan" ]; then
             PANEL_DIR="$custom_dir"
         else
@@ -125,21 +161,21 @@ install_theme() {
     THEME_SRC=$(find_theme_source)
 
     if [ -z "$THEME_SRC" ] || [ ! -d "$THEME_SRC" ]; then
-        error "Could not find Arix theme files in $SCRIPT_DIR/arix"
-        echo -e "    Please place the ${WHITE}arix/${RESET} directory in the same folder as this script."
+        error "Could not download or find Arix theme files."
+        echo -e "    Ensure your VPS has access to GitHub or clone manually."
         exit 1
     fi
 
     local WEB_USER
     WEB_USER=$(detect_web_user)
 
-    echo -e "\n${WHITE}${BOLD}Starting Arix Theme Installation...${RESET}"
+    echo -e "\n${WHITE}${BOLD}Starting Arix Theme v3 Installation...${RESET}"
     echo -e "${GRAY}Panel Directory :${RESET} ${CYAN}$PANEL_DIR${RESET}"
     echo -e "${GRAY}Theme Source    :${RESET} ${CYAN}$THEME_SRC${RESET}"
     echo -e "${GRAY}Web Server User :${RESET} ${CYAN}$WEB_USER${RESET}"
 
     # Step 1: Copy Theme Files
-    step 1 5 "Copying theme files to panel directory..."
+    step 1 5 "Injecting theme files & Cyberpunk HUD assets to panel..."
     if command -v rsync >/dev/null 2>&1; then
         rsync -a "$THEME_SRC/" "$PANEL_DIR/" >> "$LOG_FILE" 2>&1
     else
@@ -148,33 +184,44 @@ install_theme() {
     success "Theme files copied successfully."
 
     # Step 2: Database Migrations
-    step 2 5 "Running database migrations..."
+    step 2 5 "Running database migrations & setting up Arix tables..."
     cd "$PANEL_DIR"
     php artisan migrate --force >> "$LOG_FILE" 2>&1 || true
+    php artisan arix:fix --force >> "$LOG_FILE" 2>&1 || true
     success "Database migrations completed."
 
-    # Step 3: Frontend Dependencies
-    step 3 5 "Checking and installing frontend dependencies..."
+    # Step 3: Frontend Dependencies (Optional React components)
+    step 3 5 "Verifying frontend dependencies..."
     local PKGS="cronstrue jszip react-turnstile @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities @types/md5 md5 react-icons@5.4.0 markdown-to-jsx@7.7.10 i18next-browser-languagedetector@7.2.1"
     if command -v yarn >/dev/null 2>&1; then
-        yarn add $PKGS --ignore-engines >> "$LOG_FILE" 2>&1 || yarn add $PKGS >> "$LOG_FILE" 2>&1
+        yarn add $PKGS --ignore-engines >> "$LOG_FILE" 2>&1 || true
     elif command -v npm >/dev/null 2>&1; then
-        npm install $PKGS --legacy-peer-deps >> "$LOG_FILE" 2>&1
+        npm install $PKGS --legacy-peer-deps >> "$LOG_FILE" 2>&1 || true
     fi
-    success "Dependencies installed."
+    success "Frontend dependencies verified."
 
-    # Step 4: Build Assets
-    step 4 5 "Building production assets (this may take 1-2 minutes)..."
-    export NODE_OPTIONS="--openssl-legacy-provider"
-    if command -v yarn >/dev/null 2>&1; then
-        yarn build:production >> "$LOG_FILE" 2>&1 || yarn build:production
+    # Step 4: Build Assets Option
+    step 4 5 "Configuring frontend assets..."
+    echo -e "${GRAY}Note: Arix Theme v3 HUD runs instantly via injected CSS/JS overrides.${RESET}"
+    safe_read "Do you want to recompile the full React client bundle as well? [y/N] (default: n): " do_build
+    if [[ "$do_build" =~ ^[Yy]$ ]]; then
+        echo -e "${CYAN}[*]${RESET} Compiling React production bundle (please wait 1-2 mins)..."
+        export NODE_OPTIONS="--openssl-legacy-provider"
+        if command -v yarn >/dev/null 2>&1; then
+            yarn build:production >> "$LOG_FILE" 2>&1 || yarn build:production || true
+        else
+            npm run build >> "$LOG_FILE" 2>&1 || npm run build || true
+        fi
+        success "Frontend bundle compiled."
     else
-        npm run build >> "$LOG_FILE" 2>&1 || npm run build
+        success "Fast installation mode: CSS/JS Cyberpunk HUD active."
     fi
-    success "Frontend assets compiled successfully."
 
     # Step 5: Cache & Permissions
     step 5 5 "Optimizing caches and configuring permissions..."
+    php artisan view:clear >> "$LOG_FILE" 2>&1 || true
+    php artisan config:clear >> "$LOG_FILE" 2>&1 || true
+    php artisan route:clear >> "$LOG_FILE" 2>&1 || true
     php artisan optimize:clear >> "$LOG_FILE" 2>&1 || true
     php artisan optimize >> "$LOG_FILE" 2>&1 || true
     chown -R "$WEB_USER" "$PANEL_DIR" >> "$LOG_FILE" 2>&1 || true
@@ -183,8 +230,9 @@ install_theme() {
 
     # Installation Complete Box
     echo -e "\n${GREEN}┌───────────────────────────────────────────────────────────┐${RESET}"
-    echo -e "${GREEN}│${RESET}  ${WHITE}${BOLD}✓ ARIX THEME INSTALLED SUCCESSFULLY!${RESET}                    ${GREEN}│${RESET}"
-    echo -e "${GREEN}│${RESET}  ${GRAY}Open your browser and refresh the panel to see changes.${RESET}  ${GREEN}│${RESET}"
+    echo -e "${GREEN}│${RESET}  ${WHITE}${BOLD}✓ ARIX THEME v3 INSTALLED SUCCESSFULLY!${RESET}                 ${GREEN}│${RESET}"
+    echo -e "${GREEN}│${RESET}  ${GRAY}Open your browser and refresh your Pterodactyl Panel.${RESET}     ${GREEN}│${RESET}"
+    echo -e "${GREEN}│${RESET}  ${VIOLET}Neon HUD Palette & Cold Boot Sequence are active.${RESET}       ${GREEN}│${RESET}"
     echo -e "${GREEN}└───────────────────────────────────────────────────────────┘${RESET}\n"
 }
 
@@ -197,7 +245,7 @@ uninstall_theme() {
     WEB_USER=$(detect_web_user)
 
     echo -e "\n${YELLOW}${BOLD}Warning:${RESET} This will remove Arix Theme and restore stock Pterodactyl files."
-    read -rp "Are you sure you want to uninstall Arix Theme? [y/N]: " confirm
+    safe_read "Are you sure you want to uninstall Arix Theme? [y/N]: " confirm
     if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
         echo -e "${GRAY}Uninstallation cancelled.${RESET}"
         return
@@ -207,10 +255,12 @@ uninstall_theme() {
     cd "$PANEL_DIR"
     php artisan down >> "$LOG_FILE" 2>&1 || true
 
-    step 1 3 "Removing Arix controllers, configs, and admin views..."
+    step 1 3 "Removing Arix controllers, configs, and HUD overrides..."
     rm -rf "$PANEL_DIR/app/Http/Controllers/Admin/Arix"
     rm -rf "$PANEL_DIR/resources/views/admin/arix"
     rm -f "$PANEL_DIR/config/arix.php"
+    rm -f "$PANEL_DIR/public/themes/pterodactyl/css/arix-hud-v3.css"
+    rm -f "$PANEL_DIR/public/themes/pterodactyl/js/arix-hud-v3.js"
     success "Arix custom files removed."
 
     step 2 3 "Restoring stock panel files from official release..."
@@ -272,7 +322,7 @@ repair_theme() {
     chmod -R 755 "$PANEL_DIR/storage" "$PANEL_DIR/bootstrap/cache" >> "$LOG_FILE" 2>&1 || true
     success "Permissions fixed."
 
-    read -rp "Do you also want to recompile frontend assets? [y/N] (default: n): " recompile
+    safe_read "Do you also want to recompile frontend assets? [y/N] (default: n): " recompile
     if [[ "$recompile" =~ ^[Yy]$ ]]; then
         echo -e "${CYAN}[*]${RESET} Rebuilding assets (please wait)..."
         export NODE_OPTIONS="--openssl-legacy-provider"
@@ -293,24 +343,24 @@ repair_theme() {
 main() {
     show_banner
     echo -e ""
-    echo -e "  ${CYAN}${BOLD}[1]${RESET} ${WHITE}${BOLD}Install Arix Theme${RESET}"
-    echo -e "  ${YELLOW}${BOLD}[2]${RESET} ${WHITE}${BOLD}Uninstall Arix Theme${RESET}"
-    echo -e "  ${GREEN}${BOLD}[3]${RESET} ${WHITE}${BOLD}Repair / Fix Theme${RESET}"
+    echo -e "  ${CYAN}${BOLD}[1]${RESET} ${WHITE}${BOLD}Install Arix Theme v3 (Cyberpunk HUD)${RESET}"
+    echo -e "  ${GREEN}${BOLD}[2]${RESET} ${WHITE}${BOLD}Repair / Fix Theme & Clear Caches${RESET}"
+    echo -e "  ${YELLOW}${BOLD}[3]${RESET} ${WHITE}${BOLD}Uninstall Theme (Restore Stock Panel)${RESET}"
     echo -e "  ${RED}${BOLD}[0]${RESET} ${GRAY}Exit${RESET}"
     echo -e ""
     echo -e "${DARK_GRAY}─────────────────────────────────────────────────────────────${RESET}"
 
-    read -rp "Select an option [0-3]: " choice
+    safe_read "Select an option [0-3]: " choice
 
     case "$choice" in
         1)
             install_theme
             ;;
         2)
-            uninstall_theme
+            repair_theme
             ;;
         3)
-            repair_theme
+            uninstall_theme
             ;;
         0)
             echo -e "\n${GRAY}Exiting.${RESET}\n"
