@@ -9,67 +9,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-    /* Base Surfaces */
-    --sv-bg: #090812;
-    --sv-bg-deep: #06050c;
-    --sv-glass-base: rgba(18, 16, 34, 0.68);
-    --sv-glass-card: rgba(22, 19, 42, 0.72);
-    --sv-glass-elevated: rgba(28, 24, 54, 0.82);
-    --sv-glass-hover: rgba(35, 30, 68, 0.85);
-    --sv-glass-nav: rgba(13, 11, 25, 0.88);
-    --sv-glass-pill: rgba(20, 17, 38, 0.82);
+    /* Base Surfaces - Mori Command Center Palette */
+    --sv-bg: #0e0c1a;
+    --sv-bg-deep: #090714;
+    --sv-card-bg: #161327;
+    --sv-card-border: rgba(255, 255, 255, 0.05);
+    --sv-glass-base: rgba(18, 16, 34, 0.75);
+    --sv-glass-card: #161327;
+    --sv-glass-elevated: #1a172e;
+    --sv-glass-hover: #1f1b36;
+    --sv-glass-nav: #090714;
+    --sv-glass-pill: #141124;
 
     /* Glass Borders */
-    --sv-border: rgba(255, 255, 255, 0.07);
-    --sv-border-bright: rgba(168, 85, 247, 0.28);
-    --sv-border-hover: rgba(192, 132, 252, 0.45);
+    --sv-border: rgba(255, 255, 255, 0.05);
+    --sv-border-bright: rgba(159, 117, 255, 0.28);
+    --sv-border-hover: rgba(192, 132, 252, 0.35);
 
-    /* Accents & Gradients */
-    --sv-purple-primary: #8b5cf6;
+    /* Accents & Gradients - Crisp Mori Lilac Purple */
+    --sv-purple-primary: #9f75ff;
     --sv-purple-secondary: #a855f7;
-    --sv-purple-glow: 0 6px 28px rgba(139, 92, 246, 0.38), 0 2px 10px rgba(168, 85, 247, 0.22);
-    --sv-bubble-gradient: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-    --sv-bubble-gradient-hover: linear-gradient(135deg, #b86bfc 0%, #8b5cf6 100%);
-    --sv-bubble-hero-gradient: linear-gradient(135deg, rgba(147, 51, 234, 0.28) 0%, rgba(76, 29, 149, 0.12) 100%);
+    --sv-purple-glow: 0 2px 10px rgba(159, 117, 255, 0.25);
+    --sv-bubble-gradient: #9f75ff;
+    --sv-bubble-gradient-hover: #b08dff;
+    --sv-bubble-hero-gradient: #161327;
 
     /* Indicators & Status */
     --sv-emerald: #10b981;
-    --sv-emerald-glow: 0 0 12px rgba(16, 185, 129, 0.6);
+    --sv-emerald-glow: 0 0 8px rgba(16, 185, 129, 0.5);
     --sv-amber: #f59e0b;
     --sv-rose: #f43f5e;
 
-    /* Radii & Blur */
-    --sv-radius-card: 18px;
-    --sv-radius-bubble: 14px;
+    /* Radii */
+    --sv-radius-card: 14px;
+    --sv-radius-bubble: 10px;
     --sv-radius-pill: 9999px;
-    --sv-blur: blur(20px);
-    --sv-blur-subtle: blur(12px);
+    --sv-blur: none;
+    --sv-blur-subtle: none;
 
     /* Typography */
-    --fontFamily: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    --fontFamily: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* Override Existing Framework Tokens to Silk Veil */
-    --primary: var(--sv-purple-primary) !important;
+    /* Muted Labels & Hierarchy */
+    --sv-text-muted: #84809c;
+    --sv-text-label: #676582;
+
+    /* Override Existing Framework Tokens */
+    --primary: #9f75ff !important;
     --gray50: #ffffff !important;
     --gray100: #f3e8ff !important;
     --gray200: #d8b4fe !important;
-    --gray300: #a5b4fc !important;
-    --gray400: #7e749c !important;
+    --gray300: #84809c !important;
+    --gray400: #676582 !important;
     --gray500: #4c4465 !important;
-    --gray600: #2a2542 !important;
-    --gray700: #16132a !important;
-    --gray800: #0f0d1e !important;
-    --gray900: #090812 !important;
-    --gray700-default: #16132a !important;
-    --fallBackGray: rgba(22, 19, 42, 0.72) !important;
+    --gray600: #1f1b36 !important;
+    --gray700: #161327 !important;
+    --gray800: #0e0c1a !important;
+    --gray900: #090714 !important;
+    --gray700-default: #161327 !important;
+    --fallBackGray: #161327 !important;
 }
 
 /* ==============================================================================
- *  GLOBAL BACKGROUND & AMBIENT SILK AURA
+ *  GLOBAL BACKGROUND & SURFACE HIERARCHY
  * ============================================================================== */
 html, body {
-    background-color: var(--sv-bg) !important;
+    background-color: #0e0c1a !important;
     color: #e2e8f0 !important;
     font-family: var(--fontFamily) !important;
     -webkit-font-smoothing: antialiased;
@@ -78,33 +84,9 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Floating Ambient Neon Aura Blobs */
-body::before {
-    content: "";
-    position: fixed;
-    top: -15vw;
-    right: -10vw;
-    width: 60vw;
-    height: 60vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(76, 29, 149, 0.05) 50%, transparent 75%);
-    filter: blur(70px);
-    pointer-events: none;
-    z-index: 0;
-}
-
+body::before,
 body::after {
-    content: "";
-    position: fixed;
-    bottom: -15vw;
-    left: -10vw;
-    width: 50vw;
-    height: 50vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(59, 20, 115, 0.16) 0%, rgba(30, 15, 60, 0.04) 50%, transparent 75%);
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
+    display: none !important;
 }
 
 #app {
@@ -186,41 +168,42 @@ nav a,
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Active Navigation Item (Glowing Violet Bubble Pill) */
+/* Active Navigation Item (Crisp Mori Lilac Pill) */
 nav a.active, 
 nav a[aria-current="page"], 
 .sidebar a.active,
 [class*="Navigation___styled"] a.active,
 [class*="Navigation___styled"] a[class*="active"],
 [class*="SideBar___styled"] a.active {
-    background: var(--sv-bubble-gradient) !important;
+    background: #9f75ff !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: var(--sv-purple-glow) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 8px !important;
 }
 
 nav a.active svg,
 .sidebar a.active svg {
     color: #ffffff !important;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    filter: none !important;
 }
 
 /* Hover State for Inactive Navigation */
 nav a:not(.active):hover, 
 .sidebar a:not(.active):hover {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #f1f5f9 !important;
-    transform: translateX(3px);
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: #ffffff !important;
+    transform: none !important;
 }
 
 /* Sidebar User Avatar Card at Top */
 .sidebar-user-card,
 [class*="SideBar___styled"] .user-block {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid var(--sv-border) !important;
-    border-radius: var(--sv-radius-bubble) !important;
-    padding: 0.85rem !important;
+    background: #141124 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 10px !important;
+    padding: 0.75rem !important;
     margin: 0.75rem !important;
     display: flex !important;
     align-items: center !important;
@@ -229,9 +212,9 @@ nav a:not(.active):hover,
 
 .sidebar-user-avatar {
     position: relative;
-    border-radius: 50%;
-    border: 2px solid var(--sv-purple-primary);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+    border-radius: 8px;
+    border: 1px solid rgba(159, 117, 255, 0.3);
+    box-shadow: none !important;
 }
 
 /* ==============================================================================
@@ -685,13 +668,13 @@ td:last-child {
 }
 
 .skin-blue .sidebar-menu > li.active > a {
-    background: #a855f7 !important;
+    background: #9f75ff !important;
     border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35) !important;
+    box-shadow: none !important;
     filter: none !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
 }
 
 .skin-blue .sidebar-menu > li.active > a > i,
@@ -2548,7 +2531,33 @@ body.skin-blue::after {
 }
 
 .main-header .logo:hover {
-    color: #c084fc !important;
+    color: #ffffff !important;
+}
+
+.main-header .logo-icon-box {
+    width: 30px !important;
+    height: 30px !important;
+    background: #9f75ff !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(159, 117, 255, 0.3) !important;
+    flex-shrink: 0 !important;
+}
+
+.main-header .logo-icon-box i,
+.main-header .logo-icon-box svg {
+    color: #ffffff !important;
+    width: 17px !important;
+    height: 17px !important;
+}
+
+.main-header .logo-text {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.02em !important;
 }
 
 .main-header .navbar {
@@ -2739,12 +2748,12 @@ body.skin-blue::after {
 }
 
 .sidebar-menu > li.active > a {
-    background: #a855f7 !important;
+    background: #9f75ff !important;
     border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35) !important;
-    border-radius: 10px !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
 }
 
 .sidebar-menu > li.active > a i,
@@ -2755,7 +2764,7 @@ body.skin-blue::after {
 
 /* 4. Content Shell & Breadcrumbs */
 .content-wrapper {
-    background: #07060f !important;
+    background: #0e0c1a !important;
     margin-left: 240px !important;
     padding-top: 60px !important;
     min-height: 100vh !important;
@@ -2763,13 +2772,13 @@ body.skin-blue::after {
 }
 
 .content-header {
-    padding: 2rem 2.5rem 0.5rem !important;
+    padding: 1.5rem 2rem 0.5rem !important;
 }
 
 .content-header h1 {
     color: #ffffff !important;
-    font-size: 1.75rem !important;
-    font-weight: 700 !important;
+    font-size: 1.65rem !important;
+    font-weight: 800 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
@@ -2778,33 +2787,33 @@ body.skin-blue::after {
 
 .content-header small,
 .content-header p {
-    color: #94a3b8 !important;
-    font-size: 0.95rem !important;
+    color: #84809c !important;
+    font-size: 0.92rem !important;
     font-weight: 400 !important;
     display: block !important;
-    margin-top: 0.35rem !important;
+    margin-top: 0.25rem !important;
 }
 
 .breadcrumb {
     background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: 9999px !important;
-    padding: 0.45rem 1rem !important;
+    padding: 0.35rem 0.85rem !important;
     margin: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.5rem !important;
-    font-size: 0.85rem !important;
+    gap: 0.4rem !important;
+    font-size: 0.82rem !important;
     font-weight: 500 !important;
 }
 
 .breadcrumb li + li:before {
-    color: #64748b !important;
-    content: "/ " !important;
+    color: #676582 !important;
+    content: "> " !important;
 }
 
 .breadcrumb a {
-    color: #a855f7 !important;
+    color: #9f75ff !important;
     text-decoration: none !important;
     font-weight: 600 !important;
 }
@@ -2814,25 +2823,23 @@ body.skin-blue::after {
 }
 
 .content {
-    padding: 0.5rem 2.5rem 3.5rem !important;
+    padding: 0.5rem 2rem 3rem !important;
 }
 
-/* ---- Silk Veil Admin Content Container & Cards ---- */
+/* ---- Mori Admin Content Container & Cards ---- */
 .admin-container {
-    max-width: 1240px;
+    max-width: 1560px;
     width: 100%;
     margin: 0;
 }
 
 .admin-card {
-    background: rgba(14, 12, 26, 0.82) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 18px !important;
+    background: #161327 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 14px !important;
     overflow: hidden !important;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 1.5rem !important;
 }
 
 .admin-card-header {
@@ -3020,10 +3027,10 @@ body.skin-blue::after {
 }
 
 .sidebar-user-block .user-display-role {
-    color: #10b981 !important;
+    color: #7c7795 !important;
     font-size: 0.58rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.12em !important;
     text-transform: uppercase !important;
     margin-top: 2px !important;
 }
@@ -3043,33 +3050,42 @@ body.skin-blue::after {
 
 /* Mori Welcome Hero Card */
 .mori-welcome-card {
-    background: linear-gradient(135deg, #181432 0%, #110e24 100%) !important;
-    border: 1px solid rgba(168, 85, 247, 0.16) !important;
-    border-radius: 16px !important;
-    padding: 1.75rem 2.25rem !important;
+    background: radial-gradient(circle at 85% 25%, rgba(159, 117, 255, 0.12) 0%, transparent 50%), #161327 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 14px !important;
+    padding: 1.85rem 2.25rem !important;
     position: relative !important;
     overflow: hidden !important;
-    margin-bottom: 1.5rem !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+    margin-bottom: 1.25rem !important;
 }
 
-.mori-welcome-card::after {
-    content: '' !important;
+.mori-star {
     position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 45% !important;
-    background-image: 
-        radial-gradient(circle at 60% 30%, rgba(192, 132, 252, 0.4) 1px, transparent 1px),
-        radial-gradient(circle at 85% 65%, rgba(192, 132, 252, 0.35) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 75% 20%, rgba(255, 255, 255, 0.45) 1px, transparent 1px) !important;
-    background-size: 100% 100% !important;
+    user-select: none !important;
     pointer-events: none !important;
 }
 
+.mori-star.star-1 {
+    top: 30% !important;
+    right: 22% !important;
+    color: #c084fc !important;
+    font-size: 14px !important;
+    opacity: 0.75 !important;
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.8) !important;
+}
+
+.mori-star.star-2 {
+    bottom: 25% !important;
+    right: 12% !important;
+    color: #e2e8f0 !important;
+    font-size: 18px !important;
+    opacity: 0.65 !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
 .mori-tag {
-    color: #a855f7 !important;
+    color: #9f75ff !important;
     font-size: 0.72rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.15em !important;
@@ -3085,24 +3101,23 @@ body.skin-blue::after {
     letter-spacing: -0.02em !important;
 }
 
-.mori-greeting .mori-name-underline {
+.mori-name-wrap {
     position: relative !important;
     display: inline-block !important;
+    white-space: nowrap !important;
 }
 
-.mori-greeting .mori-name-underline::after {
-    content: '' !important;
+.mori-name-squiggle {
     position: absolute !important;
-    bottom: 2px !important;
     left: 0 !important;
-    right: 0 !important;
-    height: 3px !important;
-    background: #a855f7 !important;
-    border-radius: 2px !important;
+    bottom: -6px !important;
+    width: 100% !important;
+    height: 10px !important;
+    pointer-events: none !important;
 }
 
 .mori-caption {
-    color: #9896b2 !important;
+    color: #84809c !important;
     font-size: 0.92rem !important;
     margin: 0 !important;
     font-weight: 400 !important;
@@ -3129,10 +3144,11 @@ body.skin-blue::after {
 }
 
 .mori-stat-card {
-    background: #141224 !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 14px !important;
-    padding: 1.25rem 1.45rem !important;
+    background: #161327 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 1.35rem 1.5rem !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -3141,55 +3157,58 @@ body.skin-blue::after {
 
 .mori-stat-card:hover {
     transform: translateY(-2px) !important;
-    border-color: rgba(168, 85, 247, 0.3) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(159, 117, 255, 0.3) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .mori-stat-label {
     font-size: 0.72rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.12em !important;
-    color: #72708c !important;
+    letter-spacing: 0.14em !important;
+    color: #676582 !important;
     text-transform: uppercase !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.45rem !important;
     display: block !important;
 }
 
 .mori-stat-value {
-    font-size: 2.1rem !important;
+    font-size: 2.25rem !important;
     font-weight: 800 !important;
     color: #ffffff !important;
     line-height: 1 !important;
-    letter-spacing: -0.02em !important;
-    margin-bottom: 0.4rem !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 0.35rem !important;
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
 }
 
 .mori-stat-sub {
-    font-size: 0.85rem !important;
-    color: #8e8ca8 !important;
+    font-size: 0.84rem !important;
+    color: #84809c !important;
     font-weight: 500 !important;
     margin-bottom: 0.65rem !important;
 }
 
 .mori-stat-bar {
-    width: 32px !important;
+    width: 24px !important;
     height: 3px !important;
-    background: #a855f7 !important;
+    background: #9f75ff !important;
     border-radius: 2px !important;
+    margin-top: 8px !important;
 }
 
 /* Mori Live Telemetry Status Bar */
 .mori-live-bar {
-    background: #110f20 !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    padding: 0.9rem 1.5rem !important;
+    background: #141124 !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    padding: 0.8rem 1.4rem !important;
     display: flex !important;
     align-items: center !important;
     flex-wrap: wrap !important;
     gap: 1.5rem !important;
     font-size: 0.82rem !important;
-    margin-bottom: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
 }
 
 .mori-live-bar .live-indicator {

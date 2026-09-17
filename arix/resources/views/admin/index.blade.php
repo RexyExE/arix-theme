@@ -68,16 +68,20 @@
 @endphp
 
 <div class="admin-container">
-    {{-- 1. Hero / Welcome Card --}}
+    {{-- 1. Hero / Welcome Card with Ambient Purple Glow & Organic Squiggle --}}
     <div class="mori-welcome-card">
+        {{-- Subtle cosmic accent sparkle dots --}}
+        <div class="mori-star star-1">✦</div>
+        <div class="mori-star star-2">·</div>
+
         <div class="mori-tag">COMMAND CENTER</div>
         <h2 class="mori-greeting">
-            Welcome back, <span class="mori-name-underline">{{ Auth::user()->username ?? Auth::user()->name_first }}.</span>
+            Welcome back, <span class="mori-name-wrap">{{ Auth::user()->username ?? Auth::user()->name_first }}<svg class="mori-name-squiggle" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7C25 2 45 10 70 6C85 3 105 8 118 5" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/></svg></span>.
         </h2>
         <p class="mori-caption">A quiet glance at your empire &mdash; nothing more, nothing less.</p>
     </div>
 
-    {{-- 2. 4-Column Stats Grid --}}
+    {{-- 2. 4-Column Stats Grid (SERVERS, USERS, BACKUPS, NODES) --}}
     <div class="mori-stats-grid">
         {{-- Card 1: SERVERS --}}
         <div class="mori-stat-card">
@@ -157,85 +161,16 @@
         </div>
     </div>
 
-    {{-- 4. Pterodactyl Core & Arix Theme Telemetry (2-Column Grid) --}}
-    <div class="row" style="margin-top: 0.5rem;">
-        <div class="col-xs-12 col-md-6" style="margin-bottom: 1.5rem;">
-            <div class="admin-card" style="margin-bottom: 0; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="padding: 1.25rem 1.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center;">
-                        <div style="display: flex; align-items: center; gap: 0.65rem;">
-                            <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(139, 92, 246, 0.15); display: flex; align-items: center; justify-content: center; color: #a855f7;">
-                                <i data-lucide="server" style="width: 18px; height: 18px;"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: #ffffff;">Pterodactyl Core</h4>
-                                <span style="font-size: 0.76rem; color: #8e8ca8;">Runtime Environment</span>
-                            </div>
-                        </div>
-                        @if($version->isLatestPanel())
-                            <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.25); padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700;">
-                                UP TO DATE
-                            </span>
-                        @else
-                            <span style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.25); padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700;">
-                                UPDATE READY
-                            </span>
-                        @endif
-                    </div>
-                    <div style="padding: 1.5rem 1.75rem;">
-                        <div style="font-size: 1.85rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">
-                            v{{ config('app.version') }}
-                        </div>
-                        <p style="font-size: 0.88rem; color: #9896b2; margin-top: 0.35rem; margin-bottom: 0;">
-                            @if ($version->isLatestPanel())
-                                Your core panel is operating on the official release build.
-                            @else
-                                New build available: <a href="https://github.com/Pterodactyl/Panel/releases/v{{ $version->getPanel() }}" target="_blank" style="color: #a855f7; font-weight: 600;">v{{ $version->getPanel() }}</a>.
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div style="padding: 0.85rem 1.75rem; border-top: 1px solid rgba(255, 255, 255, 0.06); background: rgba(0, 0, 0, 0.15); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #8e8ca8;">
-                    <span>PHP <strong>{{ phpversion() }}</strong></span>
-                    <span>Laravel <strong>{{ app()->version() }}</strong></span>
-                </div>
+    @if(!$version->isLatestPanel())
+        <div style="margin-top: 1rem; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 10px; padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+            <div style="display: flex; align-items: center; gap: 0.65rem; color: #fbbf24;">
+                <i data-lucide="alert-triangle" style="width: 16px; height: 16px;"></i>
+                <span>A new panel update is available: <strong>v{{ $version->getPanel() }}</strong> (currently running v{{ config('app.version') }})</span>
             </div>
+            <a href="https://github.com/Pterodactyl/Panel/releases/v{{ $version->getPanel() }}" target="_blank" style="color: #fbbf24; font-weight: 700; text-decoration: underline;">
+                View Release
+            </a>
         </div>
-
-        <div class="col-xs-12 col-md-6" style="margin-bottom: 1.5rem;">
-            <div class="admin-card" style="margin-bottom: 0; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="padding: 1.25rem 1.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center;">
-                        <div style="display: flex; align-items: center; gap: 0.65rem;">
-                            <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(168, 85, 247, 0.18); display: flex; align-items: center; justify-content: center; color: #c084fc;">
-                                <i data-lucide="palette" style="width: 18px; height: 18px;"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: #ffffff;">Arix Theme Engine</h4>
-                                <span style="font-size: 0.76rem; color: #8e8ca8;">Silk Veil / Bubble Glass</span>
-                            </div>
-                        </div>
-                        <span style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700;">
-                            ACTIVE OVERLAY
-                        </span>
-                    </div>
-                    <div style="padding: 1.5rem 1.75rem;">
-                        <div style="font-size: 1.85rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">
-                            v{{ config('app.arix') }} <span style="font-size: 1rem; color: #a855f7; font-weight: 600;">(Silk Veil)</span>
-                        </div>
-                        <p style="font-size: 0.88rem; color: #9896b2; margin-top: 0.35rem; margin-bottom: 0;">
-                            Ultra-smooth glassmorphism, bubble pill navigation, and ambient command center active.
-                        </p>
-                    </div>
-                </div>
-                <div style="padding: 0.85rem 1.75rem; border-top: 1px solid rgba(255, 255, 255, 0.06); background: rgba(0, 0, 0, 0.15); display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 0.8rem; color: #8e8ca8;">Theme Configuration</span>
-                    <a href="{{ route('admin.arix') }}" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.82rem; border-radius: 9999px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; background: #a855f7; border: none; font-weight: 600;">
-                        <i data-lucide="sliders" style="width: 14px; height: 14px;"></i> Open Arix Editor
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif
 </div>
 @endsection
